@@ -12,16 +12,17 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { BootpageComponent } from './component/bootpage/bootpage.component';
 import { FooterComponent } from './component/footer/footer.component';
+import { CartComponent } from './component/cart/cart.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     BootpageComponent,
-    FooterComponent
+    FooterComponent,
+    CartComponent
   ],
   imports: [
-    BrowserModule,
     FlexLayoutModule,
     WeUiModule.forRoot(),
     BrowserAnimationsModule,

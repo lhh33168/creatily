@@ -1,17 +1,11 @@
-import {RouterModule, Routes} from '@angular/router'
+import { RouterModule, Routes} from '@angular/router';
 
-import {CartComponent} from '../components/cart/cart.component'
-import {CommunityComponent} from '../components/community/community.component'
-import {DetailsComponent} from '../components/details/details.component'
-import {HomeComponent} from '../components/home/home.component'
-import {UserComponent} from '../components/user/user.component'
+//组件
+import { AppComponent } from '../app.component';
+import { FooterComponent } from '../component/footer/footer.component';
 
 const appRoutes:Routes = [
-    {path:'cart',component:CartComponent},
-    {path:'community',component:CommunityComponent},
-    {path:'details',component:DetailsComponent},
-    {path:'home',component:HomeComponent},
-    {path:'user',component:UserComponent}
+    { path: "/footer", component: FooterComponent}
 ]
 
 export const RootRouter = RouterModule.forRoot(

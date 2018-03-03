@@ -34,7 +34,7 @@ import { AppComponent } from './app.component';
     ElModule.forRoot(),
   ],
   providers: [HttpService],
-  bootstrap: [AppComponent]
+  bootstrap: [UserComponent]
 })
 
 

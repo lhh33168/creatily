@@ -1,0 +1,21 @@
+{
+  "name": "simplelife",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mysql": "^2.15.0",
+    "node-mysql": "^0.4.2",
+    "path": "^0.12.7",
+    "socket.io": "^2.0.4",
+    "url-loader": "^0.6.2"
+  }
+}

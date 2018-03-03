@@ -1,0 +1,9 @@
+{
+    "api":"get_product",
+    "cols":"name,newPrice,oldPrice",
+    "multiple":"true",
+    "filterDataConfig":{},
+    "pagenation":{
+        "pageitems":10
+    }
+}

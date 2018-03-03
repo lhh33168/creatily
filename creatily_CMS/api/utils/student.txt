@@ -1,0 +1,30 @@
+﻿{
+    "api":"get_student",
+    "cols":"user_id,phone,add_time,password",
+    "filterCols":"collects",
+    "dictionary":{
+        "cn":{
+            "add_time":"注册时间"
+        }
+    },
+    "pagenation":{
+        "pageitems":3
+    },
+    "filterData":{
+        "add_time":{
+            "type":"DateFormat",
+            "format":"yyyy-MM-dd hh:mm:ss"
+        },
+        "phone":{
+            "type":"Replace",
+            "reg":"(\\d{3}).+(\\d{4})",
+            "replaceVal":"$1****$2"
+        },
+        "user_id":{
+            "type":"Replace",
+            "reg":"(.).+",
+            "replaceVal":"$1**"
+        }
+
+    }
+}

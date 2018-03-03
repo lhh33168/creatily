@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { BrowserModule } from '@angular/platform-browser'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { ElModule } from 'element-angular'
 import 'element-angular/theme/index.css'
@@ -17,7 +16,6 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    
     BrowserAnimationsModule,
     ElModule.forRoot(),
   ],

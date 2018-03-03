@@ -1,0 +1,14 @@
+﻿{
+    "en":{
+        "user_id":"User_Id",
+        "phone":"Phone",
+        "add_time":"Add_Time",
+        "password":"Password"
+    },
+    "cn":{
+        "user_id":"用户名",
+        "phone":"手机号码",
+        "add_time":"时间",
+        "password":"密码"
+    }
+}

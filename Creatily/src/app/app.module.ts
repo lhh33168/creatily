@@ -13,6 +13,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BootpageComponent } from './component/bootpage/bootpage.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { DetailComponent } from './component/detail/detail.component';
+import { CartComponent } from './component/cart/cart.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { DetailComponent } from './component/detail/detail.component';
     AppComponent,
     BootpageComponent,
     FooterComponent,
-    DetailComponent
+    DetailComponent,
+    CartComponent
   ],
   imports: [
     FlexLayoutModule,

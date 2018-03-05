@@ -5,7 +5,7 @@ var db = mysql.createPool({
     host: "10.3.136.13",
     user: 'root',
     password: '',
-    database: 'ibaby',
+    database: 'creatily',
     multipleStatements: true
 })
 

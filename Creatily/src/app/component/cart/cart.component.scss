@@ -1,0 +1,98 @@
+.cart{display:flex;flex-direction:column;height:100%;
+    .carthead{
+        height:2.65625rem;display:flex;line-height:2.65625rem;justify-content:center;font-size:0.875rem;
+    }
+    .cartmaintop{
+        display:flex;justify-content:space-around;height:2.8125rem;border:0.087813rem solid #F0EFEE;line-height:2.8125rem;color:#9B9B9B;
+        .cartmaintop_common{
+            display:flex;
+            span{
+                border:0.03125rem solid #9B9B9B;border-radius:50%;display:inline-block;height:0.6875rem;width:0.6875rem;align-self:center;line-height:0.6875rem;text-align:center;margin-right:0.3125rem;
+            }
+        }
+    }
+    .cartmain{
+        flex:1;overflow-x:hidden;
+        .cartmainbottom{
+            .cartmainbottom_empty_top{
+                display:flex;flex-direction:column;justify-content:space-around;
+                img{
+                    align-self:center;
+                }
+                div{
+                    align-self:center;height:3.75rem;line-height:3.75rem;
+                }
+                span{
+                    align-self:center;height:2.1875rem;line-height:2.1875rem;color:#FEE295;border:0.065625rem solid #FEE295;border-radius:0.15625rem;width:6.375rem;text-align:center;
+                }
+            }
+            .cartmainbottom_empty_main{
+                height:3.8125rem;font-size:0.119125rem;line-height:3.8125rem;text-align:center;color:#9B9B9B;
+                span{
+                    border:0.03125rem solid #9B9B9B;display:inline-block;width:3.4375rem;margin-bottom:0.28125rem;
+                }
+                span:nth-child(1){margin-right:0.75rem;}
+                span:nth-child(2){margin-left:0.75rem;}
+            }
+            .cartmainbottom_empty_bottom{
+                display:flex;flex-wrap:wrap;justify-content:space-around;
+                li{width:48%;display:flex;flex-direction:column;justify-content:space-around;
+                    img{
+                    align-self:center;width:100%;
+                }
+                    p{
+                        align-self:center;font-size:0.625rem;line-height:1.875rem;height:1.875rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:100%;text-align:center;color:#CBCBCB;
+                    }
+                    span{
+                        align-self:center;height:1.25rem;line-height:1.25rem;color:#FE878B;
+                    }
+                }
+            }
+            .cartmainbottom_full{
+                ul{
+                    li{
+                        display:flex;justify-content:space-around;height:7.1875rem;border-bottom:0.03125rem solid #F1EFEE;align-items:center;
+                        img{width:4.1875rem;height:4.1875rem;}
+                        .cartmainbottom_full_bottom{
+                            display:flex;flex-direction:column;justify-content:space-around;
+                            i{height:3.125rem;line-height:3.125rem;text-align:center;}
+                            span{
+                                height:3.125rem;line-height:3.125rem;
+                            }
+                        }
+                        .cartmainbottom_full_center{
+                            display:flex;flex-direction:column;justify-content:space-around;
+                            p{
+                                color:#323232;
+                            }
+                            .cartmainbottom_full_center_c{
+                                color:#ABABAB;height:2.0625rem;line-height:2.0625rem;
+                            }
+                            .cartmainbottom_full_qty{height:1.5875rem;line-height:1.5875rem;display:flex;justify-content:center;width:4.7625rem;
+                                span{text-align:center;border:0.013333rem solid #A8A8A8;width:1.5875rem;}
+                                span:nth-child(2){
+                                    border-left:none;border-right:none;
+                                }
+                            }    
+                        }
+                    }
+                }
+               
+            }
+        }
+    }  
+    .cartfoot{
+        height:2.75rem;border-top:0.03125rem solid #A2A2A2;display:flex;justify-content:space-around;align-items:center;
+        div{
+            input{vertical-align:middle;margin-right:0.09375rem;}
+        }
+        p{
+            span{
+                color:#E43841;font-weight:bold;
+            }
+        }
+        .cartfoot_right{
+            background:#FFD914;width:5.0rem;height:2.1875rem;border-radius:0.3125rem;line-height:2.1875rem;text-align:center;font-weight:bold;
+        }
+    }
+}

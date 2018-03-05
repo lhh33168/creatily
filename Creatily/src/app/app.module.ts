@@ -16,7 +16,12 @@ import { RegisterComponent } from './component/register/register.component';
 import { RegloginComponent } from './component/reglogin/reglogin.component';
 import { GetbackComponent } from './component/getback/getback.component';
 import { LoginComponent } from './component/login/login.component';
-
+import { DetailComponent } from './component/detail/detail.component';
+import { CartComponent } from './component/cart/cart.component';
+import { OrderComponent } from './component/order/order.component';
+import { PaymentComponent } from './component/payment/payment.component';
+import { NewAddressComponent } from './component/new-address/new-address.component';
+import { AddressComponent } from './component/address/address.component';
 
 
 
@@ -28,10 +33,15 @@ import { LoginComponent } from './component/login/login.component';
     RegisterComponent,
     RegloginComponent,
     GetbackComponent,
-    LoginComponent
+    LoginComponent,
+    DetailComponent,
+    CartComponent,
+    OrderComponent,
+    PaymentComponent,
+    NewAddressComponent,
+    AddressComponent
   ],
   imports: [
-    BrowserModule,
     FlexLayoutModule,
     WeUiModule.forRoot(),
     BrowserAnimationsModule,

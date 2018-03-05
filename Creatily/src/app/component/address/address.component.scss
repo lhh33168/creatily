@@ -1,0 +1,30 @@
+.address{
+    display:flex;flex-direction:column;height:100%;
+    .address_head{
+         padding:0 0.8125rem;
+        .address_head_l{
+            float:left;
+            i{margin-right:0.3125rem;}
+        }
+        height:2.65625rem;line-height:2.65625rem;text-align:center;
+    } 
+    .address_c{
+        flex:1;overflow-x:hidden;
+        display:flex;justify-content:center;align-items:center;
+        height:27.46875rem;
+        img{
+            height:9.6875rem;
+            width:9.25rem;
+        }
+    }
+    footer{
+        height:5.0rem;display:flex;justify-content:center;align-items:center;
+        .address_b{
+            height:2.6875rem;
+            width:18.3125rem;
+            text-align:center;line-height:2.6875rem;border:0.03125rem solid #FDCA02;
+            color:#FDCA02;
+            border-radius:0.15625rem;
+        }  
+    }
+}

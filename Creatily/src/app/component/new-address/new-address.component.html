@@ -1,0 +1,35 @@
+<div class="newAddress">
+    <header class="newAddress_top">
+        <div>
+            <i class="iconfont icon-shangyiye"></i>返回
+        </div>
+        <span>新建地址</span>
+        <span>保存</span>
+    </header>
+    <main class="newAddress_main">
+        <li>
+            <label>收件人姓名</label><input type="text"placeholder="请输入收货人姓名"ref="review"/>
+        </li>
+        <li>
+            <label>联系电话</label><input type="text"placeholder="请输入手机号码"ref="phone"/>
+        </li>
+        <!-- <Picker
+              visible={this.state.visible}
+              data={district}
+              value={this.state.pickerValue}
+              onChange={v => this.setState({ pickerValue: v })}
+              onOk={() => this.setState({ visible: false })}
+              onDismiss={() => this.setState({ visible: false })}
+            >
+              <List.Item extra={this.getSel()} onClick={() => this.setState({ visible: true })}>
+                省市选择
+              </List.Item>
+        </Picker> -->
+        <li id="last">
+            <label>详细地址</label><input type="textarea"placeholder="请输入详细地址"ref="definite"/>
+        </li>
+    </main>
+    <footer class="newAddress_foot">
+        <input type="radio" id="address"/><label for="address">设为默认地址</label>
+    </footer>
+</div>

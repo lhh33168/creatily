@@ -21,8 +21,12 @@ textarea{
 }
 body{
     font-size:12px;
+    height:100%;
+    width:100%;
 }
-
+html{
+    height:100%;
+}
 @font-face {
 	font-family: 'iconfont';
     src: url('./assets/font/iconfont');

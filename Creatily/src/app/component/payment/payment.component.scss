@@ -1,0 +1,26 @@
+.payment{
+    padding:0 0.8125rem;
+    .payment_head{
+        .payment_head_l{
+            float:left;
+            i{margin-right:0.3125rem;}
+        }
+        height:2.65625rem;line-height:2.65625rem;text-align:center;
+    } 
+    .weixin{
+        display:flex;justify-content:center;align-items:center;
+        height:8.34375rem;margin:0.90625rem 0;background:#82D842;
+        img{
+            height:4.8125rem;
+            width:4.8125rem;
+        }
+    } 
+    .zhifubao{
+        display:flex;justify-content:center;align-items:center;
+        height:8.34375rem;margin:0.90625rem 0;background:#4A90E2;
+        img{
+            height:4.8125rem;
+            width:4.8125rem;
+        }
+    }  
+}

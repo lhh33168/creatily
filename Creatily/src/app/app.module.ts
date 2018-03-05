@@ -13,6 +13,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { BootpageComponent } from './component/bootpage/bootpage.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { CartComponent } from './component/cart/cart.component';
+import { OrderComponent } from './component/order/order.component';
+import { PaymentComponent } from './component/payment/payment.component';
+import { AddressComponent } from './component/address/address.component';
+import { NewAddressComponent } from './component/new-address/new-address.component';
 
 
 @NgModule({
@@ -20,7 +24,12 @@ import { CartComponent } from './component/cart/cart.component';
     AppComponent,
     BootpageComponent,
     FooterComponent,
-    CartComponent
+    CartComponent,
+    OrderComponent,
+    PaymentComponent,
+    AddressComponent,
+    NewAddressComponent,
+
   ],
   imports: [
     FlexLayoutModule,
@@ -30,6 +39,7 @@ import { CartComponent } from './component/cart/cart.component';
     BrowserModule,
     HttpModule,
     FormsModule,
+
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]

@@ -12,13 +12,23 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { BootpageComponent } from './component/bootpage/bootpage.component';
 import { FooterComponent } from './component/footer/footer.component';
+import { RegisterComponent } from './component/register/register.component';
+import { RegloginComponent } from './component/reglogin/reglogin.component';
+import { GetbackComponent } from './component/getback/getback.component';
+import { LoginComponent } from './component/login/login.component';
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     BootpageComponent,
-    FooterComponent
+    FooterComponent,
+    RegisterComponent,
+    RegloginComponent,
+    GetbackComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

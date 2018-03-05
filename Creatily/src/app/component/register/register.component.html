@@ -1,0 +1,26 @@
+<div class="registerPage">
+  <div class="register-title">
+    <getback></getback>
+    <span>注册创质</span>
+  </div>
+  <div class="register-content">
+    <h1>HAVE</h1>
+    <div class="register-content-input">
+      <div class="register-input-phone">
+        <i class="iconfont icon-wode"></i>
+        <input type="text" class="phoneInput" #inputFocus placeholder="请输入手机号码" maxlength="11" [(ngModel)]="inputPhone" (input)="inputPhoneA($event)"
+        />
+        <em class="InputClearA" *ngIf="showA" (click)="showAclear()">&times;</em>
+      </div>
+      <div class="register-input-pwd">
+        <i class="iconfont icon-msnui-auth-code"></i>
+        <span class="getCode" (click)="getCode()">点击获取验证码</span>
+        <input [type]="inputType" class="pwdInput" placeholder="请输入密码" [(ngModel)]="inputPass" (input)="inputPhoneB($event)" />
+      </div>
+      <div class="register-deal">
+        注册代表您同意&nbsp;<a routerLink="/privacy">用户协议</a>
+      </div>
+      <button class="register-submit">下一步</button>
+    </div>
+  </div>
+</div>

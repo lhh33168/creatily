@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RootRouter } from './router/router';
 import { HttpService } from './utils/http.service';
+import { NgZorroAntdModule } from 'ng-zorro-antd';
 
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -22,6 +23,7 @@ import { OrderComponent } from './component/order/order.component';
 import { PaymentComponent } from './component/payment/payment.component';
 import { NewAddressComponent } from './component/new-address/new-address.component';
 import { AddressComponent } from './component/address/address.component';
+import { RegisterpwdComponent } from './component/registerpwd/registerpwd.component';
 
 
 
@@ -39,7 +41,8 @@ import { AddressComponent } from './component/address/address.component';
     OrderComponent,
     PaymentComponent,
     NewAddressComponent,
-    AddressComponent
+    AddressComponent,
+    RegisterpwdComponent
   ],
   imports: [
     FlexLayoutModule,
@@ -49,6 +52,7 @@ import { AddressComponent } from './component/address/address.component';
     BrowserModule,
     HttpModule,
     FormsModule,
+    NgZorroAntdModule.forRoot()
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]

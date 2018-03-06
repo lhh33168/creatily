@@ -22,35 +22,32 @@ export class HttpService{
                 search: params
             })).toPromise().then((res) => {
                 resolve(res.json());
+            }).catch((error) => {
+                resolve(error);
             })
         })
     }
-
-
-    post(api:string,params:Object = {}){
-
-        return new Promise((resolve,reject) => {
-             function str( data:Object = {} )
-            {
+    post(api: string, params: Object = {}) {
+        return new Promise((resolve, reject) => {
+            function str(data: Object = {}) {
                 let ret = ''
-                for ( let it in data ) {
-                    ret += encodeURIComponent( it ) + '=' + encodeURIComponent( data[it] ) + '&'
+                for (let it in data) {
+                    ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
                 }
                 return ret;
-            }            
-
-            this.http.request(this.getUrl(api),new RequestOptions({
-                method:RequestMethod.Post,
-                body:str(params),
+            }
+            this.http.request(this.getUrl(api), new RequestOptions({
+                method: RequestMethod.Post,
+                body: str(params),
                 headers: new Headers({
                     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-                 })
-            })).toPromise().then( res => {
-                console.log("post",res.json());
+                })
+            })).toPromise().then(res => {
+                // console.log("post", res.json());
                 resolve(res.json());
+            }).catch((error)=>{
+                resolve(error);
             })
         })
     }
-
-
 }

@@ -1,12 +1,7 @@
 .address{
     display:flex;flex-direction:column;height:100%;
     .address_head{
-         padding:0 0.8125rem;
-        .address_head_l{
-            float:left;
-            i{margin-right:0.3125rem;}
-        }
-        height:2.65625rem;line-height:2.65625rem;text-align:center;
+         padding:0.78125rem 0.8125rem;text-align:center;
     } 
     .address_c{
         flex:1;overflow-x:hidden;
@@ -18,6 +13,7 @@
         }
     }
     .address_c_null{
+        flex:1;overflow-x:hidden;
         li{
             .address_c_t{
                 display:flex;justify-content:space-between;height:1.875rem;padding:0 0.84375rem;
@@ -36,7 +32,7 @@
             }
         }
     }
-    footer{
+    .address_b_footer{
         height:5.0rem;display:flex;justify-content:center;align-items:center;
         .address_b{
             height:2.6875rem;

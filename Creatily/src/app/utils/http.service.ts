@@ -1,5 +1,7 @@
-import { Http, RequestOptions, RequestMethod } from '@angular/http'
 import { Injectable } from '@angular/core';
+import 'rxjs/add/operator/toPromise';
+import { Http, Headers, RequestOptions, RequestMethod } from '@angular/http';
+
 
 @Injectable()
 export class HttpService {
@@ -21,7 +23,33 @@ export class HttpService {
                 search: params
             })).toPromise().then((res) => {
                 resolve(res.json());
+            }).catch((error) => {
+                resolve(error);
             })
         })
     }
+    post(api: string, params: Object = {}) {
+        return new Promise((resolve, reject) => {
+            function str(data: Object = {}) {
+                let ret = ''
+                for (let it in data) {
+                    ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+                }
+                return ret;
+            }
+            this.http.request(this.getUrl(api), new RequestOptions({
+                method: RequestMethod.Post,
+                body: str(params),
+                headers: new Headers({
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                })
+            })).toPromise().then(res => {
+                // console.log("post", res.json());
+                resolve(res.json());
+            }).catch((error)=>{
+                resolve(error);
+            })
+        })
+    }
+
 }

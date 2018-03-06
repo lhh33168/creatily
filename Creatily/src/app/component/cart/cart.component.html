@@ -2,24 +2,56 @@
     <header class="carthead">
         我的购物车
     </header>
-    <main class="cartmain">
-        <div class="cartmaintop">
+    <div class="cartmaintop">
             <div class="cartmaintop_common"><span>√</span>30天无忧退货</div>
             <div class="cartmaintop_common"><span>√</span>24小时快速发货</div>
             <div class="cartmaintop_common"><span>√</span>全场满88包邮</div>
-        </div>
+    </div>
+    <main class="cartmain">
         <div class="cartmainbottom">
-            <div class="cartmainbottom_empty">
+            <!-- <div class="cartmainbottom_empty">
                 <div class="cartmainbottom_empty_top">
                     <img src="../../../assets/img/cart/cartempty.png"  alt="" />
                     <div>购物车该补货啦</div>
                     <span>去商城逛逛</span>
                 </div>
                 <div class="cartmainbottom_empty_main"><span></span>看看这些精品推荐<span></span></div>
+                <ul class="cartmainbottom_empty_bottom">
+                    <li *ngFor="let obj of carthot">
+                        <img [src]="obj.imgurl" alt="" />
+                        <p>{{obj.proName}}</p>
+                        <span>￥{{obj.price.split(',')[0]}}</span>
+                    </li>
+                </ul>
+            </div> -->
+            <div class="cartmainbottom_full">
+                <ul>
+                    <li *ngFor="let obj of carthot;let idx = index;">
+                        <input type="radio" [checked]="currentTrIndexs.indexOf(idx) > -1" (click)="selectTr(idx)"/>
+                        <img [src]="obj.imgurl" alt="" />
+                        <div class="cartmainbottom_full_center">
+                            <p>仙人掌蜡烛</p>
+                            <span class="cartmainbottom_full_center_c">类型：仙人球大蜡烛</span>
+                            <div class="cartmainbottom_full_qty">
+                                <span>-</span>
+                                <span>0</span>
+                                <span>+</span>
+                            </div>
+                        </div>
+                        <div class="cartmainbottom_full_bottom">
+                            <i class="iconfont icon-icon--"></i>
+                            <span>￥39</span>                           
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </main>
     <footer class="cartfoot">
-        bbb
+        <div (click)="selectAll()">
+            <input type="radio" [checked]="currentTrIndexs.length === dataset.length" />全选
+        </div>
+        <p>总计（不含运费）：<span>￥107</span></p>
+        <span class="cartfoot_right" routerLink="/order">立即下单</span>
     </footer>
 </div>

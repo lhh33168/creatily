@@ -6,6 +6,7 @@ var path = require('path');
 var home = require('./home');
 var user = require('./user');
 var details = require('./details');
+var cart = require('./cart')
 
 
 
@@ -36,6 +37,7 @@ module.exports = {
         home.register(app),
         user.register(app),
         details.register(app);
+        cart.register(app);
         app.listen(_port,function(){
                 console.log("server:连接成功!");
         })

@@ -1,0 +1,24 @@
+<div class="address">
+    <header class="address_head">
+        <getback class="address_head_l">
+            <i class="iconfont icon-shangyiye"></i>返回
+        </getback>
+        <span>管理地址</span>
+    </header>
+   <!--  <div class="address_c">
+        <img src="../../../assets/img/cart/address.png"/>
+    </div> -->
+    <div class="address_c_null">
+        <li *ngFor="let obj of getaddress;let idx = index;">
+            <div class="address_c_t"><span>{{obj.name}}</span><span>{{obj.phone}}</span></div>
+            <div class="address_c_c">{{obj.address}}</div>
+            <div class="address_c_b"><span>默认地址</span><div><i class="iconfont icon-icon-test"></i>编辑<i class="iconfont icon-icon--"></i>删除</div></div>
+            <div class="address_common"></div>
+        </li>
+    </div>
+    <footer>
+        <div class="address_b" routerLink="/newAddress">
+            <i class="iconfont icon-jia"></i>添加新地址
+        </div>
+    </footer>  
+</div>

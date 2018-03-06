@@ -1,0 +1,56 @@
+<div class="order">
+    <header class="order_top">
+        <div>
+            <i class="iconfont icon-shangyiye"></i>返回
+        </div>
+        <span>填写订单</span>
+        <i class="iconfont icon-serve"></i>
+    </header>
+    <main class="order_main">
+        <div class="order_main_address order_main_common" routerLink="/address">
+            <span>收货地址</span>
+            <span>请填写收货地址<i class="iconfont icon-jia"></i></span>
+        </div>
+        <div class="order_main_address_full" routerLink="/address">
+            <div *ngFor="let obj of address;let idx = index;">
+                <p><span>收货人：{{obj.name}}</span><span>{{obj.phone}}</span></p>
+                <p>{{obj.address}}</p>
+            </div>
+            <i class="iconfont icon-jia"></i>
+        </div>
+        <div class="common_line"></div>
+        <div class="order_main_sale order_main_common">
+            <span>选择优惠券</span>
+            <span>0张可用<i class="iconfont icon-jia"></i></span>
+        </div>
+        <div class="order_main_total order_main_common">
+            <span>商品合计</span>
+            <span>￥107</span>
+        </div>
+        <div class="order_main_carriage order_main_common">
+            <span>运费</span>
+            <span><span class="order_main_carriage_r">满88元包邮</span>￥0</span>
+        </div>
+        <div class="common_line"></div>
+        <ul class="order_main_order">
+            <li *ngFor="let obj of order;let idx = index;">
+                <img [src]="obj.imgurl" alt="" />
+                <div class="order_center">
+                    <p>仙人掌蜡烛</p>
+                    <span class="cartmainbottom_full_center_c">类型：仙人球大蜡烛</span>
+                    <div><span>￥39</span><span>&times;1</span></div>
+                </div>
+            </li>
+        </ul>
+        <div class="order_main_agree ">
+            <input type="checkbox" id="agree"/><label for="agree">我已同意《好物平台》协议</label>
+        </div>
+        <div class="common_line"></div>
+    </main>
+    <footer class="order_foot">
+        <div>
+            实际付款：<span>￥107</span>
+        </div>
+        <span class="orderfoot_right" routerLink="/payment">立即付款</span>
+    </footer>
+</div>

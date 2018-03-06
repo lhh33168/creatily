@@ -1,0 +1,62 @@
+.order{
+    display:flex;flex-direction:column;height:100%;
+    .order_top{
+        height:2.65625rem;display:flex;line-height:2.65625rem;justify-content:space-between;font-size:0.875rem;border-bottom:0.03125rem solid #F4F3F2;padding:0 0.84375rem;
+        .icon-shangyiye{margin-right:0.2125rem;}
+    }
+    .order_main{
+        flex:1;overflow-x:hidden;
+        .order_main_address_full{
+            height:4.6875rem;display:flex;justify-content:space-between;padding:0 0.8125rem;align-items:center;
+            div{
+                p:nth-child(1){
+                    width:17.34375rem;display:flex;justify-content:space-between;
+                }
+            }
+        }
+        .order_main_common{
+            height:2.65625rem;line-height:2.65625rem;display:flex;justify-content:space-between;border-bottom:0.03125rem solid #F4F3F2;padding:0 0.84375rem;
+        }
+        .order_main_carriage{
+            .order_main_carriage_r{
+                height:2.0rem;width:6.125rem;background:#D8D8D8;color:#fff;line-height:2.0rem;border-radius:0.3125rem;text-align:center;display:inline-block;  
+            }
+        }
+        .order_main_agree{
+            height:2.65625rem;line-height:2.65625rem;
+            input{
+                vertical-align:middle;margin: 0 0.3125rem;
+            }
+        }
+        .order_main_order{
+            li{
+                display:flex;justify-content:space-between;padding:0 0.875rem;height:6.96875rem;border-bottom:0.03125rem solid #F4F3F2;align-items:center;
+                img{
+                    width:4.75rem;height:4.75rem;
+                }
+                .order_center{
+                    width:12.75rem;
+                    p{font-weight:bold;}
+                    div{
+                        display:flex;justify-content:space-between;height:2.0rem;line-height:2.0rem;
+                        span{
+                            font-weight:bold;
+                        }
+                    }
+                }
+            }  
+        }
+        .common_line{
+            height:0.3125rem;background:#F2F1F0;display:block;
+        }
+    }
+    .order_foot{
+        height:2.75rem;border-top:0.03125rem solid #F2F1F0;display:flex;justify-content:space-around;align-items:center;font-weight:bold;
+        div{
+            span{color:#E95E65;}
+        }
+        .orderfoot_right{
+            background:#FFD914;width:5.0rem;height:2.1875rem;border-radius:0.3125rem;line-height:2.1875rem;text-align:center;font-weight:bold;
+        }
+    }
+}

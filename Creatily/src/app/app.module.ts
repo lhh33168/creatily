@@ -12,8 +12,17 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { BootpageComponent } from './component/bootpage/bootpage.component';
 import { FooterComponent } from './component/footer/footer.component';
+import { RegisterComponent } from './component/register/register.component';
+import { RegloginComponent } from './component/reglogin/reglogin.component';
+import { GetbackComponent } from './component/getback/getback.component';
+import { LoginComponent } from './component/login/login.component';
 import { DetailComponent } from './component/detail/detail.component';
 import { CartComponent } from './component/cart/cart.component';
+import { OrderComponent } from './component/order/order.component';
+import { PaymentComponent } from './component/payment/payment.component';
+import { NewAddressComponent } from './component/new-address/new-address.component';
+import { AddressComponent } from './component/address/address.component';
+
 
 
 @NgModule({
@@ -21,8 +30,16 @@ import { CartComponent } from './component/cart/cart.component';
     AppComponent,
     BootpageComponent,
     FooterComponent,
+    RegisterComponent,
+    RegloginComponent,
+    GetbackComponent,
+    LoginComponent,
     DetailComponent,
-    CartComponent
+    CartComponent,
+    OrderComponent,
+    PaymentComponent,
+    NewAddressComponent,
+    AddressComponent
   ],
   imports: [
     FlexLayoutModule,

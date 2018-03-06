@@ -1,0 +1,26 @@
+<div class="loginPage">
+    <div class="login-title">
+        <getback></getback>
+        <span>登录创质</span>
+    </div>
+    <div class="login-content">
+        <h1>HAVE</h1>
+        <div class="login-content-input">
+            <div class="login-input-phone">
+                <i class="iconfont icon-wode"></i>
+                <input type="text" class="phoneInput" #inputFocus placeholder="请输入手机号码" maxlength="11" [(ngModel)]="inputPhone" (input)="inputPhoneA($event)"/>
+                <em class="InputClearA" *ngIf="showA" (click)="showAclear()">&times;</em>
+            </div>
+            <div class="login-input-pwd">
+                <i class="iconfont icon-mima"></i>
+                <span class="iconfont icon-yj" (click)="showChange()"></span>
+                <input [type]="inputType" class="pwdInput"  placeholder="请输入密码" [(ngModel)]="inputPass" (input)="inputPhoneB($event)"/>
+                <em class="InputClearB" *ngIf="showB" (click)="showBclear()">&times;</em>
+            </div>
+            <button class="login-submit">登录</button>
+        </div>
+        <div class="login-forgetPwd">
+            <a routerLink="/forget">忘记密码?</a>
+        </div>
+    </div>
+</div>

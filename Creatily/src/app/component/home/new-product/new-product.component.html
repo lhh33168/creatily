@@ -1,0 +1,14 @@
+<div class="newProduct">
+    <div>周一周四 -新品首发</div>
+    <div class="swiper-container">
+        <ul class="swiper-wrapper">
+          <li class="swiper-slide"*ngFor="let obj of newproduct">
+            <div>
+                <img src="{{obj['imgurl']}}"(click)="turn(obj.id)" />
+            </div>
+            <div class="proName">{{obj['proName']}}</div>
+             <div class="price"(click)="turn(obj.id)">{{obj['price'].split(',')[0]}}</div>
+          </li>
+        </ul>
+    </div>
+</div>

@@ -13,7 +13,7 @@ export class AddressComponent implements OnInit {
       constructor(private http: HttpService) { }
 
       ngOnInit() {
-          let params;
+          let params = {};
           this.http.get('get_address',params = {userid:123}).then((res) => { 
               this.getaddress = res['data'].results;
               console.log(this.getaddress)

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../utils/http.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-order',
@@ -11,9 +12,10 @@ export class OrderComponent implements OnInit {
       order: Array<any> = [];
       address: Array<any> = [];
 
-      constructor(private http: HttpService) { }
+      constructor(private http: HttpService, private router: Router, private route : ActivatedRoute) { }
 
       ngOnInit() {
+          
           this.http.get('get_hot').then((res) => { 
               this.order = res['data'].results;
               console.log(this.order)

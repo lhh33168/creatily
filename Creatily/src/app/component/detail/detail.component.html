@@ -1,4 +1,8 @@
 <div id="detail">
+    <div class="head" *ngIf="headShow">
+        <i class="goback iconfont icon-fanhui" (click)="goBack()"></i>
+        <i class="share iconfont icon-share"><span>分享赚钱</span></i>
+    </div>
     <div class="detail-container">
         <div class="swiper-container">  
             <div class="swiper-wrapper">  
@@ -72,7 +76,7 @@
     <div class="bottom-toolbar">
         <div class="btn-bar1">
             <i class="iconfont icon-serve"></i>
-            <i class="iconfont icon-gouwuche" routerLink="/cart"><i class="cartTips"></i></i>
+            <i class="iconfont icon-gouwuche" routerLink="/cart"><span class="cartTips" *ngIf="tipCount && tipCount != 0">{{tipCount}}</span></i>
         </div>    
         <div class="btn-bar2"> 
             <input id="addCart" type="button" class="have-btn1" value="加入购物车" (click)="addtoCart()"> 

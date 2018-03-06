@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpService } from '../../utils/http.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-detail',
@@ -18,7 +19,8 @@ export class DetailComponent implements OnInit {
     graphics: Array<string> = [];
     size: Array<string> = [];
     color: Array<string>= [];
-    categroyShow:boolean = false;
+    headShow: boolean = true;
+    categroyShow: boolean = false;
     currentImgIdx: number = 0;
     count: number = 1;
     currentSizeIdx: number;
@@ -26,9 +28,10 @@ export class DetailComponent implements OnInit {
     currentColorIdx: number;
     classlist:object = {};
     tip:Array<string> = [];
+    tipCount: number = 0;
 
 
-    constructor(private route: ActivatedRoute, private router: Router, private http: HttpService) { }
+    constructor(private route: ActivatedRoute, private router: Router, private http: HttpService, private location: Location) { }
 
     ngOnInit(): void{
         this.route.params.subscribe((params) => {
@@ -66,14 +69,30 @@ export class DetailComponent implements OnInit {
 			    observeParents:true,//修改swiper的父元素时，自动初始化swiper  
 			});  
         });
+        
+        this.getTipCount();
+        
     };
 
+    getTipCount(){
+        this.http.get('getcartslist',{userid:this.userid}).then((res) => {
+            // console.log(res['data']['results'][0]['count(*)'])
+            this.tipCount = res['data']['results'][0]['count(*)'];
+        })
+    }
+
+    goBack(){
+        this.location.back();
+    }
+
     selecterCategroy(){
+        this.headShow = false;
     	this.categroyShow = true;
         this.classlist['count'] = this.count;
     };
 
     close(){
+        this.headShow = true;
     	this.categroyShow = false;
         this.count = 1;
         this.currentSizeIdx = null;
@@ -129,6 +148,7 @@ export class DetailComponent implements OnInit {
     };
 
     addtoCart(){
+        this.headShow = false;
         this.categroyShow = true;
         if((this.size.length>0) && this.classlist && (!this.classlist['size'] || this.classlist['size'] == null)){
             console.log('请选择类型')
@@ -143,8 +163,10 @@ export class DetailComponent implements OnInit {
             this.classlist['imgurl'] = this.groundImg[this.currentImgIdx];
             this.classlist['price'] = this.currentSizePrice;
             console.log(this.classlist)
-            this.http.get('add_cart',this.classlist).then((res)=>{
+            this.http.post('add_cart',this.classlist).then((res)=>{
                 console.log('已加入购物车')
+            }).then(() => {
+                this.getTipCount();
             })
             this.count = 1;
             this.currentSizeIdx = null;
@@ -156,5 +178,13 @@ export class DetailComponent implements OnInit {
         }
         console.log(this.classlist)
     };
+
+    gotoOrder(){
+        this.http.post('add_order',this.classlist).then((res)=>{
+                // console.log('已加入购物车')
+            });
+    };
+
+    
 
 }

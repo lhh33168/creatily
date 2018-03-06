@@ -11,8 +11,23 @@ module.exports = {
             })
         });
 
-        _app.get('/add_cart',function(_req,_res){
-           var arr =[_req.query.userid,_req.query.count,_req.query.color,_req.query.size,_req.query.goodsid,_req.query.username,_req.query.price,_req.query.proname,_req.query.imgurl]
+        _app.get('/getcartslist',function(_req,_res){
+            var userid =_req.query.userid;
+            var sql =`
+                select
+                    count(*)
+                from
+                    cart
+                where 
+                    userid = ${userid}
+                `;
+            db.select(sql,function(res){
+                _res.send(res)
+            })
+        });
+
+        _app.post('/add_cart',function(_req,_res){
+           var arr =[_req.body.userid,_req.body.count,_req.body.color,_req.body.size,_req.body.goodsid,_req.body.username,_req.body.price,_req.body.proname,_req.body.imgurl]
            console.log(arr)
            // var sql =`INSERT INTO cart(uerid,proid) VALUES(${uid},${_req.body.proid})`
 
@@ -20,6 +35,18 @@ module.exports = {
                 _res.send(res);
            })
         });
+
+        // _app.post('/add_cart_order',function(_req,_res){
+        //    var arr =[_req.body.userid,_req.body.count,_req.body.color,_req.body.size,_req.body.goodsid,_req.body.username,_req.body.price,_req.body.proname,_req.body.imgurl]
+        //    console.log(arr)
+           
+        //    db.insert(`INSERT INTO order(userid,count,color,size,goodsid,username,price,proname,imgurl) VALUES(?,?,?,?,?,?,?,?,?)`,arr,function(res){
+        //         _res.send(res);
+        //    })
+        // });
+
+
+
 
         _app.post('/add_collect',function(_req,_res){
             var userid = _req.body.userid;
@@ -42,23 +69,6 @@ module.exports = {
                 _res.send(res);
             })
         });
-        _app.get('/getcartslist',function(_req,_res){
-            let uid =_req.query.uid;
-            let sql =`
-                select
-                    c.*,
-                    u.phone,
-                    g.*
-                from
-                    cart c
-                    inner join user u on c.userid = u.user_id
-                    inner join goodslist g on c.goodsid =g.id
-                where 
-                    c.userid = ${uid}
-                `;
-            db.select(sql,function(res){
-                _res.send(res)
-            })
-        })
+        
     }
 }

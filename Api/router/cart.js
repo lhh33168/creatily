@@ -16,9 +16,9 @@ module.exports = {
                 _res.send(res);
             })
         });
-        _app.get('/get_collect',function(_req,_res){
+        _app.get('/get_address',function(_req,_res){
             var userid = _req.query.userid;
-            db.select2(`SELECT * FROM user where user_id = ${userid}`,function(res){
+            db.select2(`SELECT * FROM address where user_id = ${userid}`,function(res){
                 _res.send(res);
             })
         });

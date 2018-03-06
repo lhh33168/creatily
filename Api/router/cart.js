@@ -42,9 +42,48 @@ module.exports = {
            console.log(arr)
            // var sql =`INSERT INTO cart(uerid,proid) VALUES(${uid},${_req.body.proid})`
 
-           db.insert(`INSERT INTO order(indexid,userid,count,color,size,goodsid,username,price,proname,imgurl) VALUES(?,?,?,?,?,?,?,?,?)`,arr,function(res){
+           db.insert(`INSERT INTO orders (indexid,userid,count,color,size,goodsid,username,price,proname,imgurl) VALUES(?,?,?,?,?,?,?,?,?,?)`,arr,function(res){
                 _res.send(res);
            })
+           // var arr = [_req.body.indexid]
+           // db.insert(`INSERT INTO orders (indexid) VALUES(?)`,arr,function(res){
+           //      _res.send(res);
+           // })
+        });
+        // app.get('/get_order',function(req,res){
+        //     db.select2(`select * from user where userid=${req.query.userid}`,function(result){
+        //         // console.log(result.data.results);
+        //         if(result.data.results[0].indexid !='0,'){
+        //         console.log();
+
+
+        //             // var usercollects = result.data.results[0].collects.substring(0,result.data.results[0].collects.length-1)
+        //             var indexids = result.data.results[0].indexid.slice(0,-1);
+
+                    
+        //             console.log(`select * from cart where id in (${indexids})`)
+        //             db.select2(`select * from cart where id in (${indexids})`,function(result2){
+        //                 console.log(result2);
+        //                 res.send(result2);
+        //             })
+        //         }else{
+        //             db.select2(`select * from cart where id = ''`,function(result2){
+        //                 console.log("else");
+        //                 res.send(result2);
+        //             })
+        //         }
+        //     })
+        // }),
+        _app.get('/get_orders',function(req,res){
+            db.select2(`select * from orders where status = 0`,function(result){
+                console.log(result.data.results);
+                res.send(result);  
+            })
+        });
+        _app.post('/delete_order',function(_req,_res){
+            db.delete(`DELETE FROM orders where status = 0`,function(res){
+                _res.send(res);
+            })
         });
         _app.post('/delete_cart',function(_req,_res){
             var indexid = _req.body.indexid;

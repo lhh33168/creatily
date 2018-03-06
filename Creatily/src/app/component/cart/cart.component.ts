@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../utils/http.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
       selector: 'app-cart',
@@ -15,7 +16,7 @@ export class CartComponent implements OnInit {
       dataCountSet: Array<any> = [];
       dataCountSetPrice : number = 0;
 
-      constructor(private http: HttpService) { }
+      constructor(private http: HttpService, private route: ActivatedRoute, private router: Router) { }
 
       ngOnInit() {
           this.http.get('get_hot').then((res) => { 
@@ -29,8 +30,6 @@ export class CartComponent implements OnInit {
           this.http.get('get_cart',params = {uid:1}).then((res) => { 
               this.cartItem = res['data'].results;
               this.dataset = res['data'].results;
-          }).then(()=>{
-              this.getPrice();
           })
       }
       getPrice(){
@@ -79,28 +78,43 @@ export class CartComponent implements OnInit {
               this.getCartItem();
          })
      }
-     stockCountAdd(indexid,qty){
+     stockCountAdd(indexid,qty,price){
          let params;
          this.http.post('add_cartcount',params = {indexid:indexid,qty:qty}).then((res) => { 
               console.log(res)
+              if(this.dataCountSetPrice != 0){
+                this.dataCountSetPrice += price*1
+              }
           }).then(()=>{
               this.getCartItem();
          })
      }
-     stockCountSub(indexid,qty){
+     stockCountSub(indexid,qty,price){
          let params;
          this.http.post('sub_cartcount',params = {indexid:indexid,qty:qty}).then((res) => { 
               console.log(res)
+              if(this.dataCountSetPrice>price*1){
+                  this.dataCountSetPrice -= price*1    
+              }
           }).then(()=>{
               this.getCartItem();
          })
      }
      addOrder(){
+         this.router.navigate(['/order'])
          for(let i =0;i<this.dataCountSet.length;i++){
-             let params;
-             this.http.post('add_order',params = {indexid:this.dataCountSet[i].indexid,count:this.dataCountSet[i].count,userid:this.dataCountSet[i].userid,username:this.dataCountSet[i].username,goodsid:this.dataCountSet[i].goodsid,proname:this.dataCountSet[i].proname,imgurl:this.dataCountSet[i].imgurl,size:this.dataCountSet[i].size,color:this.dataCountSet[i].color,price:this.dataCountSet[i].price}).then((res) => { 
+             let params ;
+             let size = this.dataCountSet[i].size ? this.dataCountSet[i].size : '';
+             let color = this.dataCountSet[i].color ? this.dataCountSet[i].color : ''
+             this.http.post('add_order',params = {indexid:this.dataCountSet[i].indexid,count:this.dataCountSet[i].count,userid:this.dataCountSet[i].userid,username:this.dataCountSet[i].username,goodsid:this.dataCountSet[i].goodsid,proname:this.dataCountSet[i].proname,imgurl:this.dataCountSet[i].imgurl,size:size,color:color,price:this.dataCountSet[i].price}).then((res) => { 
                   console.log(res)
               })
+             // params.push(this.dataCountSet[i].indexid)
          }
+         // let paramsorder;
+         // console.log(params.join(','))
+         // this.http.post('add_order',paramsorder = {indexid:params.join(',')}).then((res) => { 
+         //          console.log(res)
+         //   })
      }
 }

@@ -1,32 +1,82 @@
-<div class="swiper-container">  
-    <div class="swiper-wrapper">  
-        <img class="swiper-slide" *ngFor= "let item of groundImg" src={{item}}/>  
-    </div>  
-    <div class="swiper-pagination"></div>
-</div>
-<div class="product-top">
-    <div class="phoroduct-name">{{dataset['proName']}}</div>
-    <div class="product-price">{{price | currency: 'CNY':'2.0-0'}}</div>
-    <div class="wuliu" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="10px">
-        <div class="col-4">
-            <i class="iconfont icon-gouhao"> 30天无忧退货 </i>
-        </div> 
-        <div class="col-4">
-            <i class="iconfont icon-gouhao"> 24小时内发货 </i>
-        </div> 
-        <div class="col-4">
-            <i class="iconfont icon-gouhao"> 满88全场包邮 </i>
+<div id="detail">
+    <div class="detail-container">
+        <div class="swiper-container">  
+            <div class="swiper-wrapper">  
+                <img class="swiper-slide" *ngFor= "let item of groundImg" src={{item}}/>  
+            </div>  
+            <div class="swiper-pagination"></div>
+        </div>
+        <div class="product-top">
+            <div class="phoroduct-name">{{dataset['proName']}}</div>
+            <div class="product-price">{{price | currency: 'CNY':'2.0-0'}}</div>
+            <div class="wuliu" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="10px">
+                <div class="col-4">
+                    <i class="iconfont icon-gouhao"> 30天无忧退货 </i>
+                </div> 
+                <div class="col-4">
+                    <i class="iconfont icon-gouhao"> 24小时内发货 </i>
+                </div> 
+                <div class="col-4">
+                    <i class="iconfont icon-gouhao"> 满88全场包邮 </i>
+                </div>
+            </div>
+            <div class="selecter clearfix" (click)="selecterCategroy()"> 
+                <p>规格数量<span><i class="iconfont icon-jia"></i></span></p> 
+            </div>
+            <div class="categroy" *ngIf="categroyShow">
+                <div class="backdrop"></div>
+                <div class="selecterBox">
+                    <div class="selecterBox-top">
+                        <p>请选择数量与规格<span (click)="close()">&times;</span></p>
+                    </div>
+                    <div class="selecterItem">
+                        <div class="item-content clearfix"> 
+                            <div class="img-box"> 
+                                <img src={{groundImg[currentImgIdx]}}/>
+                            </div> 
+                            <div class="content-box"> 
+                                <div class="price-text">{{currentSizePrice | currency: 'CNY':'2.0-0'}}</div> 
+                                <div class="tip" *ngIf="tip.length == 0"> 请选择数量与规格 </div> 
+                                <div class="tip" *ngIf="tip.length>0"> 已选择：{{tip[0]}} {{tip[1]}} </div> 
+                            </div>
+                            <div class="select-box"> 
+                                <span class="select-btn stockCountSub" (click)="stockCountSub()">-</span> 
+                                <input class="select-btn select-num" type="text" value="{{count}}" readonly="readonly"> 
+                                <span class="select-btn stockCountAdd" (click)="stockCountAdd()">+</span> 
+                            </div>
+                        </div>
+                        <div class="list-box">
+                            <div class="item-title" *ngIf="size && size.length>0">类型</div>
+                            <ul *ngIf="size && size.length>0">
+                                <li *ngFor="let item of size; let idx = index" (click)="addSize(idx, $event)" [class.actived]="currentSizeIdx == idx">{{item}}</li>
+                            </ul>
+                        </div>
+                        <div class="list-box">
+                            <div class="item-title" *ngIf="color && color.length>0">颜色</div>
+                            <ul *ngIf="color && color.length>0">
+                                <li *ngFor="let item of color; let idx = index" (click)="addColor(idx, $event)" [class.actived]="currentColorIdx == idx">{{item}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="recommend"> 
+                <p>推荐理由</p> 
+                <p>{{dataset['recommend']}}</p> 
+            </div>
+            <div class="graphics" *ngFor="let item of graphics"> 
+                <img src={{item}}> 
+            </div>
         </div>
     </div>
-    <div class="selecter clearfix"> 
-        <p>规格数量<span class="fr"> > </span></p> 
-    </div>
-    <div class="recommend"> 
-        <p>推荐理由</p> 
-        <p>{{dataset['recommend']}}</p> 
-    </div>
-    <div class="graphics" *ngFor="let item of graphics"> 
-        <img src={{item}}> 
+    <div class="bottom-toolbar">
+        <div class="btn-bar1">
+            <i class="iconfont icon-serve"></i>
+            <i class="iconfont icon-gouwuche" routerLink="/cart"><i class="cartTips"></i></i>
+        </div>    
+        <div class="btn-bar2"> 
+            <input id="addCart" type="button" class="have-btn1" value="加入购物车" (click)="addtoCart()"> 
+            <input id="buyNow" type="button" class="have-btn2" value="立即购买" (click)="gotoOrder()"> 
+        </div>
     </div>
 </div>
-<section class="bottom-toolbar" ng-if="product.status != 3"> <!-- ngIf: product.stockCount > 0 --><div class="btn-bar ng-scope" ng-if="product.stockCount > 0"> <input id="addCart" type="button" class="have-btn2" value="加入购物车" ng-click="bottomToolbar.addCart()"> <input id="buyNow" type="button" class="have-btn1" value="立即购买" ng-click="bottomToolbar.buyNow()"> </div><!-- end ngIf: product.stockCount > 0 --> <!-- ngIf: product.stockCount == 0 && product.activityType != 1 --> <!-- ngIf: product.stockCount == 0 && product.activityType == 1 --> </section>

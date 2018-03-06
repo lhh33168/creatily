@@ -10,6 +10,17 @@ module.exports = {
                 _res.send(res);
             })
         });
+
+        _app.get('/add_cart',function(_req,_res){
+           var arr =[_req.query.userid,_req.query.count,_req.query.color,_req.query.size,_req.query.goodsid,_req.query.username,_req.query.price,_req.query.proname,_req.query.imgurl]
+           console.log(arr)
+           // var sql =`INSERT INTO cart(uerid,proid) VALUES(${uid},${_req.body.proid})`
+
+           db.insert(`INSERT INTO cart(userid,count,color,size,goodsid,username,price,proname,imgurl) VALUES(?,?,?,?,?,?,?,?,?)`,arr,function(res){
+                _res.send(res);
+           })
+        });
+
         _app.post('/add_collect',function(_req,_res){
             var userid = _req.body.userid;
             var goodsid = _req.body.goodsid;

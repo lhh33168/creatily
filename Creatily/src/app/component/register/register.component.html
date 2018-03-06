@@ -12,10 +12,10 @@
         />
         <em class="InputClearA" *ngIf="showA" (click)="showAclear()">&times;</em>
       </div>
-      <div class="register-input-pwd">
+      <div class="register-input-code">
         <i class="iconfont icon-msnui-auth-code"></i>
-        <span class="getCode" (click)="getCode()">点击获取验证码</span>
-        <input [type]="inputType" class="pwdInput" placeholder="请输入密码" [(ngModel)]="inputPass" (input)="inputPhoneB($event)" />
+        <button class="getCode" (click)="getCode()">点击获取验证码</button>
+        <input [type]="inputType" class="codeInput" placeholder="请输入验证码" [(ngModel)]="inputCode" (input)="inputPhoneB($event)" />
       </div>
       <div class="register-deal">
         注册代表您同意&nbsp;<a routerLink="/privacy">用户协议</a>

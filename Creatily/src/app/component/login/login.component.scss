@@ -7,17 +7,22 @@
         font-size:1rem;letter-spacing: 0.125rem;
     }
 }
-.login-content{
+
+%loginBrand{
     margin-top: 0.625rem;
     h1{
         display: flex;justify-content: center;letter-spacing:0.3125rem;font-size:2rem;font-weight: 500;
     }
 }
+
+.login-content{
+    @extend %loginBrand;
+}
 .login-content-input{
     padding:0 1.875rem;
 }
 .login-input-phone,.login-input-pwd{
-    margin-top:1.25rem;border-bottom: 0.0625rem solid #eaeaea;padding-bottom:0.3125rem;position: relative;
+    margin-top:1.25rem;border-bottom: 0.125rem solid #eaeaea;padding-bottom:0.3125rem;position: relative;
     i{
         position: absolute;left:0.125rem;bottom:0.075rem;font-size:1.3rem;
     }
@@ -26,6 +31,9 @@
     }
     span{
         position: absolute;right:0.125rem;bottom:0.075rem;font-size:1.1rem;color:#dddddd;
+    }
+    .pwdInput{
+        width:70%;
     }
 }
 .login-submit{

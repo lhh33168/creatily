@@ -24,7 +24,7 @@ import { PaymentComponent } from './component/payment/payment.component';
 import { NewAddressComponent } from './component/new-address/new-address.component';
 import { AddressComponent } from './component/address/address.component';
 import { RegisterpwdComponent } from './component/registerpwd/registerpwd.component';
-
+import { UserComponent } from './component/user/user.component';
 
 
 @NgModule({
@@ -42,7 +42,8 @@ import { RegisterpwdComponent } from './component/registerpwd/registerpwd.compon
     PaymentComponent,
     NewAddressComponent,
     AddressComponent,
-    RegisterpwdComponent
+    RegisterpwdComponent,
+    UserComponent
   ],
   imports: [
     FlexLayoutModule,

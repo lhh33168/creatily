@@ -11,6 +11,7 @@ import { PaymentComponent } from '../component/payment/payment.component';
 import { AddressComponent } from '../component/address/address.component';
 import { NewAddressComponent } from '../component/new-address/new-address.component';
 import { RegisterComponent} from '../component/register/register.component';
+import { CommentComponent} from '../component/comment/comment.component';
 
 const appRoutes:Routes = [
     { path:"", redirectTo:"/bootpage",pathMatch:'full'},
@@ -24,7 +25,8 @@ const appRoutes:Routes = [
     { path: "order", component: OrderComponent},
     { path: "payment", component: PaymentComponent},
     { path: "address", component: AddressComponent},
-    { path: "newAddress", component: NewAddressComponent}
+    { path: "newAddress", component: NewAddressComponent},
+    { path: "comment/:id", component: CommentComponent},
 ]
 
 export const RootRouter = RouterModule.forRoot(

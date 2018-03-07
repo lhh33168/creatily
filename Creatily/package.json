@@ -28,7 +28,6 @@
     "ngx-weui": "^1.2.2",
     "npm": "^5.7.1",
     "rxjs": "^5.5.6",
-    "swiper": "^4.1.6",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {

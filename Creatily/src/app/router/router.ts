@@ -9,14 +9,18 @@ import { CartComponent } from '../component/cart/cart.component';
 import { OrderComponent } from '../component/order/order.component';
 import { PaymentComponent } from '../component/payment/payment.component';
 import { AddressComponent } from '../component/address/address.component';
-import { NewAddressComponent } from '../component/new-address/new-address.component'
-import { HomeComponent } from '../component/home/home.component'
+import { HomeComponent } from '../component/home/home.component';
+import { NewAddressComponent } from '../component/new-address/new-address.component';
+import { RegisterComponent} from '../component/register/register.component';
+
+
 const appRoutes:Routes = [
     { path:"", redirectTo:"/bootpage",pathMatch:'full'},
     { path: "bootpage", component: BootpageComponent },
     { path: "home", component: HomeComponent},
     { path: "reglogin", component: RegloginComponent },
     { path: "login", component: LoginComponent },
+    { path: "register", component: RegisterComponent },
     { path: "footer", component: FooterComponent},
     { path: "detail/:id", component: DetailComponent},
     { path: "cart", component: CartComponent},

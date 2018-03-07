@@ -21,7 +21,6 @@ module.exports = {
 
     start:function(_port){
         app.all('*', function (req, res, next) {
-
             res.header("Access-Control-Allow-Origin", "*");
             res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
             res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
@@ -39,7 +38,7 @@ module.exports = {
         details.register(app);
         cart.register(app);
         app.listen(_port,function(){
-                console.log("server:连接成功!");
+            console.log("server:连接成功!");
         })
        
     }

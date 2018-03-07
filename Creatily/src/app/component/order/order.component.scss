@@ -1,11 +1,18 @@
 .order{
     display:flex;flex-direction:column;height:100%;
     .order_top{
-        height:2.65625rem;display:flex;line-height:2.65625rem;justify-content:space-between;font-size:0.875rem;border-bottom:0.03125rem solid #F4F3F2;padding:0 0.84375rem;
-        .icon-shangyiye{margin-right:0.2125rem;}
+        display:flex;justify-content:space-between;font-size:0.875rem;border-bottom:0.03125rem solid #F4F3F2;padding:0.75rem 0.84375rem;
     }
     .order_main{
         flex:1;overflow-x:hidden;
+        .order_main_address_full{
+            height:4.6875rem;display:flex;justify-content:space-between;padding:0 0.8125rem;align-items:center;
+            div{
+                p:nth-child(1){
+                    width:17.34375rem;display:flex;justify-content:space-between;
+                }
+            }
+        }
         .order_main_common{
             height:2.65625rem;line-height:2.65625rem;display:flex;justify-content:space-between;border-bottom:0.03125rem solid #F4F3F2;padding:0 0.84375rem;
         }

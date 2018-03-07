@@ -1,6 +1,6 @@
 .cart{display:flex;flex-direction:column;height:100%;
     .carthead{
-        height:2.65625rem;display:flex;line-height:2.65625rem;justify-content:center;font-size:0.875rem;
+        display:flex;justify-content:center;font-size:0.875rem;padding:0.75rem; 
     }
     .cartmaintop{
         display:flex;justify-content:space-around;height:2.8125rem;border:0.087813rem solid #F0EFEE;line-height:2.8125rem;color:#9B9B9B;
@@ -68,12 +68,22 @@
                             .cartmainbottom_full_center_c{
                                 color:#ABABAB;height:2.0625rem;line-height:2.0625rem;
                             }
-                            .cartmainbottom_full_qty{height:1.5875rem;line-height:1.5875rem;display:flex;justify-content:center;width:4.7625rem;
-                                span{text-align:center;border:0.013333rem solid #A8A8A8;width:1.5875rem;}
-                                span:nth-child(2){
-                                    border-left:none;border-right:none;
+                            // .cartmainbottom_full_qty{height:1.5875rem;line-height:1.5875rem;display:flex;justify-content:center;width:4.7625rem;
+                            //     span{text-align:center;border:0.013333rem solid #A8A8A8;width:1.5875rem;}
+                            //     span:nth-child(2){
+                            //         border-left:none;border-right:none;
+                            //     }
+                            // }   
+                            .select-box{
+                                .select-btn{
+                                    width: 1.5875rem;height: 1.5875rem;padding: 0;vertical-align: middle;line-height: 1.5875rem;border: 0.03125rem solid #9C9C9C;color:#666;float:left;text-align: center;
                                 }
-                            }    
+                                .stockCountSub{border-radius: .13888889rem 0 0 .13888889rem;}
+                                .select-num{
+                                    border:0 none;border-top: 0.03125rem solid #9C9C9C;border-bottom: 0.03125rem solid #9C9C9C;
+                                }
+                                .stockCountAdd{border-radius: 0 .13888889rem .13888889rem 0;}
+                            } 
                         }
                     }
                 }
@@ -88,7 +98,7 @@
         }
         p{
             span{
-                color:#E43841;font-weight:bold;
+                color:#E43841;font-weight:bold;width:2.5625rem;display:inline-block;
             }
         }
         .cartfoot_right{

@@ -1,0 +1,14 @@
+<div class="showProduct">
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"*ngFor="let obj of showproduct"> 
+          <img src="{{obj['userimgurl']}}" alt=""class="userImg" />
+          <span>{{obj['name']}}</span>
+          <img src="{{obj['imgurl']}}"(click)="turn(obj.id)"class="showImg"/>
+        <div class="">{{obj['fabiao']}}</div>
+      </div>
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+  </div>
+</div>

@@ -48,7 +48,7 @@ import { UserComponent } from './component/user/user.component';
     NewAddressComponent,
     AddressComponent,
 
-    CommunityComponent
+    CommunityComponent,
 
     CommentComponent,
     RegisterpwdComponent,

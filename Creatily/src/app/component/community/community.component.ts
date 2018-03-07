@@ -19,16 +19,18 @@ export class CommunityComponent implements OnInit {
   constructor(private http: HttpService) { }
 
   ngOnInit():void {
-  	 var galleryTop = new Swiper('.gallery-top', {
-      spaceBetween: 10,
-      loop:true,
+  	  var galleryTop = new Swiper('.gallery-top', {
+  	  	loopedSlides: 5,
+      	spaceBetween: 0,
+	      initialSlide: 0,
+	      centeredSlides: true,
+	      slidesPerView: 'auto',
+	      allowSwipeToPrev : false,
+	      touchRatio: 0.2,
+	      slideToClickedSlide: true
     });
     var galleryThumbs = new Swiper('.gallery-thumbs', {
-      spaceBetween: 10,
-      slidesPerView: 4,
-      touchRatio: 0.2,
-      loop: true,
-      slideToClickedSlide: true,
+     spaceBetween: 1
     });
     galleryTop.controller.control = galleryThumbs;
     galleryThumbs.controller.control = galleryTop;

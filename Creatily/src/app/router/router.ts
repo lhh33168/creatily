@@ -11,7 +11,9 @@ import { PaymentComponent } from '../component/payment/payment.component';
 import { AddressComponent } from '../component/address/address.component';
 import { NewAddressComponent } from '../component/new-address/new-address.component';
 
-import { s } from '../component/community/community.component';
+import { CommunityComponent} from '../component/community/community.component';
+
+
 
 import { RegisterComponent} from '../component/register/register.component';
 import { CommentComponent} from '../component/comment/comment.component';
@@ -34,7 +36,8 @@ const appRoutes:Routes = [
     { path: "address", component: AddressComponent},
     { path: "newAddress", component: NewAddressComponent},
 
-    { path: "community", component: CommunityComponent}
+
+    { path: "community", component: CommunityComponent},
 
     { path: "comment/:id", component: CommentComponent},
     { path: "user", component: UserComponent }

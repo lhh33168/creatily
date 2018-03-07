@@ -1,15 +1,20 @@
 <div class="order">
     <header class="order_top">
-        <div>
-            <i class="iconfont icon-shangyiye"></i>返回
-        </div>
+        <getback (click)="deleteOrder()"></getback>
         <span>填写订单</span>
         <i class="iconfont icon-serve"></i>
     </header>
     <main class="order_main">
-        <div class="order_main_address order_main_common" routerLink="/address">
+        <div class="order_main_address order_main_common" routerLink="/address" *ngIf="address.length==0">
             <span>收货地址</span>
             <span>请填写收货地址<i class="iconfont icon-jia"></i></span>
+        </div>
+        <div class="order_main_address_full" routerLink="/address" *ngIf="address.length>0">
+            <div *ngFor="let obj of address;let idx = index;">
+                <p><span>收货人：{{obj.name}}</span><span>{{obj.phone}}</span></p>
+                <p>{{obj.address}}</p>
+            </div>
+            <i class="iconfont icon-jia"></i>
         </div>
         <div class="common_line"></div>
         <div class="order_main_sale order_main_common">
@@ -18,7 +23,7 @@
         </div>
         <div class="order_main_total order_main_common">
             <span>商品合计</span>
-            <span>￥107</span>
+            <span>￥{{dataCountSetPrice}}</span>
         </div>
         <div class="order_main_carriage order_main_common">
             <span>运费</span>
@@ -29,9 +34,10 @@
             <li *ngFor="let obj of order;let idx = index;">
                 <img [src]="obj.imgurl" alt="" />
                 <div class="order_center">
-                    <p>仙人掌蜡烛</p>
-                    <span class="cartmainbottom_full_center_c">类型：仙人球大蜡烛</span>
-                    <div><span>￥39</span><span>&times;1</span></div>
+                    <p>{{obj.name}}</p>
+                    <span class="cartmainbottom_full_center_c" *ngIf="obj['size'] && obj['size'].length>0">类型：{{obj.size}}</span>
+                    <span class="cartmainbottom_full_center_c" *ngIf="!obj['size'] && obj['color'].length>0 && obj['color']">颜色：{{obj.color}}</span>
+                    <div><span>￥{{obj.price}}</span><span>&times;{{obj.count}}</span></div>
                 </div>
             </li>
         </ul>
@@ -40,10 +46,10 @@
         </div>
         <div class="common_line"></div>
     </main>
-    <footer class="order_foot">
+    <div class="order_foot">
         <div>
-            实际付款：<span>￥107</span>
+            实际付款：<span>￥{{dataCountSetPrice}}</span>
         </div>
-        <span class="orderfoot_right" routerLink="/payment">立即付款</span>
-    </footer>
+        <span class="orderfoot_right" routerLink="/payment" (click)="goToPay()">立即付款</span>
+    </div>
 </div>

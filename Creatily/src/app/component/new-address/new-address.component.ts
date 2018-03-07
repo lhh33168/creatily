@@ -11,5 +11,5 @@ export class NewAddressComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  
 }

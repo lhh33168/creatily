@@ -6,7 +6,11 @@ var home = require('./home');
 var user = require('./user');
 var details = require('./details');
 var cart = require('./cart');
+
 var community = require('./community')
+
+var comment = require('./comment.js');
+
 
 
 
@@ -21,7 +25,6 @@ module.exports = {
 
     start:function(_port){
         app.all('*', function (req, res, next) {
-
             res.header("Access-Control-Allow-Origin", "*");
             res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
             res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
@@ -38,9 +41,13 @@ module.exports = {
         user.register(app),
         details.register(app);
         cart.register(app);
+
         community.register(app);
+
+        comment.register(app);
+
         app.listen(_port,function(){
-                console.log("server:连接成功!");
+            console.log("server:连接成功!");
         })
        
     }

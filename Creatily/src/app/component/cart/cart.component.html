@@ -1,5 +1,6 @@
 <div class="cart">
     <header class="carthead">
+        <getback></getback>
         我的购物车
     </header>
     <div class="cartmaintop">
@@ -9,7 +10,7 @@
     </div>
     <main class="cartmain">
         <div class="cartmainbottom">
-            <!-- <div class="cartmainbottom_empty">
+            <div class="cartmainbottom_empty" *ngIf="cartItem.length == 0">
                 <div class="cartmainbottom_empty_top">
                     <img src="../../../assets/img/cart/cartempty.png"  alt="" />
                     <div>购物车该补货啦</div>
@@ -23,35 +24,43 @@
                         <span>￥{{obj.price.split(',')[0]}}</span>
                     </li>
                 </ul>
-            </div> -->
-            <div class="cartmainbottom_full">
+            </div>
+            <div class="cartmainbottom_full" *ngIf="cartItem.length>0">
                 <ul>
-                    <li *ngFor="let obj of carthot;let idx = index;">
-                        <input type="radio" [checked]="currentTrIndexs.indexOf(idx) > -1" (click)="selectTr(idx)"/>
-                        <img [src]="obj.imgurl" alt="" />
+                    <li *ngFor="let obj of cartItem;let idx = index;">
+                        <input type="radio" [checked]="currentTrIndexs.indexOf(idx) > -1" (click)="selectTr(idx,obj)"/>
+                        <img [src]="obj.imgurl"/>
                         <div class="cartmainbottom_full_center">
-                            <p>仙人掌蜡烛</p>
-                            <span class="cartmainbottom_full_center_c">类型：仙人球大蜡烛</span>
-                            <div class="cartmainbottom_full_qty">
+                            <p>{{obj.proname}}</p>
+                            <span class="cartmainbottom_full_center_c" *ngIf="obj['size'] && obj['size'].length>0">类型：{{obj.size}}</span>
+                            <span class="cartmainbottom_full_center_c" *ngIf="!obj['size'] && obj['color'].length>0 && obj['color']">颜色：{{obj.color}}</span>
+                            <!-- <div class="cartmainbottom_full_qty">
                                 <span>-</span>
-                                <span>0</span>
+                                <input type="text" >
                                 <span>+</span>
+                            </div> -->
+                            <div class="select-box"> 
+                                <span class="select-btn stockCountSub" (click)="stockCountSub(obj.indexid,obj.count,obj.price)">-</span> 
+                                <input class="select-btn select-num" type="text" [(ngModel)]="obj.count"  readonly="readonly"> 
+                                <span class="select-btn stockCountAdd" (click)="stockCountAdd(obj.indexid,obj.count,obj.price)">+</span> 
                             </div>
+
                         </div>
                         <div class="cartmainbottom_full_bottom">
-                            <i class="iconfont icon-icon--"></i>
-                            <span>￥39</span>                           
+                            <i class="iconfont icon-icon--" (click)="deleteCart(obj.indexid)"></i>
+                            <span>￥{{obj.price}}</span>                           
                         </div>
                     </li>
                 </ul>
             </div>
         </div>
     </main>
-    <footer class="cartfoot">
+    <div class="cartfoot" *ngIf="cartItem.length>0">
         <div (click)="selectAll()">
             <input type="radio" [checked]="currentTrIndexs.length === dataset.length" />全选
         </div>
-        <p>总计（不含运费）：<span>￥107</span></p>
-        <span class="cartfoot_right" routerLink="/order">立即下单</span>
-    </footer>
+        <p>总计（不含运费）：<span>￥{{dataCountSetPrice}}</span></p>
+        <span class="cartfoot_right" (click)="addOrder()">立即下单</span>
+    </div>
+    <footer *ngIf="cartItem.length==0"></footer>
 </div>

@@ -24,6 +24,7 @@
     "@angular/router": "^5.2.0",
     "core-js": "^2.4.1",
     "element-angular": "^0.6.3",
+    "ng-zorro-antd": "^0.6.15",
     "ngx-weui": "^1.2.2",
     "npm": "^5.7.1",
     "rxjs": "^5.5.6",

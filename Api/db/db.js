@@ -7,7 +7,7 @@ var db = mysql.createPool({
     password: '',
     database: 'creatily',
     multipleStatements: true
-})
+});
 
 module.exports = {
     insert:function(sql,value,callback){

@@ -1,27 +1,25 @@
-.loginPage{
-    width: 100%;height: 100%;position: relative;overflow: hidden;
+.regpwdPage{
+    width: 100%;height:100%;position: relative;overflow: hidden;
 }
-.login-title{
+.regpwd-title{
     display: flex;padding:0.5rem 0;border-bottom: 0.05rem solid #e7e3e3;justify-content: center;align-items: center;
     span{
         font-size:1rem;letter-spacing: 0.125rem;
     }
 }
-
-%loginBrand{
+%pwdBrand{
     margin-top: 0.625rem;
     h1{
         display: flex;justify-content: center;letter-spacing:0.3125rem;font-size:2rem;font-weight: 500;
     }
 }
-
-.login-content{
-    @extend %loginBrand;
+.regpwd-content{
+    @extend %pwdBrand;
 }
-.login-content-input{
+.regpwd-content-input{
     padding:0 1.875rem;
 }
-.login-input-phone,.login-input-pwd{
+.regpwd-input-phone,.regpwd-input-pwd{
     margin-top:1.25rem;border-bottom: 0.125rem solid #eaeaea;padding-bottom:0.3125rem;position: relative;
     i{
         position: absolute;left:0.125rem;bottom:0.075rem;font-size:1.3rem;
@@ -32,25 +30,22 @@
     span{
         position: absolute;right:0.125rem;bottom:0.075rem;font-size:1.1rem;color:#dddddd;
     }
-    .pwdInput{
+    .pwdInputA{
         width:70%;
     }
 }
-.login-submit{
-    width: 100%;padding:0.5rem 0;text-align:center;background: #FFD914;border-radius: 0.3125rem;margin-top: 0.8125rem;border:none;outline: none;color:#383636;
+.regpwd-deal{
+    margin-top:0.625rem;color:#9C9C9C;
 }
-.login-forgetPwd{
-    display: flex;margin:0.625rem 1.875rem;justify-content: flex-end;
-    a{
-        color:#383636;
-    }
+.regpwd-submit{
+    width: 100%;padding:0.5rem 0;text-align:center;background: #FFD914;border-radius: 0.3125rem;margin-top:0.625rem;border:none;outline: none;color:#383636;
 }
 %Input {
     position: absolute;bottom:0.5rem;width:1rem;height:1rem;border-radius: 50%;background: #a7a7a7;color:#ffffff;text-align:center;font-style:inherit;line-height: 0.9rem;
 }
-.InputClearA{
+.InputClearPwdA{
     right:0.2rem;@extend %Input;
 }
-.InputClearB{
+.InputClearPwdB{
     right: 1.5rem;@extend %Input;
 }

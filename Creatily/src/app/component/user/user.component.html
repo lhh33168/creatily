@@ -1,6 +1,7 @@
 <div class="userpage">
-    <!-- <srollTop>封装</srollTop> -->
-    <div class="user-content">
+    <a routerLink="user/set" class="iconfont icon-iconfonticonfontjixieqimo"></a>    
+    <div class="user-canner">
+        <!-- <srollTop>封装</srollTop> -->
         <!-- 用户信息 -->
         <div class="user-personal">
             <div class="user-photo">
@@ -11,34 +12,114 @@
                 <a routerLink="/user/usermsg">点击此处更改个人描述</a>
             </div>
         </div>
-        <!-- 订单 -->
-        <div class="user-dingdan">
-            <div class="user-mydingdan">
-                <span>我的订单</span>
-                <span>
-                    <a routerLink="userdingdan">查看全部订单</a>
-                </span>
-            </div>
-            <div class="user-dingdanNav">
-                <ul>
-                    <li>
-                        <i class="iconfont icon-icon-test"></i>
-                        待付款
-                    </li>
-                    <li>
-                        <i class="iconfont icon-icon2"></i>
-                        待发货
-                    </li>
-                    <li>
-                        <i class="iconfont icon-yifahuo"></i>
-                        已发货
-                    </li>
-                    <li>
-                        <i class="iconfont icon-wallet-success"></i>
-                        已完成
-                    </li>
-                </ul>
-            </div>
+    </div>
+    <!-- 订单 -->
+    <div class="user-dingdan">
+        <div class="user-mydingdan">
+            <span>我的订单</span>
+            <span>
+                <a routerLink="userdingdan">查看全部订单
+                    <i class="iconfont icon-fanhui"></i>
+                </a>
+            </span>
+        </div>
+        <div class="user-dingdanNav">
+            <ul>
+                <li>
+                    <i class="iconfont icon-icon-test"></i>
+                    待付款
+                </li>
+                <li>
+                    <i class="iconfont icon-icon2"></i>
+                    待发货
+                </li>
+                <li>
+                    <i class="iconfont icon-yifahuo"></i>
+                    已发货
+                </li>
+                <li>
+                    <i class="iconfont icon-wallet-success"></i>
+                    已完成
+                </li>
+            </ul>
         </div>
     </div>
+    <div class="user-aftersale">
+        <ul>
+            <li>
+                <a routerLink="user/tuihuo">
+                    <span>
+                        <i class="iconfont icon-icon5"></i>
+                        退货/售后
+                    </span>
+                    <span>
+                        <i class="iconfont icon-fanhui"></i>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a routerLink="user/tuihuo">
+                    <span>
+                        <i class="iconfont icon-serve"></i>
+                        创质客服
+                    </span>
+                    <span>
+                        <i class="iconfont icon-fanhui"></i>
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="user-fenxiang">
+        <ul>
+            <li>
+                <a routerLink="user/jifen">
+                    <span>
+                        <i class="iconfont icon-icon5"></i>
+                        我的积分
+                    </span>
+                    <span>
+                        0
+                        <i class="iconfont icon-fanhui"></i>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a routerLink="user/fenxiang">
+                    <span>
+                        <i class="iconfont icon-icon5"></i>
+                        边分享边赚钱
+                    </span>
+                    <span>
+                        订单金额的5%归你
+                        <i class="iconfont icon-fanhui"></i>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a routerLink="user/huodong">
+                    <span>
+                        <i class="iconfont icon-icon5"></i>
+                        分享赢优惠券
+                    </span>
+                    <span>
+                        立减50元
+                        <i class="iconfont icon-fanhui"></i>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a routerLink="user/shoucang">
+                    <span>
+                        <i class="iconfont icon-serve"></i>
+                        我的收藏
+                    </span>
+                    <span>
+                        <i class="iconfont icon-fanhui"></i>
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </div>
 </div>
+<footer></footer>

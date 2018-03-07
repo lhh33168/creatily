@@ -1,0 +1,19 @@
+.footerBottom{
+    width: 100%;position:fixed;left: 0;right: 0;bottom: 0;z-index:999;background: #ffffff;padding:0.125rem 0;
+    ul{
+        display: flex;flex-wrap: nowrap;justify-content: space-around;color:#777777;
+        li{
+            a{
+                color:#777777;
+                i{
+                    display: flex;flex-wrap: nowrap;justify-content: center;font-size:1.1rem;
+                }
+                &.active{
+                    color:#FFD914;
+                }
+            }
+            
+        }
+
+    }
+}

@@ -12,7 +12,7 @@ export class DetailComponent implements OnInit {
 
     userid: number = 1;
     username: string = 'ljt';
-    proId: string;
+    proId: number;
     dataset: Array<any> = [];
     groundImg: Array<string> = [];
     price: number;
@@ -180,9 +180,16 @@ export class DetailComponent implements OnInit {
     };
 
     gotoOrder(){
+        this.classlist['count'] = this.count;
+        this.classlist['userid'] = this.userid;
+        this.classlist['username'] = this.username;
+        this.classlist['goodsid'] = this.proId;
+        this.classlist['proname'] = this.dataset['proName'];
+        this.classlist['imgurl'] = this.groundImg[this.currentImgIdx];
+        this.classlist['price'] = this.currentSizePrice;
         this.http.post('add_order',this.classlist).then((res)=>{
-                // console.log('已加入购物车')
-            });
+            this.router.navigate(['/order']);
+        });
     };
 
     

@@ -1,0 +1,22 @@
+<div id="comment">
+    <div class="head" *ngIf="headShow">
+        <i class="goback iconfont icon-fanhui" (click)="goBack()"></i>
+        <i class="share iconfont icon-share"></i>
+    </div>
+    <div class="comment-container">
+        <div class="swiper-container">  
+            <div class="swiper-wrapper">  
+                <img class="swiper-slide" *ngFor= "let item of groundImg" src={{item}}/>  
+            </div>  
+            <div class="swiper-pagination"></div>
+        </div>
+        <div class="fabiao">
+            <div class="fabiao-top">
+                <div class="userimg-box">
+                    <img src="" alt="" />
+                </div>
+                <div class="name"></div>
+            </div>
+        </div>
+    </div>
+</div>

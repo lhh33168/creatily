@@ -1,20 +1,52 @@
 <div class="home">
-<ul *ngIf="selectHome"class="typelist">
-    <li (click)="selector()">推荐</li>
-    <li *ngFor ="let obj of selectHome"(click)="selectList(obj['categoryId'])">{{obj['category']}}</li>
-</ul>
-<div *ngIf="selectshow"class="selecttype">
-    <div *ngFor ="let obj of selectshow"class="homecate">
-        <span><img src="{{obj['imgurl']}}" alt=""class="goodsImg" /></span>
-        <span>{{obj['proName']}}</span>
-        <div class="price"(click)="turn(obj.id)">{{obj['price'].split(',')[0]}}</div>
+    <div class="homeheader">
+        <div  class="searchBar" id="searchBar" ></div>
+        <ul *ngIf="selectHome"class="typelist">
+            <li (click)="selector()">推荐</li>
+            <li *ngFor ="let obj of selectHome"(click)="selectList(obj['categoryId'])">{{obj['category']}}</li>
+        </ul>
+    </div>
+    <div *ngIf="selectshow"class="selecttype">
+        <img src="{{Imgs}}" alt=""class="Imgs" />
+        <div class="Imgss">
+            <div *ngFor ="let obj of selectshow"class="homecate">
+                <span><img src="{{obj['imgurl']}}" alt=""class="goodsImg"(click)="turn(obj.id)" /></span>
+            <span>{{obj['proName']}}</span>
+            <div class="price">{{obj['price'].split(',')[0]}}</div>
+            </div>
         </div>
-</div>
-<div class="show" >
- <div >
-    <app-carousel></app-carousel>
-</div>
-<app-new-product></app-new-product>
-<app-show-product></app-show-product>
-</div>
+    </div>
+    <div class="show" >
+        <app-carousel></app-carousel>
+        <app-new-product></app-new-product>
+        <app-show-product></app-show-product>
+        <div>
+            <h3>猜你喜欢</h3>
+            <div *ngIf="homeShow">
+                <div *ngFor ="let obj of homeShow;let id =idx;"(click)="turns(obj.id)">
+                    <div class="showsImg">
+                      <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                          <ng-template ngFor let-key [ngForOf]="getKeys(obj['groundImg'].split(','))" >
+                          <div class="swiper-slide"> 
+                              <img src="{{obj['groundImg'].split(',')[key]}}" alt=""class="navImg" />
+                            </div>
+                          </ng-template>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                      </div>
+                    </div>
+                    <div class="homecenter">
+                         <div class="homename">{{obj['proName']}}</div>
+                         <div class="size">1.{{obj['size']}}</div>
+                         <div class="recommend">2.{{obj['recommend']}}</div>
+                         <div class="overflow">
+                             <div class="price">{{obj['price'].split(',')[0]}}</div>
+                             <button>购买</button>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

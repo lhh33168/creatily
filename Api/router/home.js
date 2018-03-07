@@ -57,13 +57,20 @@ module.exports = {
             var sql = `
             select
                 *
-            from 
-                category a,
+            from      
                 goodlist b
-                where a.categoryId = '${categoryId}' and a.categoryId=b.categoryId`;
+                inner join category a on b.categoryId = a.categoryId
+            where 
+                a.categoryId = ${categoryId}
+                `;
             db.select(sql, function(res){
                 _res.send(res);
             })
+        })
+        app.get('/homeShow',function(_req,_res){
+            db.select2('SELECT * FROM `goodlist`',function(res){
+               _res.send(res);
+            });
         })
     }
 }

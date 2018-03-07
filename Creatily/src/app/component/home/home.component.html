@@ -1,0 +1,20 @@
+<div class="home">
+<ul *ngIf="selectHome"class="typelist">
+    <li (click)="selector()">推荐</li>
+    <li *ngFor ="let obj of selectHome"(click)="selectList(obj['categoryId'])">{{obj['category']}}</li>
+</ul>
+<div *ngIf="selectshow"class="selecttype">
+    <div *ngFor ="let obj of selectshow"class="homecate">
+        <span><img src="{{obj['imgurl']}}" alt=""class="goodsImg" /></span>
+        <span>{{obj['proName']}}</span>
+        <div class="price"(click)="turn(obj.id)">{{obj['price'].split(',')[0]}}</div>
+        </div>
+</div>
+<div class="show" >
+ <div >
+    <app-carousel></app-carousel>
+</div>
+<app-new-product></app-new-product>
+<app-show-product></app-show-product>
+</div>
+</div>

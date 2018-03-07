@@ -21,16 +21,30 @@ export class CartComponent implements OnInit {
       ngOnInit() {
           this.http.get('get_hot').then((res) => { 
               this.carthot = res['data'].results;
-              console.log(this.carthot)
           })
           this.getCartItem();
       }
       getCartItem(){
           let params = {}
           this.http.get('get_cart',params = {uid:1}).then((res) => { 
-              this.cartItem = res['data'].results;
-              this.dataset = res['data'].results;
-          })
+                  this.cartItem = res['data'].results;
+                  this.dataset = res['data'].results;
+                  console.log(res)
+           })    
+      }
+      getCartItem1(){
+          let params = {}
+          if(this.cartItem.length>1){
+              this.http.get('get_cart',params = {uid:1}).then((res) => { 
+                  this.cartItem = res['data'].results;
+                  this.dataset = res['data'].results;
+                  console.log(res)
+              })    
+          }else{
+              this.cartItem = [];
+              this.dataset = [];
+          }
+          console.log(this.cartItem.length)
       }
       getPrice(){
               this.dataCountSetPrice = 0;
@@ -74,8 +88,8 @@ export class CartComponent implements OnInit {
          let params;
          this.http.post('delete_cart',params = {indexid:indexid}).then((res) => { 
               console.log(res)
-          }).then(()=>{
-              this.getCartItem();
+          }).then(()=>{    
+                this.getCartItem1(); 
          })
      }
      stockCountAdd(indexid,qty,price){
@@ -86,7 +100,7 @@ export class CartComponent implements OnInit {
                 this.dataCountSetPrice += price*1
               }
           }).then(()=>{
-              this.getCartItem();
+              this.getCartItem1();
          })
      }
      stockCountSub(indexid,qty,price){
@@ -97,11 +111,15 @@ export class CartComponent implements OnInit {
                   this.dataCountSetPrice -= price*1    
               }
           }).then(()=>{
-              this.getCartItem();
+              this.getCartItem1();
          })
      }
      addOrder(){
-         this.router.navigate(['/order'])
+         if(this.dataCountSet.length>0){
+             this.router.navigate(['/order'])
+         }else{
+
+         }
          for(let i =0;i<this.dataCountSet.length;i++){
              let params ;
              let size = this.dataCountSet[i].size ? this.dataCountSet[i].size : '';

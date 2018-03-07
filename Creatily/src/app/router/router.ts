@@ -10,6 +10,11 @@ import { PaymentComponent } from '../component/payment/payment.component';
 import { AddressComponent } from '../component/address/address.component';
 import { HomeComponent } from '../component/home/home.component';
 import { NewAddressComponent } from '../component/new-address/new-address.component';
+
+import { CommunityComponent} from '../component/community/community.component';
+
+
+
 import { RegisterComponent} from '../component/register/register.component';
 import { CommentComponent} from '../component/comment/comment.component';
 import { RegisterpwdComponent } from '../component/registerpwd/registerpwd.component';
@@ -30,8 +35,13 @@ const appRoutes:Routes = [
     { path: "payment", component: PaymentComponent},
     { path: "address", component: AddressComponent},
     { path: "newAddress", component: NewAddressComponent},
+
+
+    { path: "community", component: CommunityComponent},
+
     { path: "comment/:id", component: CommentComponent},
     { path: "user", component: UserComponent }
+
 ]
 
 export const RootRouter = RouterModule.forRoot(

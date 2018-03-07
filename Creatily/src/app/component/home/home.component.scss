@@ -1,0 +1,22 @@
+.typelist li{
+    float:left;
+    width:15%;
+}
+
+.home{
+    .price{
+        color:red;
+    }
+    .price:before{
+      content:"¥"
+    }
+    .homecate{
+        height:250px;
+        width:49%;
+          float:left;
+    }
+    .goodsImg{
+        width:170px;
+        height:180px;
+    }
+}

@@ -1,0 +1,73 @@
+.userpage{
+    width: 100%;height:100%;position: relative;overflow: hidden;background-color:#dddddd;
+    &>a{
+        position: absolute;left:0;top:0;font-size:1.25rem;color:#ffffff;margin:0.3125rem;z-index:10;
+    }
+}
+.user-canner{
+    width:100%;height:auto;background-image:url(../../../assets/images/personal.png);min-height:12.5rem;background-position: bottom;background-size: cover;position: relative;
+}
+.user-personal{
+    width:100%;position: absolute;bottom: 0.625rem;
+}
+.user-photo{
+    display: flex;justify-content: center;align-items: flex-end;
+    img{
+        display: block;width: 25%;border-radius: 50%;
+    }
+}
+.user-name{
+    display: flex;justify-content: center;color:#ffffff;font-size:0.875rem;
+}
+.user-message{
+    display: flex;width:100%;justify-content: center;overflow: hidden;text-overflow:ellipsis;
+    white-space: nowrap;
+    a{
+        color:#ffffff;font-size:0.875rem;
+    }
+}
+.user-dingdan{
+    width:100%;position: relative;margin-bottom: 0.0625rem;background-color: #ffffff;
+}
+.user-mydingdan{
+    display: flex;justify-content: space-between;padding:0.3125rem 0.625rem 0 0.625rem;
+    a{
+        color:#777777;
+    }
+    .icon-fanhui{
+        display: inline-block;transform: rotate(180deg)
+    }
+}
+.user-dingdanNav{
+    padding:0.2rem 0;width:100%;
+    ul{
+        display: flex;flex-wrap: nowrap;justify-content: space-around;color:#777777;
+        li{
+            color:#777777;
+            i{
+                display: flex;flex-wrap: nowrap;font-size:1.6rem;justify-content: center;
+            }
+        }
+    }
+}
+%listcss{
+    width:100%;background:#ffffff;display: flex;justify-content: space-between;
+    ul{
+        width:100%;
+        li{
+            border-bottom:0.0625rem solid #dddddd;color:#777777;padding:0.3125rem 0.625rem;
+            a{
+                display: flex;justify-content: space-between;color:#777777;
+            }
+            .icon-fanhui{
+                display:inline-block;transform: rotate(180deg);font-size:0.875rem;
+            }
+        }
+    }
+}
+.user-aftersale{
+   margin-bottom:0.15rem;@extend %listcss;
+}
+.user-fenxiang{
+    @extend %listcss;
+}

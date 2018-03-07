@@ -1,0 +1,11 @@
+<div class="carousel">  
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"*ngFor="let obj of carousel"><img src="{{obj['imgurl']}}"(click)="turn(obj.id)" />
+            </div> 
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
+    </div>
+</div>

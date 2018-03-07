@@ -22,6 +22,7 @@ import { OrderComponent } from './component/order/order.component';
 import { PaymentComponent } from './component/payment/payment.component';
 import { NewAddressComponent } from './component/new-address/new-address.component';
 import { AddressComponent } from './component/address/address.component';
+import { CommunityComponent } from './component/community/community.component';
 
 
 
@@ -39,7 +40,8 @@ import { AddressComponent } from './component/address/address.component';
     OrderComponent,
     PaymentComponent,
     NewAddressComponent,
-    AddressComponent
+    AddressComponent,
+    CommunityComponent
   ],
   imports: [
     FlexLayoutModule,

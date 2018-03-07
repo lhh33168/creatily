@@ -1,0 +1,35 @@
+.community {
+    background-color: lightgoldenrodyellow;
+    .gallery-thumbs {
+        border: 1px solid #FFF9EB;
+        .swiper-wrapper {
+            .swiper-slide {
+                background-color: #fff;
+                width: 100px;
+                height: 39px;
+                line-height: 39px;
+                font-size: 14px;
+                font-family:PingFangSC-Regular;
+                color: #4a4a4a;
+                position: relative;
+                overflow: hidden;
+            }
+        }
+    }
+    
+    .gallery-top {
+        .swiper-wrapper {
+            .swiper-slide {
+                .tx{
+                    width: 35px;
+                    height: 35px;
+                }
+                .tx1{
+                    width: 100%;
+                    height: 330px;
+                }
+            }
+        }
+    }
+    
+}

@@ -2,11 +2,11 @@ var express = require('express');
 var bodyparser = require('body-parser');
 var app = express();
 var path = require('path');
-
 var home = require('./home');
 var user = require('./user');
 var details = require('./details');
-var cart = require('./cart')
+var cart = require('./cart');
+var community = require('./community')
 
 
 
@@ -38,6 +38,7 @@ module.exports = {
         user.register(app),
         details.register(app);
         cart.register(app);
+        community.register(app);
         app.listen(_port,function(){
                 console.log("server:连接成功!");
         })

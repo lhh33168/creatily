@@ -9,7 +9,8 @@ import { CartComponent } from '../component/cart/cart.component';
 import { OrderComponent } from '../component/order/order.component';
 import { PaymentComponent } from '../component/payment/payment.component';
 import { AddressComponent } from '../component/address/address.component';
-import { NewAddressComponent } from '../component/new-address/new-address.component'
+import { NewAddressComponent } from '../component/new-address/new-address.component';
+import { CommunityComponent } from '../component/community/community.component';
 const appRoutes:Routes = [
     { path:"", redirectTo:"/bootpage",pathMatch:'full'},
     { path: "bootpage", component: BootpageComponent },
@@ -21,7 +22,8 @@ const appRoutes:Routes = [
     { path: "order", component: OrderComponent},
     { path: "payment", component: PaymentComponent},
     { path: "address", component: AddressComponent},
-    { path: "newAddress", component: NewAddressComponent}
+    { path: "newAddress", component: NewAddressComponent},
+    { path: "community", component: CommunityComponent}
 ]
 
 export const RootRouter = RouterModule.forRoot(

@@ -8,18 +8,18 @@
     <div class="regpwd-content-input">
       <div class="regpwd-input-phone">
         <i class="iconfont icon-wode"></i>
-        <input type="text" class="phoneInput" #inputFocus placeholder="请输入手机号码" maxlength="11" [(ngModel)]="inputPhone" (input)="inputPhoneA($event)"
+        <input type="text" class="phoneInput" placeholder="请输入手机号码" maxlength="11" [(ngModel)]="pwdPhone" (input)="pwdPhoneA($event)"
         />
-        <em class="InputClearA" *ngIf="showA" (click)="showAclear()">&times;</em>
+        <em class="InputClearPwdA" *ngIf="showPwdA" (click)="showPwdclearA()">&times;</em>
       </div>
       <div class="regpwd-input-pwd">
         <i class="iconfont icon-mima"></i>
-        <span class="iconfont icon-yj" (click)="showChange()"></span>
-        <input [type]="inputType" class="pwdInput" placeholder="请设置密码" [(ngModel)]="inputPass" (input)="inputPhoneB($event)" />
-        <em class="InputClearB" *ngIf="showB" (click)="showBclear()">&times;</em>
+        <span class="iconfont icon-yj" (click)="showPwd()"></span>
+        <input [type]="inputType" class="pwdInputA" placeholder="请设置密码" [(ngModel)]="inputPass" (input)="pwdPhoneB($event)" />
+        <em class="InputClearPwdB" *ngIf="showPwdB" (click)="showPwdclearB()">&times;</em>
       </div>
       <div class="regpwd-deal">密码长度6-16位，支持数字，字符和符号</div>
-      <button class="regpwd-submit">登录</button>
+      <button class="regpwd-submit" (click)="regpwdSubmit()">注册</button>
     </div>
   </div>
 </div>

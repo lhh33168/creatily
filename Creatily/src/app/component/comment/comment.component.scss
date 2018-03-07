@@ -1,0 +1,15 @@
+#comment{
+    display:flex;flex-direction:column;height:100%;position: relative;
+    .head{
+        box-sizing:border-box;width:100%;height: 2.0rem;position:absolute;z-index: 999;color: #fff;top: 0.625rem;left:0;padding:0 0.625rem;
+        i{
+            display:block;width: 2.0rem;height: 2.0rem;line-height: 2.0rem;text-align: center;background-color: rgba(0,0,0,0.2);border-radius: 50%;font-size: 1.25rem;
+        }
+        .goback{
+            float:left;
+        }
+        .share{
+            float:right;
+        }
+    }
+}

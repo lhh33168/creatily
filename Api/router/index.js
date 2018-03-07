@@ -6,7 +6,8 @@ var path = require('path');
 var home = require('./home');
 var user = require('./user');
 var details = require('./details');
-var cart = require('./cart')
+var cart = require('./cart');
+var comment = require('./comment.js');
 
 
 
@@ -37,6 +38,7 @@ module.exports = {
         user.register(app),
         details.register(app);
         cart.register(app);
+        comment.register(app);
         app.listen(_port,function(){
             console.log("server:连接成功!");
         })

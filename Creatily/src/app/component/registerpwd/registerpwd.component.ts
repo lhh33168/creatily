@@ -60,8 +60,8 @@ export class RegisterpwdComponent implements OnInit {
       return false;
     }else{
       this.http.post('register',{ "phone": userphone, "password": passvalue}).then((res)=>{
-        console.log(res);
-      })
+        
+      });
     }
   }
   passError() {

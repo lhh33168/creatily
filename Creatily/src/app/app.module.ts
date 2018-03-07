@@ -37,6 +37,7 @@ import { CommentComponent } from './component/comment/comment.component';
 
 import { RegisterpwdComponent } from './component/registerpwd/registerpwd.component';
 import { UserComponent } from './component/user/user.component';
+import { UsersetComponent } from './component/userset/userset.component';
 
 
 
@@ -68,7 +69,8 @@ import { UserComponent } from './component/user/user.component';
 
     CommentComponent,
     RegisterpwdComponent,
-    UserComponent
+    UserComponent,
+    UsersetComponent
 
   ],
   imports: [

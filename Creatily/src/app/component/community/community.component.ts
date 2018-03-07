@@ -15,6 +15,8 @@ export class CommunityComponent implements OnInit {
 	 carthot5: Array<any> = [];
 	 carthot6: Array<any> = [];
 	 carthot7: Array<any> = [];
+	 dataCommunity: number = 0;
+	 a:Object<any> ={};
 
   constructor(private http: HttpService) { }
 
@@ -70,5 +72,32 @@ export class CommunityComponent implements OnInit {
   getKeys(item){
             return Object.keys(item);
       }
+  
+  stockCountAdd_1(id,dianzan,status,event){
+  	let params;
+         this.http.post('add_cartcount_1',params = {id:id,dianzan:dianzan,status:status}).then((res) => { 
+              
+               this.carthot1 =res['data'].results;
+               event.target['style'].color='yellow';
+         })
+	
+  }
+  
+  stockCountAdd_2(id,shoucang,status1){
+  	let params;
+         this.http.post('add_cartcount_2',params = {id:id,shoucang:shoucang,status1:status1}).then((res) => { 
+             
+               this.carthot1 =res['data'].results;
+                
+          })
+  }
+  
+  stockCountAdd_3(id,pinglun){
+  	let params;
+         this.http.post('add_cartcount_3',params = {id:id,pinglun:pinglun}).then((res) => { 
+              console.log(res)
+               this.carthot1 =res['data'].results;
+          })
+  }
 
 }

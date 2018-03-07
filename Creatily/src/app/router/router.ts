@@ -1,7 +1,6 @@
 import { RouterModule, Routes} from '@angular/router';
 
 import { BootpageComponent } from '../component/bootpage/bootpage.component';
-import { FooterComponent } from '../component/footer/footer.component';
 import { RegloginComponent } from '../component/reglogin/reglogin.component';
 import { LoginComponent } from '../component/login/login.component';
 import { DetailComponent } from '../component/detail/detail.component';
@@ -22,7 +21,6 @@ const appRoutes:Routes = [
     { path: "login", component: LoginComponent },
     { path: "phonecode", component: RegisterComponent },
     { path: "register", component: RegisterpwdComponent},
-    { path: "footer", component: FooterComponent},
     { path: "detail/:id", component: DetailComponent},
     { path: "cart", component: CartComponent},
     { path: "order", component: OrderComponent},

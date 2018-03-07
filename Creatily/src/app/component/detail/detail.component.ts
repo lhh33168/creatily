@@ -180,16 +180,24 @@ export class DetailComponent implements OnInit {
     };
 
     gotoOrder(){
-        this.classlist['count'] = this.count;
-        this.classlist['userid'] = this.userid;
-        this.classlist['username'] = this.username;
-        this.classlist['goodsid'] = this.proId;
-        this.classlist['proname'] = this.dataset['proName'];
-        this.classlist['imgurl'] = this.groundImg[this.currentImgIdx];
-        this.classlist['price'] = this.currentSizePrice;
-        this.http.post('add_order',this.classlist).then((res)=>{
-            this.router.navigate(['/order']);
-        });
+        this.headShow = false;
+        this.categroyShow = true;
+        if((this.size.length>0) && this.classlist && (!this.classlist['size'] || this.classlist['size'] == null)){
+            console.log('请选择类型')
+        }else if ((this.color.length>0) && this.classlist && (!this.classlist['color'] || this.classlist['color'] == null)){
+            console.log('请选择颜色')
+        }else{
+            this.classlist['count'] = this.count;
+            this.classlist['userid'] = this.userid;
+            this.classlist['username'] = this.username;
+            this.classlist['goodsid'] = this.proId;
+            this.classlist['proname'] = this.dataset['proName'];
+            this.classlist['imgurl'] = this.groundImg[this.currentImgIdx];
+            this.classlist['price'] = this.currentSizePrice;
+            this.http.post('add_order',this.classlist).then((res)=>{
+                this.router.navigate(['/order']);
+            });
+        }
     };
 
     

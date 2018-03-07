@@ -45,7 +45,7 @@ export class DetailComponent implements OnInit {
             this.dataset = res['data']['results'][0];
             // console.log(this.dataset)
             this.groundImg = this.dataset['groundImg'].split(',');
-            // console.log(this.groundImg)
+             //console.log(this.groundImg)
             this.price = this.dataset['price'].split(',')[0];
             // console.log(this.price)
             this.graphics = this.dataset['graphics'].split(',');

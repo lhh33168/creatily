@@ -12,16 +12,18 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class AddressComponent implements OnInit {
 
       getaddress : Array<any> = [];
+      userid: number = 123;
 
       constructor(private http: HttpService, private confirmServ: NzModalService, private _message: NzMessageService,  private route: ActivatedRoute, private router: Router) { }
 
       ngOnInit() {
-          this.getAddressItem();
-          // console.log(AddressComponent)
+          if(this.userid){
+              this.getAddressItem();            
+          }
       }
       getAddressItem(){
           let params = {};
-          this.http.get('get_address',params = {userid:123}).then((res) => { 
+          this.http.get('get_address',params = {userid:this.userid}).then((res) => { 
               this.getaddress = res['data'].results;
               // console.log(this.getaddress)
           })

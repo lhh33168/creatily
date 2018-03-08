@@ -89,7 +89,7 @@ module.exports = {
             var name = _req.body.name;
             var phone = _req.body.phone;
             var address = _req.body.address;
-            db.update(`update address set name = "${name}" , phone = "${phone}" , address = "${address}"  where id = ${id}`,function(res2){
+            db.update(`update address set name = "${name}" , phone = "${phone}" , address = "${address}" ,default_address = 0  where id = ${id}`,function(res2){
                     _res.send(res2);
                   
             })
@@ -170,16 +170,16 @@ module.exports = {
             })
         });
         _app.get('/get_cart',function(_req,_res){
-            let uid =_req.query.uid;
+            let userid =_req.query.userid;
             let sql =`
                 select   
                     *
                 from
                     cart
                 where 
-                    userid = ${uid}
+                    userid = ${userid}
                 `;
-            db.select(sql,function(res){
+            db.select2(sql,function(res){
                 _res.send(res)
             })
         })

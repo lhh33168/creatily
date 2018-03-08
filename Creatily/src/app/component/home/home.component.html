@@ -7,19 +7,7 @@
             <li *ngFor ="let obj of selectHome"(click)="selectList(obj['categoryId'],$event)"class="li">{{obj['category']}}</li>
         </ul>
     </div>
-    <div *ngIf="selectshow"class="selecttype">
-        <img src="{{Imgs}}" alt=""class="Imgs" />
-        <div class="Imgss">
-            <div *ngFor ="let obj of selectshow"class="homecate">
-                <div>
-                  <img src="{{obj['imgurl']}}" alt=""class="goodsImg"(click)="turn(obj.id)" />
-                </div>
-                <div class="proName">{{obj['proName']}}</div>
-                <div class="price">{{obj['price'].split(',')[0]}}</div>
-            </div>
-        </div>
-    </div>
-    <div class="show" >
+        <div class="show" >
         <app-carousel></app-carousel>
         <app-new-product></app-new-product>
         <app-show-product></app-show-product>
@@ -49,6 +37,18 @@
                          </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="selectshow"class="selecttype">
+        <img src="{{Imgs}}" alt=""class="Imgs" />
+        <div class="Imgss">
+            <div *ngFor ="let obj of selectshow"class="homecate">
+                <div>
+                  <img src="{{obj['imgurl']}}" alt=""class="goodsImg"(click)="turn(obj.id)" />
+                </div>
+                <div class="proName">{{obj['proName']}}</div>
+                <div class="price">{{obj['price'].split(',')[0]}}</div>
             </div>
         </div>
     </div>

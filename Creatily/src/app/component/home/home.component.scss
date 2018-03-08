@@ -6,12 +6,14 @@
     .selecttype{
         padding-top:45px;
         .Imgss{
-            
+            overflow:hidden;
+            padding-bottom:100px;
         }
     }
     overflow-x: hidden;
     .show{
         h3{
+            background:#f1eded78;
             height:80px;
           line-height:80px;
           text-align:center;
@@ -59,6 +61,7 @@
       content:"¥"
     }
     .homecate{
+        padding-bottom:100px;
         padding-top:10px;
         height:250px;
         width: 47.5%;

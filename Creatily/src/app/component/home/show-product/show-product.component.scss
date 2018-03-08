@@ -1,20 +1,22 @@
 
   .showProduct{
-
+    .swiper-pagination{
+      bottom:10px;
+    }
     ul{
       font-family: PingFangSC-Regular;
       color: #4a4a4a;
       //color: #777;
        font-size: .77777778rem;
       li{
-        padding-top: 13px;
         width: 96%;
         margin: 0 auto;
         border-bottom: 6px solid #F2F1F0;
       }
     }
     .fabiao{
-    margin-left: 8px;
+      height:130px;
+      margin-left: 8px;
       padding-top: 9px;
       font-size:15px;
       padding-bottom: 30px;
@@ -37,25 +39,25 @@
       }
 
     .show-top{
+      background:#f1eded78;
       overflow:hidden;
-      padding-bottom:10px;
-      margin-bottom:10px ;
+      padding-bottom:16px;
       margin-left: 5px;
       line-height: 39px;
     }
     .show-title{
-      margin-top:30px;
-      height:50px;
-      line-height:50px;
+      background:#f1eded78;
+      padding-top:30px;
       text-align:center;
       font-size:17px;
       font-weight:900;
     }
     .userImg{
+      border-radius: 50%;
       display: inline-block;
       vertical-align: middle;
-      width: 35px;
-      height: 35px;
+      width: 40px;
+      height: 40px;
     }
     .showImg{
       width: 96%;
@@ -65,7 +67,7 @@
     }
   }
 .showProduct .swiper-slide {
-      height:560px;
+
       font-size: 18px;
       background: #fff;
     }

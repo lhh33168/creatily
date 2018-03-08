@@ -41,7 +41,7 @@ import { RegisterpwdComponent } from './component/registerpwd/registerpwd.compon
 import { UserComponent } from './component/user/user.component';
 import { UsersetComponent } from './component/userset/userset.component';
 
-
+import { RangePipe } from '../app/utils/range.pipe';
 
 @NgModule({
   declarations: [
@@ -72,8 +72,9 @@ import { UsersetComponent } from './component/userset/userset.component';
     CommentComponent,
     RegisterpwdComponent,
     UserComponent,
-    UsersetComponent
+    UsersetComponent,
 
+    RangePipe
   ],
   imports: [
     FlexLayoutModule,

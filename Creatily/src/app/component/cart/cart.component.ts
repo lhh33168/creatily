@@ -30,7 +30,7 @@ export class CartComponent implements OnInit {
       }
       getCartItem(){
           let params = {}
-          this.http.get('get_cart',params = {uid:this.userid}).then((res) => { 
+          this.http.get('get_cart',params = {userid:this.userid}).then((res) => { 
              
                   this.cartItem = res['data']['results'];
                   this.dataset = res['data']['results'];

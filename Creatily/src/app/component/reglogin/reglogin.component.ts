@@ -12,5 +12,5 @@ export class RegloginComponent implements OnInit {
   ngOnInit() {
       
   }
-
+  
 }

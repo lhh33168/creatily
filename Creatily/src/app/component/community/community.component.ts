@@ -16,7 +16,7 @@ export class CommunityComponent implements OnInit {
 	 carthot6: Array<any> = [];
 	 carthot7: Array<any> = [];
 	 dataCommunity: number = 0;
-	 a:Object<any> ={};
+	 a: Object<any> = {};
 
   constructor(private http: HttpService) { }
 

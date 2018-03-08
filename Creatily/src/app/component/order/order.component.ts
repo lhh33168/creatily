@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../utils/http.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { NzModalService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-order',
@@ -12,8 +13,9 @@ export class OrderComponent implements OnInit {
       order: Array<any> = [];
       address: Array<any> = [];
       dataCountSetPrice : number = 0;
+      multiple: boolean = true;
 
-      constructor(private http: HttpService, private router: Router, private route : ActivatedRoute) { }
+      constructor(private http: HttpService, private router: Router, private route : ActivatedRoute, private confirmServ: NzModalService) { }
 
       ngOnInit() {
           let params;
@@ -46,10 +48,43 @@ export class OrderComponent implements OnInit {
           console.log(this.dataCountSetPrice)   
       }
       goToPay(){
-          if(this.address.length==0){
-
+          if(this.address.length===0){
+               this.error();
+          }else if(this.multiple==false){
+               this.erroragree();
           }else{
-              this.router.navigate(['/payment']);
+             for(let i =0;i<this.order.length;i++){
+                 let params ;
+                 this.http.post('delete_cart',params = {indexid:this.order[i].indexid}).then((res) => { 
+                      console.log(res)
+                 })
+                 this.http.post('change_order',params = {indexid:this.order[i].indexid}).then((res) => { 
+                      console.log(res)
+                 }).then(()=>{
+                        this.order = [];
+                 })
+             }
+              this.router.navigate(['payment',this.dataCountSetPrice]);
           }
+      }
+      error() {
+            this.confirmServ.error({
+              title: '请填写默认收货地址',
+              content: '么么哒！！！'
+            });
+      }
+      erroragree() {
+            this.confirmServ.error({
+              title: '请同意协议',
+              content: '么么哒！！！'
+            });
+      }
+      agree(){
+          if(this.multiple){
+              this.multiple = false;
+          }else{
+              this.multiple = true;  
+          }
+          console.log(this.multiple)
       }
 }

@@ -15,9 +15,11 @@ export class CommentComponent implements OnInit {
     dataset: Array<any> = [];
     groundImg: Array<string> = [];
     userimgurl: string;
-    name: string;
+    Cname: string;
     fabiao: string;
     pinglun: string;
+    dianzan_count: number;
+    shoucang_count: number; 
 
     constructor(private route: ActivatedRoute, private router: Router, private http: HttpService, private location: Location) { }
 
@@ -36,12 +38,16 @@ export class CommentComponent implements OnInit {
             console.log(this.groundImg)
             this.userimgurl = this.dataset['userimgurl'];
             console.log(this.userimgurl)
-            this.name = this.dataset['name'];
-            console.log(this.name)
+            this.Cname = this.dataset['name'];
+            console.log(this.Cname)
             this.fabiao = this.dataset['fabiao'];
             console.log(this.fabiao)
             this.pinglun = this.dataset['pinglun'];
             console.log(this.pinglun)
+            this.dianzan_count = this.dataset['dianzan'];
+            console.log(this.dianzan_count)
+            this.shoucang_count = this.dataset['shoucang'];
+            console.log(this.shoucang_count)
         });
     }
 

@@ -19,12 +19,12 @@
 							<img [src]="obj.userimgurl" alt="" class="tx" />
 							<span class="sp">{{obj.name}}</span>
 						</div>
-						<img [src]="obj.imgurl" alt="" class="tx1" />
+						<img [src]="obj.imgurl" alt="" class="tx1" (click)="stockCountAdd_tp(obj.id)"/>
 						<div class="dsp">
-							<i class="icon iconfont icon-good" (click)="stockCountAdd_1(obj.id,obj.dianzan,obj.status,$event)"></i>
+							<i class="icon iconfont icon-good" (click)="stockCountAdd_1_1(obj.id,obj.dianzan,obj.status,$event)"></i>
 							<input class="name" id="dsc_1" type="text" [(ngModel)]="obj.dianzan"  readonly="readonly">
 							
-							<i class="icon iconfont icon-xin" (click)="stockCountAdd_2(obj.id,obj.shoucang,obj.status1)"></i>
+							<i class="icon iconfont icon-xin" (click)="stockCountAdd_2_1(obj.id,obj.shoucang,obj.status1)"></i>
 							<input class="name" id="dsc_1" type="text" [(ngModel)]="obj.shoucang"  readonly="readonly">
 							
 							<i class="icon iconfont icon-buoumaotubiao48" (click)="stockCountAdd_3(obj.id,obj.pinglun)"></i>
@@ -41,12 +41,12 @@
 							<img [src]="obj.userimgurl" alt="" class="tx" />
 							<span class="sp">{{obj.name}}</span>
 						</div>
-						<img [src]="obj.imgurl" alt="" class="tx1" />
+						<img [src]="obj.imgurl" alt="" class="tx1" (click)="stockCountAdd_tp(obj.id)"/>
 						<div class="dsp">
-							<i class="icon iconfont icon-good" (click)="stockCountAdd_1(obj.id,obj.dianzan)"></i>
+							<i class="icon iconfont icon-good" (click)="stockCountAdd_1_1(obj.id,obj.dianzan,obj.status,$event)"></i>
 							<input class="name" id="dsc_1" type="text" [(ngModel)]="obj.dianzan"  readonly="readonly">
 							
-							<i class="icon iconfont icon-xin" (click)="stockCountAdd_2(obj.id,obj.shoucang)"></i>
+							<i class="icon iconfont icon-xin" (click)="stockCountAdd_2_1(obj.id,obj.shoucang,obj.status1)"></i>
 							<input class="name" id="dsc_1" type="text" [(ngModel)]="obj.shoucang"  readonly="readonly">
 							
 							<i class="icon iconfont icon-buoumaotubiao48" (click)="stockCountAdd_3(obj.id,obj.pinglun)"></i>
@@ -63,14 +63,16 @@
 							<img [src]="obj.userimgurl" alt="" class="tx" />
 							<span class="sp">{{obj.name}}</span>
 						</div>
-						<img [src]="obj.imgurl" alt="" class="tx1" />
+						<img [src]="obj.imgurl" alt="" class="tx1" (click)="stockCountAdd_tp(obj.id)"/>
 						<div class="dsp">
-							<i class="icon iconfont icon-good" ></i>
-							<span class="name" id="dsc_1">{{obj.dianzan}}</span>
-							<i class="icon iconfont icon-xin" ></i>
-							<span class="name" id="dsc_1">{{obj.shoucang}}</span>
-							<i class="icon iconfont icon-buoumaotubiao48" ></i>
-							<span class="name" id="dsc_1">评论</span>
+							<i class="icon iconfont icon-good" (click)="stockCountAdd_1_1(obj.id,obj.dianzan,obj.status,$event)"></i>
+							<input class="name" id="dsc_1" type="text" [(ngModel)]="obj.dianzan"  readonly="readonly">
+							
+							<i class="icon iconfont icon-xin" (click)="stockCountAdd_2_1(obj.id,obj.shoucang,obj.status1)"></i>
+							<input class="name" id="dsc_1" type="text" [(ngModel)]="obj.shoucang"  readonly="readonly">
+							
+							<i class="icon iconfont icon-buoumaotubiao48" (click)="stockCountAdd_3(obj.id,obj.pinglun)"></i>
+							<input class="name" id="dsc_1" type="text" [(ngModel)]="obj.pinglun"  readonly="readonly"> 
 						</div>
 						<div class="fb">{{obj.fabiao}}</div>
 					</li>
@@ -83,14 +85,16 @@
 							<img [src]="obj.userimgurl" alt="" class="tx" />
 							<span class="sp">{{obj.name}}</span>
 						</div>
-						<img [src]="obj.imgurl" alt="" class="tx1" />
+						<img [src]="obj.imgurl" alt="" class="tx1" (click)="stockCountAdd_tp(obj.id)"/>
 						<div class="dsp">
-							<i class="icon iconfont icon-good" ></i>
-							<span class="name" id="dsc_1">{{obj.dianzan}}</span>
-							<i class="icon iconfont icon-xin" ></i>
-							<span class="name" id="dsc_1">{{obj.shoucang}}</span>
-							<i class="icon iconfont icon-buoumaotubiao48" ></i>
-							<span class="name" id="dsc_1">评论</span>
+							<i class="icon iconfont icon-good" (click)="stockCountAdd_1_1(obj.id,obj.dianzan,obj.status,$event)"></i>
+							<input class="name" id="dsc_1" type="text" [(ngModel)]="obj.dianzan"  readonly="readonly">
+							
+							<i class="icon iconfont icon-xin" (click)="stockCountAdd_2_1(obj.id,obj.shoucang,obj.status1)"></i>
+							<input class="name" id="dsc_1" type="text" [(ngModel)]="obj.shoucang"  readonly="readonly">
+							
+							<i class="icon iconfont icon-buoumaotubiao48" (click)="stockCountAdd_3(obj.id,obj.pinglun)"></i>
+							<input class="name" id="dsc_1" type="text" [(ngModel)]="obj.pinglun"  readonly="readonly"> 
 						</div>
 						<div class="fb">{{obj.fabiao}}</div>
 					</li>
@@ -103,14 +107,16 @@
 							<img [src]="obj.userimgurl" alt="" class="tx" />
 							<span class="sp">{{obj.name}}</span>
 						</div>
-						<img [src]="obj.imgurl" alt="" class="tx1" />
+						<img [src]="obj.imgurl" alt="" class="tx1" (click)="stockCountAdd_tp(obj.id)"/>
 						<div class="dsp">
-							<i class="icon iconfont icon-good" ></i>
-							<span class="name" id="dsc_1">{{obj.dianzan}}</span>
-							<i class="icon iconfont icon-xin" ></i>
-							<span class="name" id="dsc_1">{{obj.shoucang}}</span>
-							<i class="icon iconfont icon-buoumaotubiao48" ></i>
-							<span class="name" id="dsc_1">评论</span>
+							<i class="icon iconfont icon-good" (click)="stockCountAdd_1_1(obj.id,obj.dianzan,obj.status,$event)"></i>
+							<input class="name" id="dsc_1" type="text" [(ngModel)]="obj.dianzan"  readonly="readonly">
+							
+							<i class="icon iconfont icon-xin" (click)="stockCountAdd_2_1(obj.id,obj.shoucang,obj.status1)"></i>
+							<input class="name" id="dsc_1" type="text" [(ngModel)]="obj.shoucang"  readonly="readonly">
+							
+							<i class="icon iconfont icon-buoumaotubiao48" (click)="stockCountAdd_3(obj.id,obj.pinglun)"></i>
+							<input class="name" id="dsc_1" type="text" [(ngModel)]="obj.pinglun"  readonly="readonly"> 
 						</div>
 						<div class="fb">{{obj.fabiao}}</div>
 					</li>
@@ -123,14 +129,16 @@
 							<img [src]="obj.userimgurl" alt="" class="tx" />
 							<span class="sp">{{obj.name}}</span>
 						</div>
-						<img [src]="obj.imgurl" alt="" class="tx1" />
+						<img [src]="obj.imgurl" alt="" class="tx1" (click)="stockCountAdd_tp(obj.id)"/>
 						<div class="dsp">
-							<i class="icon iconfont icon-good" ></i>
-							<span class="name" id="dsc_1">{{obj.dianzan}}</span>
-							<i class="icon iconfont icon-xin" ></i>
-							<span class="name" id="dsc_1">{{obj.shoucang}}</span>
-							<i class="icon iconfont icon-buoumaotubiao48" ></i>
-							<span class="name" id="dsc_1">评论</span>
+							<i class="icon iconfont icon-good" (click)="stockCountAdd_1_1(obj.id,obj.dianzan,obj.status,$event)"></i>
+							<input class="name" id="dsc_1" type="text" [(ngModel)]="obj.dianzan"  readonly="readonly">
+							
+							<i class="icon iconfont icon-xin" (click)="stockCountAdd_2_1(obj.id,obj.shoucang,obj.status1)"></i>
+							<input class="name" id="dsc_1" type="text" [(ngModel)]="obj.shoucang"  readonly="readonly">
+							
+							<i class="icon iconfont icon-buoumaotubiao48" (click)="stockCountAdd_3(obj.id,obj.pinglun)"></i>
+							<input class="name" id="dsc_1" type="text" [(ngModel)]="obj.pinglun"  readonly="readonly"> 
 						</div>
 						<div class="fb">{{obj.fabiao}}</div>
 					</li>
@@ -143,14 +151,16 @@
 							<img [src]="obj.userimgurl" alt="" class="tx" />
 							<span class="sp">{{obj.name}}</span>
 						</div>
-						<img [src]="obj.imgurl" alt="" class="tx1" />
+						<img [src]="obj.imgurl" alt="" class="tx1" (click)="stockCountAdd_tp(obj.id)"/>
 						<div class="dsp">
-							<i class="icon iconfont icon-good" ></i>
-							<span class="name" id="dsc_1">{{obj.dianzan}}</span>
-							<i class="icon iconfont icon-xin" ></i>
-							<span class="name" id="dsc_1">{{obj.shoucang}}</span>
-							<i class="icon iconfont icon-buoumaotubiao48" ></i>
-							<span class="name" id="dsc_1">评论</span>
+							<i class="icon iconfont icon-good" (click)="stockCountAdd_1_1(obj.id,obj.dianzan,obj.status,$event)"></i>
+							<input class="name" id="dsc_1" type="text" [(ngModel)]="obj.dianzan"  readonly="readonly">
+							
+							<i class="icon iconfont icon-xin" (click)="stockCountAdd_2_1(obj.id,obj.shoucang,obj.status1)"></i>
+							<input class="name" id="dsc_1" type="text" [(ngModel)]="obj.shoucang"  readonly="readonly">
+							
+							<i class="icon iconfont icon-buoumaotubiao48" (click)="stockCountAdd_3(obj.id)"></i>
+							<input class="name" id="dsc_1" type="text" [(ngModel)]="obj.pinglun"  readonly="readonly"> 
 						</div>
 						<div class="fb">{{obj.fabiao}}</div>
 					</li>
@@ -159,3 +169,4 @@
 		</div>
 	</div>
 </div>
+<footer></footer>

@@ -41,6 +41,8 @@ import { RegisterpwdComponent } from './component/registerpwd/registerpwd.compon
 import { UserComponent } from './component/user/user.component';
 import { UsersetComponent } from './component/userset/userset.component';
 import { NotificationComponent } from './component/notification/notification.component';
+import { SearchComponent } from './component/search/search.component';
+
 
 
 
@@ -74,7 +76,11 @@ import { NotificationComponent } from './component/notification/notification.com
     RegisterpwdComponent,
     UserComponent,
     UsersetComponent,
+<<<<<<< HEAD
     NotificationComponent
+=======
+    SearchComponent
+>>>>>>> 10ded42355eba65e0e23189eb924e31c19f4d357
 
   ],
   imports: [

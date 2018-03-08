@@ -14,30 +14,33 @@ export class OrderComponent implements OnInit {
       address: Array<any> = [];
       dataCountSetPrice : number = 0;
       multiple: boolean = true;
+      ordernumber : number;
+      userid : number = 123;
 
       constructor(private http: HttpService, private router: Router, private route : ActivatedRoute, private confirmServ: NzModalService) { }
 
       ngOnInit() {
           let params;
-          this.http.get('get_orders',params = {userid:123}).then((res) => { 
-              this.order = res['data'].results;
-              console.log(this.order)
-          }).then(()=>{
-              this. getPrice();
-          })
-          
-          this.http.get('get_address',params = {userid:123}).then((res) => {        
-              for(let i = 0;i<res['data'].results.length;i++){
-                  if(res['data'].results[i].default_address==1){
-                      this.address.push(res['data'].results[i]);
+          if(this.userid){
+              this.http.get('get_orders',params = {userid:this.userid}).then((res) => { 
+                  this.order = res['data'].results;
+                  // console.log(this.order)
+              }).then(()=>{
+                  this. getPrice();
+              }) 
+              this.http.get('get_address',params = {userid:this.userid}).then((res) => {        
+                  for(let i = 0;i<res['data'].results.length;i++){
+                      if(res['data'].results[i].default_address==1){
+                          this.address.push(res['data'].results[i]);
+                      }
                   }
-              }
-              console.log(this.address);
-          })
+                  // console.log(this.address);
+              })
+          }      
       }
       deleteOrder(){
          this.http.post('delete_order').then((res) => { 
-                  console.log(res)
+                  // console.log(res)
          })
       }
       getPrice(){
@@ -45,37 +48,47 @@ export class OrderComponent implements OnInit {
           for(let i = 0;i<this.order.length;i++){
              this.dataCountSetPrice += this.order[i].count*this.order[i].price;
           }
-          console.log(this.dataCountSetPrice)   
+          // console.log(this.dataCountSetPrice)   
       }
       goToPay(){
           if(this.address.length===0){
                this.error();
           }else if(this.multiple==false){
                this.erroragree();
+          }else if(this.order.length===0){
+               this.errororder();
           }else{
+             this.ordernumber = parseInt(Math.random()*(1000000000-10000000+1)+10000000,10);
+             // console.log(this.ordernumber)
              for(let i =0;i<this.order.length;i++){
                  let params ;
+                 let ordernumber;
                  this.http.post('delete_cart',params = {indexid:this.order[i].indexid}).then((res) => { 
-                      console.log(res)
+                      // console.log(res)
                  })
-                 this.http.post('change_order',params = {indexid:this.order[i].indexid}).then((res) => { 
-                      console.log(res)
-                 }).then(()=>{
+                 this.http.post('change_order',params = {indexid:this.order[i].indexid,ordernumber:this.ordernumber}).then((res) => { 
+                        // console.log(res)
                         this.order = [];
+                        this.router.navigate(['payment',this.dataCountSetPrice,res.data.results[0].ordernumber]);    
                  })
              }
-              this.router.navigate(['payment',this.dataCountSetPrice]);
           }
       }
-      error() {
-            this.confirmServ.error({
+      error(){
+            this.confirmServ.info({
               title: '请填写默认收货地址',
               content: '么么哒！！！'
             });
       }
       erroragree() {
-            this.confirmServ.error({
+            this.confirmServ.info({
               title: '请同意协议',
+              content: '么么哒！！！'
+            });
+      }
+      errororder() {
+            this.confirmServ.info({
+              title: '请添加商品',
               content: '么么哒！！！'
             });
       }
@@ -85,6 +98,6 @@ export class OrderComponent implements OnInit {
           }else{
               this.multiple = true;  
           }
-          console.log(this.multiple)
+          // console.log(this.multiple)
       }
 }

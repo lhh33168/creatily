@@ -12,11 +12,10 @@
           <div class="dsp">
               <i class="icon iconfont icon-good" (click)="stockCountAdd_1(obj.id,obj.dianzan,obj.status,$event)"></i>
               <input class="name" id="dsc_1" type="text" [(ngModel)]="obj.dianzan"  readonly="readonly">
-              
               <i class="icon iconfont icon-xin" (click)="stockCountAdd_2(obj.id,obj.shoucang,obj.status1)"></i>
               <input class="name" id="dsc_1" type="text" [(ngModel)]="obj.shoucang"  readonly="readonly">
               
-              <i class="icon iconfont icon-buoumaotubiao48" (click)="stockCountAdd_3(obj.id,obj.pinglun)"></i>
+              <i class="icon iconfont icon-buoumaotubiao48" (click)="stockCountAdd_3(obj.id)"></i>
               <input class="name" id="dsc_1" type="text" [(ngModel)]="obj.pinglun"  readonly="readonly"> 
           </div>
         <div class="fabiao">{{obj['fabiao']}}</div>

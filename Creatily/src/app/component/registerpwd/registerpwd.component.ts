@@ -74,5 +74,6 @@ export class RegisterpwdComponent implements OnInit {
         this.submitPwd = true;
       }
     });
+    }
 }
 }

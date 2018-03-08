@@ -33,9 +33,15 @@ const appRoutes:Routes = [
     { path: "detail/:id", component: DetailComponent},
     { path: "cart", component: CartComponent},
     { path: "order", component: OrderComponent},
-    { path: "payment/:price", component: PaymentComponent},
+    { path: "payment/:price/:ordernumber", component: PaymentComponent},
     { path: "address", component: AddressComponent},
+<<<<<<< HEAD
     { path: "newAddress", component: NewAddressComponent},
+=======
+    { path: "newAddress/:id", component: NewAddressComponent},
+
+
+>>>>>>> 10ded42355eba65e0e23189eb924e31c19f4d357
     { path: "community", component: CommunityComponent},
     { path: "notification", component: NotificationComponent},
     { path: "comment/:id", component: CommentComponent},

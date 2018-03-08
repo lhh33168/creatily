@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../utils/http.service';
 import { NzModalService } from 'ng-zorro-antd';
 import { NzMessageService } from 'ng-zorro-antd';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
       selector: 'app-address',
@@ -11,18 +12,20 @@ import { NzMessageService } from 'ng-zorro-antd';
 export class AddressComponent implements OnInit {
 
       getaddress : Array<any> = [];
+      userid: number = 123;
 
-      constructor(private http: HttpService, private confirmServ: NzModalService, private _message: NzMessageService) { }
+      constructor(private http: HttpService, private confirmServ: NzModalService, private _message: NzMessageService,  private route: ActivatedRoute, private router: Router) { }
 
       ngOnInit() {
-          this.getAddressItem();
-          console.log(AddressComponent)
+          if(this.userid){
+              this.getAddressItem();            
+          }
       }
       getAddressItem(){
           let params = {};
-          this.http.get('get_address',params = {userid:123}).then((res) => { 
+          this.http.get('get_address',params = {userid:this.userid}).then((res) => { 
               this.getaddress = res['data'].results;
-              console.log(this.getaddress)
+              // console.log(this.getaddress)
           })
       }
       // showConfirm = (id) =>{
@@ -48,13 +51,14 @@ export class AddressComponent implements OnInit {
       deleteAddress(id){
           let params;
           this.http.post('deletet_address',params = {id:id}).then((res) => { 
-              console.log(res)
+              // console.log(res)
               this._message.info('已成功删除地址信息')
           }).then(()=>{
               this.getAddressItem();
           })
       }
-      updateAddress(){
-         
+      updateAddress(id){
+          
+           this.router.navigate(['newAddress',id])
       }
 }

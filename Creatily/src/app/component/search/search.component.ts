@@ -20,7 +20,7 @@ export class SearchComponent implements OnInit {
 
     search(){
         this.$.get("go_search",{data:this._search_data}).then((res)=>{
-            if(res.state){
+            if(res['state']){
                 this.search_data.emit(res['data']['results'] || []);
                 console.log(this.search_data);
             }

@@ -27,25 +27,41 @@ module.exports = {
         });
 
         _app.post('/add_cart',function(_req,_res){
-           var arr =[_req.body.userid,_req.body.count,_req.body.color,_req.body.size,_req.body.goodsid,_req.body.username,_req.body.price,_req.body.proname,_req.body.imgurl]
-           console.log(arr)
-           // var sql =`INSERT INTO cart(uerid,proid) VALUES(${uid},${_req.body.proid})`
+            var userid = _req.body.userid;
+            var goodsid = _req.body.goodsid;
+            var color = _req.body.color;
+            var size = _req.body.size;
+            var count = _req.body.count;
+            var sql;
+            if(!color){
+                sql = `select * from cart where userid = ${userid} and goodsid = ${goodsid} and size = "${size}"`;
+            }else if (!size){
+                sql = `select * from cart where userid = ${userid} and goodsid = ${goodsid} and color = "${color}"`;
+            }else{
+                sql = `select * from cart where userid = ${userid} and goodsid = ${goodsid} and size= "${size}" and color = "${color}"`;
+            }
+            console.log(sql)
+            db.select2(sql,function (res1){
+                var _data = res1.data.results[0];
+                console.log(_data)
+                // _res.send(res)
+                var arr =[_req.body.userid,_req.body.count,_req.body.color,_req.body.size,_req.body.goodsid,_req.body.username,_req.body.price,_req.body.proname,_req.body.imgurl];      
+                if(!_data){
+                    db.insert(`INSERT INTO cart(userid,count,color,size,goodsid,username,price,proname,imgurl) VALUES(?,?,?,?,?,?,?,?,?)`,arr,function (res){
+                        return _res.send(res);
+                    })
+                    
+                }
+                else{
+                    var indexid = _data.indexid;
+                    count = count*1 + _data.count*1;
+                    db.update(`update cart set count = ${count} where indexid = ${indexid}`,function(res){
+                        return _res.send(res);
+                    })
+                }
+            })
 
-           db.insert(`INSERT INTO cart(userid,count,color,size,goodsid,username,price,proname,imgurl) VALUES(?,?,?,?,?,?,?,?,?)`,arr,function(res){
-                _res.send(res);
-           })
         });
-
-        // _app.post('/add_cart_order',function(_req,_res){
-        //    var arr =[_req.body.userid,_req.body.count,_req.body.color,_req.body.size,_req.body.goodsid,_req.body.username,_req.body.price,_req.body.proname,_req.body.imgurl]
-        //    console.log(arr)
-           
-        //    db.insert(`INSERT INTO order(userid,count,color,size,goodsid,username,price,proname,imgurl) VALUES(?,?,?,?,?,?,?,?,?)`,arr,function(res){
-        //         _res.send(res);
-        //    })
-        // });
-
-
 
 
         // _app.post('/add_collect',function(_req,_res){

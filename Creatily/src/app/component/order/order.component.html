@@ -34,7 +34,7 @@
             <li *ngFor="let obj of order;let idx = index;">
                 <img [src]="obj.imgurl" alt="" />
                 <div class="order_center">
-                    <p>{{obj.name}}</p>
+                    <p>{{obj.proname}}</p>
                     <span class="cartmainbottom_full_center_c" *ngIf="obj['size'] && obj['size'].length>0">类型：{{obj.size}}</span>
                     <span class="cartmainbottom_full_center_c" *ngIf="!obj['size'] && obj['color'].length>0 && obj['color']">颜色：{{obj.color}}</span>
                     <div><span>￥{{obj.price}}</span><span>&times;{{obj.count}}</span></div>
@@ -42,7 +42,7 @@
             </li>
         </ul>
         <div class="order_main_agree ">
-            <input type="checkbox" id="agree"/><label for="agree">我已同意《好物平台》协议</label>
+            <input type="checkbox" id="agree" [checked]="multiple" (click)="agree()"/><label for="agree">我已同意《好物平台》协议</label>
         </div>
         <div class="common_line"></div>
     </main>
@@ -50,6 +50,6 @@
         <div>
             实际付款：<span>￥{{dataCountSetPrice}}</span>
         </div>
-        <span class="orderfoot_right" routerLink="/payment" (click)="goToPay()">立即付款</span>
+        <span class="orderfoot_right" (click)="goToPay()">立即付款</span>
     </div>
 </div>

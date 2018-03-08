@@ -4,6 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {RootRouter} from './router/router';
 import {HttpService} from './utils/http.service'
+import {CommonService} from './utils/common.service'
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
@@ -17,13 +18,21 @@ import { HomeComponent } from './components/home/home.component';
 
 
 import { AppComponent } from './app.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { GoodsComponent } from './components/goods/goods.component';
+import { OrdersComponent } from './components/orders/orders.component';
+import { DatagridComponent } from './components/datagrid/datagrid.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
-    HomeComponent
+    HomeComponent,
+    AdminComponent,
+    GoodsComponent,
+    OrdersComponent,
+    DatagridComponent
   ],
   imports: [
     RootRouter,
@@ -33,8 +42,8 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     ElModule.forRoot(),
   ],
-  providers: [HttpService],
-  bootstrap: [UserComponent]
+  providers: [HttpService,CommonService],
+  bootstrap: [AppComponent]
 })
 
 

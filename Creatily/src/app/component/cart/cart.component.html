@@ -40,9 +40,9 @@
                                 <span>+</span>
                             </div> -->
                             <div class="select-box"> 
-                                <span class="select-btn stockCountSub" (click)="stockCountSub(obj.indexid,obj.count,obj.price)">-</span> 
+                                <span class="select-btn stockCountSub" (click)="stockCountSub(obj.indexid,obj.count,obj.price,idx,obj)">-</span> 
                                 <input class="select-btn select-num" type="text" [(ngModel)]="obj.count"  readonly="readonly"> 
-                                <span class="select-btn stockCountAdd" (click)="stockCountAdd(obj.indexid,obj.count,obj.price)">+</span> 
+                                <span class="select-btn stockCountAdd" (click)="stockCountAdd(obj.indexid,obj.count,obj.price,idx,obj)">+</span> 
                             </div>
 
                         </div>

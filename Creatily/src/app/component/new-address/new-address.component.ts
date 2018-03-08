@@ -114,12 +114,12 @@ export class NewAddressComponent implements OnInit {
           let params;
           this.http.get('get_compile_address',params = {id:this.id}).then((res) => { 
              if(res.state==true){
-                 this.city1NgModel = res.data.results[0].address.split(',')[0];
-                 this.definite = res.data.results[0].address.split(',')[1];
-                 this.review = res.data.results[0].name;
-                 this.phone = res.data.results[0].phone; 
+                 this.city1NgModel = res['data'].results[0].address.split(',')[0];
+                 this.definite = res['data'].results[0].address.split(',')[1];
+                 this.review = res['data'].results[0].name;
+                 this.phone = res['data'].results[0].phone; 
              }
-             console.log(res);
+             // console.log(res);
           })
       }
 
@@ -151,8 +151,8 @@ export class NewAddressComponent implements OnInit {
         });
       }
       addAddress(name,phone,address,city1NgModel){
-          let params;console.log(address+','+city1NgModel)
-          if(this.review == '' || this.phone == '' ||  this.definite == ''){
+          let params;
+          if(this.id == ':10000'){
               if(this.multiple){
                   if(!name || !phone || !city1NgModel || !address){
                       this.error();

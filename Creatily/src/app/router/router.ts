@@ -20,6 +20,7 @@ import { CommentComponent} from '../component/comment/comment.component';
 import { RegisterpwdComponent } from '../component/registerpwd/registerpwd.component';
 import { UserComponent } from '../component/user/user.component';
 import { UsersetComponent } from '../component/userset/userset.component';
+import { SearchComponent } from '../component/search/search.component';
 
 const appRoutes:Routes = [
     { path:"", redirectTo:"/bootpage",pathMatch:'full'},
@@ -35,6 +36,7 @@ const appRoutes:Routes = [
     { path: "payment/:price/:ordernumber", component: PaymentComponent},
     { path: "address", component: AddressComponent},
     { path: "newAddress/:id", component: NewAddressComponent},
+    { path: "search", component: SearchComponent},
 
 
     { path: "community", component: CommunityComponent},

@@ -32,7 +32,7 @@ const appRoutes:Routes = [
     { path: "detail/:id", component: DetailComponent},
     { path: "cart", component: CartComponent},
     { path: "order", component: OrderComponent},
-    { path: "payment", component: PaymentComponent},
+    { path: "payment/:price", component: PaymentComponent},
     { path: "address", component: AddressComponent},
     { path: "newAddress", component: NewAddressComponent},
 

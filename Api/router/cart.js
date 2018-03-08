@@ -37,6 +37,33 @@ module.exports = {
                 _res.send(res);
             })
         });
+        _app.post('/add_address',function(_req,_res){
+           var userid = _req.body.userid;
+
+           var arr =[_req.body.name,_req.body.userid,_req.body.phone,_req.body.address,1]
+           console.log(arr)
+
+           db.update(`update address set default_address = 0 where user_id = ${userid} && default_address = 1`,function(res){
+                    db.insert(`INSERT INTO address (name,user_id,phone,address,default_address) VALUES(?,?,?,?,?)`,arr,function(res2){
+                    _res.send(res2);
+               })       
+           })
+           
+        });
+        _app.post('/add_address_def',function(_req,_res){
+           var arr =[_req.body.name,_req.body.userid,_req.body.phone,_req.body.address]
+           console.log(arr)
+
+           db.insert(`INSERT INTO address (name,user_id,phone,address) VALUES(?,?,?,?)`,arr,function(res){
+                _res.send(res);
+           })                
+        });
+        _app.post('/deletet_address',function(_req,_res){
+            var id = _req.body.id;
+            db.delete(`DELETE FROM address where id = ${id}`,function(res){
+                _res.send(res);
+            })
+        });
         _app.post('/add_order',function(_req,_res){
            var arr =[_req.body.indexid,_req.body.userid,_req.body.count,_req.body.color,_req.body.size,_req.body.goodsid,_req.body.username,_req.body.price,_req.body.proname,_req.body.imgurl]
            console.log(arr)
@@ -82,6 +109,12 @@ module.exports = {
         });
         _app.post('/delete_order',function(_req,_res){
             db.delete(`DELETE FROM orders where status = 0`,function(res){
+                _res.send(res);
+            })
+        });
+        _app.post('/change_order',function(_req,_res){
+            var indexid = _req.body.indexid;
+            db.update(`update orders set status = 1 where indexid = ${indexid}`,function(res){
                 _res.send(res);
             })
         });

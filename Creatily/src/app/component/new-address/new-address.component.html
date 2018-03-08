@@ -2,7 +2,7 @@
     <header class="newAddress_top">
         <getback></getback>
         <span>新建地址</span>
-        <span (click)="addAddress(review,phone,definite)">保存</span>
+        <span (click)="addAddress(review,phone,definite,city1NgModel)">保存</span>
     </header>
     <main class="newAddress_main">
         <li>
@@ -23,11 +23,48 @@
                 省市选择
               </List.Item>
         </Picker> -->
+        <!-- <my-breadcrumb name1="数据管理" name2="省级联动"></my-breadcrumb>
+
+
+            <p-dropdown [options]="city1Array" placeholder="请选择" [(ngModel)]="city1NgModel" [filter]="true"
+                        (onChange)="city1onChange()" [style]="{'width':'92px'}"
+                        [panelStyle]="{'width':'180px'}"
+                        scrollHeight="180px" name="city1"  ></p-dropdown>
+
+            <p-dropdown [options]="city2Array" placeholder="请选择" [(ngModel)]="city2NgModel" (onChange)="city2onChange()"
+                        [disabled]="city2Disabled" [style]="{'width':'92px'}" [panelStyle]="{'width':'180px'}"
+                        scrollHeight="180px" name="city2"></p-dropdown>
+
+            <p-dropdown [options]="city3Array" placeholder="请选择" [(ngModel)]="city3NgModel" [disabled]="city3Disabled"
+                        [panelStyle]="{'width':'120px'}"
+                        [style]="{'width':'92px'}" scrollHeight="180px" name="city3">
+      </p-dropdown> -->
+        <li id="sanjiliandong">
+            <label class="shouhuo">收货地址</label>
+           <!--  <input list="sheng" type="text" placeholder="北京市" [(ngModel)]="city1NgModel" (onChange)="city1onChange()" scrollHeight="180px" name="city1"/> -->
+            <!-- <input list="shi" type="text"placeholder="市" [(ngModel)]="city2NgModel" disabled="city2Disabled" (onChange)="city2onChange()" readonly="readonly"/>
+            <input list="qu" type="text"placeholder="区" [(ngModel)]="city3NgModel" disabled="city3Disabled" /> -->
+            <select id="sheng" [(ngModel)]="city1NgModel">
+                <option [value]="sheng.label" *ngFor="let sheng of city1Array;let idx = index;">{{sheng.label}}</option>
+            </select>
+            <!-- <ng-template ngFor let-key [ngForOf]="getKeys(citys)" >
+                    <th *ngIf="(!columns[0] || columns.indexOf(key) > -1) && filterColumns.indexOf(key) < 0">{{privateDic[common.lanType] && privateDic[common.lanType][key] ? privateDic[common.lanType][key] : common.publicDic[common.lanType][key] || key}}</th>
+                <datalist id="sheng" >
+                    <option [value]="citys.key">{{citys.key}}</option>
+                </datalist>
+            </ng-template> -->
+            <!-- <datalist id="shi" *ngFor="let shi of city2Array" >
+                <option [value]="shi.label">{{shi.label}}</option>
+            </datalist>
+            <datalist id="qu" *ngFor="let qu of city3Array">
+                <option [value]="qu.label">{{qu.label}}</option>
+            </datalist> -->
+        </li>       
         <li id="last">
-            <label>详细地址</label><input type="textarea"placeholder="请输入详细地址" [(ngModel)]="definite"/>
+            <label>详细地址</label><input type="textarea" placeholder="请输入详细地址" [(ngModel)]="definite"/>
         </li>
     </main>
     <div class="newAddress_foot">
-        <input type="radio" id="address"/><label for="address">设为默认地址</label>
+        <input type="checkbox" id="address" [checked]="multiple" (click)="defaultAddress()"/><label for="address">设为默认地址</label>
     </div>
 </div>

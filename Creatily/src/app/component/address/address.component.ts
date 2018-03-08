@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../utils/http.service';
 import { NzModalService } from 'ng-zorro-antd';
 import { NzMessageService } from 'ng-zorro-antd';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
       selector: 'app-address',
@@ -12,7 +13,7 @@ export class AddressComponent implements OnInit {
 
       getaddress : Array<any> = [];
 
-      constructor(private http: HttpService, private confirmServ: NzModalService, private _message: NzMessageService) { }
+      constructor(private http: HttpService, private confirmServ: NzModalService, private _message: NzMessageService,  private route: ActivatedRoute, private router: Router) { }
 
       ngOnInit() {
           this.getAddressItem();
@@ -54,7 +55,8 @@ export class AddressComponent implements OnInit {
               this.getAddressItem();
           })
       }
-      updateAddress(){
-         
+      updateAddress(id){
+           console.log(66,id)
+           this.router.navigate(['newAddress',id])
       }
 }

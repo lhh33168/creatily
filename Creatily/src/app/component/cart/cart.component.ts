@@ -63,7 +63,7 @@ export class CartComponent implements OnInit {
             return Object.keys(item);
       }
       selectTr(_idx,_obj){
-            console.log(_obj,_idx)
+            // console.log(_obj,_idx)
             // console.log(this.dataCountSet)
             if(this.currentTrIndexs.indexOf(_idx) > -1){
                 this.currentTrIndexs.splice(this.currentTrIndexs.indexOf(_idx), 1);

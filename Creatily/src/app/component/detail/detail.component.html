@@ -3,7 +3,12 @@
         <i class="goback iconfont icon-fanhui" (click)="goBack()"></i>
         <i class="share iconfont icon-share"><span>分享赚钱</span></i>
     </div>
-    <div class="detail-container">
+    <div class="head2" *ngIf="headShow2">
+        <div class="goback2" (click)="goBack()"><i class="iconfont icon-fanhui"></i><span>返回</span></div>
+        <span>商品详情</span>
+        <i class="share2 iconfont icon-share"></i>
+    </div>
+    <div class="detail-container" (scroll)="test($event)">
         <div class="swiper-container">  
             <div class="swiper-wrapper">  
                 <img class="swiper-slide" *ngFor= "let item of groundImg" src={{item}}/>  
@@ -12,7 +17,7 @@
         </div>
         <div class="product-top">
             <div class="phoroduct-name">{{dataset['proName']}}</div>
-            <div class="product-price">{{price | currency: 'CNY':'2.0-0'}}</div>
+            <div class="product-price">{{price | currency: 'CNY':'2.2-2'}}</div>
             <div class="wuliu" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="10px">
                 <div class="col-4">
                     <i class="iconfont icon-gouhao"> 30天无忧退货 </i>
@@ -39,7 +44,7 @@
                                 <img src={{groundImg[currentImgIdx]}}/>
                             </div> 
                             <div class="content-box"> 
-                                <div class="price-text">{{currentSizePrice | currency: 'CNY':'2.0-0'}}</div> 
+                                <div class="price-text">{{currentSizePrice | currency: 'CNY':'2.2-2'}}</div> 
                                 <div class="tip" *ngIf="tip.length == 0"> 请选择数量与规格 </div> 
                                 <div class="tip" *ngIf="tip.length>0"> 已选择：{{tip[0]}} {{tip[1]}} </div> 
                             </div>
@@ -72,6 +77,7 @@
                 <img src={{item}}> 
             </div>
         </div>
+        <div class="container-bottom"></div>
     </div>
     <div class="bottom-toolbar">
         <div class="btn-bar1">

@@ -1,0 +1,37 @@
+<div class="user-dingdan">
+    <div class="userset-title">
+        <getback></getback>
+        <span>我的订单</span>
+    </div>
+    <div class="userset-nav" *ngIf="navList">
+        <div class="userset-table">
+            <ul>
+                <li *ngFor="let item of navList;let idx = index" [class]="(navActive == item.navidx) ? 'dingdanActive':''" (click)="dingdan(item.navidx)">{{item['navname']}}</li>
+            </ul>
+        </div>
+        <div class="userset-content">
+            <div class="dingdan" *ngFor="let value of navList" [style.display] = "(navActive == value.navidx)? 'block' : 'none'" >
+                <div class="dingdan-content" *ngIf="dingdanlist">
+                    <div *ngFor="let item of dingdanlist;let idx = index" class="gooddan" >
+                        <div class="dingdanNum">订单编号:{{item['ordernumber']}}</div>
+                        <div class="dingdan-good">
+                            <div class="dingdan-img">
+                                <img src="{{item.imgurl}}"/>
+                            </div>
+                            <div class="dingdan-msg">
+                                <ul>
+                                    <li class="dingdan-title">{{item['proname']}}</li>
+                                    <li class="dingdan-size">{{item['color'] || item['size'] }}</li>
+                                    <li class="dingdan-numTol">
+                                        <span>￥{{item['count']*item['price']}}</span>
+                                        <span class="dingdan-num">&times;{{item['count']}}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

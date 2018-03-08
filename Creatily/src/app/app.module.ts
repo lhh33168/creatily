@@ -40,6 +40,7 @@ import { CommentComponent } from './component/comment/comment.component';
 import { RegisterpwdComponent } from './component/registerpwd/registerpwd.component';
 import { UserComponent } from './component/user/user.component';
 import { UsersetComponent } from './component/userset/userset.component';
+import { UserorderComponent } from './component/userorder/userorder.component';
 import { NotificationComponent } from './component/notification/notification.component';
 import { SearchComponent } from './component/search/search.component';
 
@@ -76,11 +77,13 @@ import { SearchComponent } from './component/search/search.component';
     RegisterpwdComponent,
     UserComponent,
     UsersetComponent,
-<<<<<<< HEAD
-    NotificationComponent
-=======
+
+    UserorderComponent,
+
+    NotificationComponent,
+
     SearchComponent
->>>>>>> 10ded42355eba65e0e23189eb924e31c19f4d357
+
 
   ],
   imports: [

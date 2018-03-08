@@ -8,16 +8,16 @@
         <div class="login-content-input">
             <div class="login-input-phone">
                 <i class="iconfont icon-wode"></i>
-                <input type="text" class="phoneInput" #inputFocus placeholder="请输入手机号码" maxlength="11" [(ngModel)]="inputPhone" (input)="inputPhoneA($event)"/>
-                <em class="InputClearA" *ngIf="showA" (click)="showAclear()">&times;</em>
+                <input type="tel" class="phoneInput" #loginFocus placeholder="请输入手机号码" maxlength="11" [(ngModel)]="loginphone" (input)="loginphoneInput($event)"/>
+                <em class="InputClearA" *ngIf="loginshowA" (click)="loginPhoneclear()">&times;</em>
             </div>
             <div class="login-input-pwd">
                 <i class="iconfont icon-mima"></i>
-                <span class="iconfont icon-yj" (click)="showChange()"></span>
-                <input [type]="inputType" class="pwdInput"  placeholder="请输入密码" [(ngModel)]="inputPass" (input)="inputPhoneB($event)"/>
-                <em class="InputClearB" *ngIf="showB" (click)="showBclear()">&times;</em>
+                <span class="iconfont icon-yj" (click)="loginpassshow()"></span>
+                <input [type]="loginType" class="pwdInput" #loginpassFocus placeholder="请输入密码" [(ngModel)]="loginpass" (input)="loginpassInput($event)" maxlength="20"/>
+                <em class="InputClearB" *ngIf="loginshowB" (click)="loginPassclear()">&times;</em>
             </div>
-            <button class="login-submit">登录</button>
+            <button class="login-submit" #loginSubmit (click)="loginsubmit(loginphone,loginpass)" [disabled]="logindisable">登录</button>
         </div>
         <div class="login-forgetPwd">
             <a routerLink="/forget">忘记密码?</a>

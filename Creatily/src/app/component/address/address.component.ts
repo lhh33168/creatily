@@ -17,13 +17,13 @@ export class AddressComponent implements OnInit {
 
       ngOnInit() {
           this.getAddressItem();
-          console.log(AddressComponent)
+          // console.log(AddressComponent)
       }
       getAddressItem(){
           let params = {};
           this.http.get('get_address',params = {userid:123}).then((res) => { 
               this.getaddress = res['data'].results;
-              console.log(this.getaddress)
+              // console.log(this.getaddress)
           })
       }
       // showConfirm = (id) =>{
@@ -49,14 +49,14 @@ export class AddressComponent implements OnInit {
       deleteAddress(id){
           let params;
           this.http.post('deletet_address',params = {id:id}).then((res) => { 
-              console.log(res)
+              // console.log(res)
               this._message.info('已成功删除地址信息')
           }).then(()=>{
               this.getAddressItem();
           })
       }
       updateAddress(id){
-           console.log(66,id)
+          
            this.router.navigate(['newAddress',id])
       }
 }

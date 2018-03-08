@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../utils/http.service';
 import { NzModalService } from 'ng-zorro-antd';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
       selector: 'app-new-address',
@@ -9,11 +10,15 @@ import { NzModalService } from 'ng-zorro-antd';
 })
 export class NewAddressComponent implements OnInit {
 
+      id: any ='';
+      review:any ='';
+      phone:any ='';
+      definite:any ='';
       multiple: boolean = false;
       /************************* 省级联动 ********************************/
       citys: any;                                             //省级 数据
       city1Array: any = [];
-      city1NgModel: any;
+      city1NgModel: any = '北京市';
       city2Array: any = [];
       city2NgModel: any;
       city2Disabled: boolean = true;
@@ -98,10 +103,24 @@ export class NewAddressComponent implements OnInit {
       }
 
 
-      constructor(private http: HttpService, private confirmServ: NzModalService) { }
+      constructor(private http: HttpService, private confirmServ: NzModalService, private route: ActivatedRoute, private router: Router) { }
 
       ngOnInit() {
           this.getCitys();
+          this.route.params.subscribe((params) => {
+            // console.log(params);
+            this.id = params['id'];         
+          });
+          let params;
+          this.http.get('get_compile_address',params = {id:this.id}).then((res) => { 
+             if(res.state==true){
+                 this.city1NgModel = res.data.results[0].address.split(',')[0];
+                 this.definite = res.data.results[0].address.split(',')[1];
+                 this.review = res.data.results[0].name;
+                 this.phone = res.data.results[0].phone; 
+             }
+             console.log(res);
+          })
       }
 
       getKeys(item){
@@ -114,7 +133,7 @@ export class NewAddressComponent implements OnInit {
             });
       }
       error() {
-            this.confirmServ.error({
+            this.confirmServ.info({
               title: '请输入完整收货人信息',
               content: '么么哒！！！'
             });
@@ -132,25 +151,46 @@ export class NewAddressComponent implements OnInit {
         });
       }
       addAddress(name,phone,address,city1NgModel){
-          let params;
-          if(this.multiple){
-              if(!name || !phone || !city1NgModel || !address){
-                  this.error();
+          let params;console.log(address+','+city1NgModel)
+          if(this.review == '' || this.phone == '' ||  this.definite == ''){
+              if(this.multiple){
+                  if(!name || !phone || !city1NgModel || !address){
+                      this.error();
+                  }else{
+                      this.http.post('add_address_def',params = {userid:123,name:name,phone:phone,address:city1NgModel +',' + address}).then((res) => { 
+                          this.success();          
+                      })         
+                  }
               }else{
-                  this.http.post('add_address',params = {userid:123,name:name,phone:phone,address:address}).then((res) => { 
-                      this.success();          
-                  })         
-              }
+                  if(!name || !phone || !city1NgModel || !address){
+                      this.error();
+                  }else{
+                      this.http.post('add_address',params = {userid:123,name:name,phone:phone,address:city1NgModel +',' + address}).then((res) => { 
+                          this.success();         
+                      })         
+                  }
+              } 
           }else{
-              if(!name || !phone || !city1NgModel || !address){
-                  this.error();
+              if(this.multiple){
+                  if(!name || !phone || !city1NgModel || !address){
+                      this.error();
+                  }else{
+                      this.http.post('update_address_def',params = {userid:123,name:name,phone:phone,address:city1NgModel +',' + address,id:this.id}).then((res) => { 
+                          this.success();          
+                      })         
+                  }
               }else{
-                  this.http.post('add_address_def',params = {userid:123,name:name,phone:phone,address:address}).then((res) => { 
-                      this.success();         
-                  })         
-              }
+                  if(!name || !phone || !city1NgModel || !address){
+                      this.error();
+                  }else{
+                      this.http.post('update_address',params = {userid:123,name:name,phone:phone,address:city1NgModel +',' + address,id:this.id}).then((res) => { 
+                          this.success();         
+                      })         
+                  }
+              } 
           }
       }
+
       defaultAddress(){
           if(this.multiple){
               this.multiple = false;
@@ -158,6 +198,7 @@ export class NewAddressComponent implements OnInit {
               this.multiple = true;  
           }
       }
+
 
 }
 

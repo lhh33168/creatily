@@ -13,6 +13,7 @@ import { Location } from '@angular/common';
 export class PaymentComponent implements OnInit {
 
       price : number = 0;
+      ordernumber : number ;
 
       constructor(private confirmServ: NzModalService, private http: HttpService, private router: Router, private route : ActivatedRoute, private location: Location) { }
 
@@ -20,7 +21,8 @@ export class PaymentComponent implements OnInit {
           this.route.params.subscribe((params) => {
             // console.log(params);
             this.price = params['price'];
-            console.log(this.price)
+            this.ordernumber = params['ordernumber']
+            
         });
 
       }
@@ -53,11 +55,15 @@ export class PaymentComponent implements OnInit {
       }
       payment() {
             let price = this.price;
-            this.location.back();
-            this.confirmServ.success({
-              title: '您已成功支付金额￥'+`${price}`,
-              content: '返回订单页'
-            });
+            let params;
+            this.http.post('payment_order',params = {ordernumber:this.ordernumber}).then((res) => { 
+                console.log(res)
+                this.location.back();
+                this.confirmServ.success({
+                    title: '您已成功支付金额￥'+`${price}`,
+                    content: '返回订单页'
+                });
+            })   
       }
 
 }

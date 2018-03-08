@@ -1,11 +1,20 @@
-.user{border:1px solid #ccc;
-    .header{border:1px solid #ccc;
-
+html,body{width: 100%;height: 100%;}
+app-user{}
+.user{padding-top: 200px;
+    height: 768px;width: 350px;margin:0 auto;
+    .ipt{padding-top: 20px;overflow: hidden;
+        label{
+            float: left;height: 35px;line-height: 35px;font-size: 16px;color:#000;
+        }
+        input{
+            float: right;
+            width: 300px;height: 35px;line-height: 35px;border:1px solid #DCDCDC;border-radius:6px;font-size: 14px;padding-left: 10px;
+        }
     }
-    .aside{border:1px solid #ccc;
-
+    .btn {padding-left: 50px;padding-top: 20px;
+        input{
+            width: 300px;height: 30px;font-size: 16px;line-height: 16px;text-align: center;border-radius:6px;cursor: pointer;
+        }
     }
-    .main{border:1px solid #ccc;
-
-    }
+    
 }

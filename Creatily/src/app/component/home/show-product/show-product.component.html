@@ -1,16 +1,26 @@
 <div class="showProduct">
 <div class="show-title">达人SHOW</div>
   <div class="swiper-container">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide"*ngFor="let obj of showproduct"> 
+    <ul class="swiper-wrapper">
+      <li class="swiper-slide"*ngFor="let obj of showproduct"> 
         <div class="show-top">
           <img src="{{obj['userimgurl']}}" alt=""class="userImg" />
           <span class="show-name">{{obj['name']}}</span>
         </div>
+
           <img src="{{obj['imgurl']}}"(click)="turn(obj.id)"class="showImg"/>
-        <div class="">{{obj['fabiao']}}</div>
-      </div>
-    </div>
+          <div class="dsp">
+              <i class="icon iconfont icon-good" (click)="stockCountAdd_1(obj.id,obj.dianzan,obj.status,$event)"></i>
+              <input class="name" id="dsc_1" type="text" [(ngModel)]="obj.dianzan"  readonly="readonly">
+              <i class="icon iconfont icon-xin" (click)="stockCountAdd_2(obj.id,obj.shoucang,obj.status1)"></i>
+              <input class="name" id="dsc_1" type="text" [(ngModel)]="obj.shoucang"  readonly="readonly">
+              
+              <i class="icon iconfont icon-buoumaotubiao48" (click)="stockCountAdd_3(obj.id)"></i>
+              <input class="name" id="dsc_1" type="text" [(ngModel)]="obj.pinglun"  readonly="readonly"> 
+          </div>
+        <div class="fabiao">{{obj['fabiao']}}</div>
+      </li>
+    </ul>
     <!-- Add Pagination -->
     <div class="swiper-pagination"></div>
   </div>

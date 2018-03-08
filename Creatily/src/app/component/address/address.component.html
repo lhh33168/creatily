@@ -4,19 +4,19 @@
         </getback>
         <span>管理地址</span>
     </header>
-   <!--  <div class="address_c">
+    <div class="address_c" *ngIf="getaddress.length==0">
         <img src="../../../assets/img/cart/address.png"/>
-    </div> -->
-    <div class="address_c_null">
+    </div>
+    <div class="address_c_null" *ngIf="getaddress.length>0">
         <li *ngFor="let obj of getaddress;let idx = index;">
             <div class="address_c_t"><span>{{obj.name}}</span><span>{{obj.phone}}</span></div>
             <div class="address_c_c">{{obj.address}}</div>
-            <div class="address_c_b"><span>默认地址</span><div><i class="iconfont icon-icon-test"></i>编辑<i class="iconfont icon-icon--"></i>删除</div></div>
+            <div class="address_c_b"><span *ngIf="obj.default_address == 1">默认地址</span><div class="address_c_b_common"><div (click)="updateAddress(obj.id)"><i class="iconfont icon-icon-test"></i>编辑</div><div (click)="deleteAddress(obj.id)"><i class="iconfont icon-icon--"></i>删除</div></div></div>
             <div class="address_common"></div>
         </li>
     </div>
     <div class="address_b_footer">
-        <div class="address_b" routerLink="/newAddress">
+        <div class="address_b" routerLink="/newAddress/:10000">
             <i class="iconfont icon-jia"></i>添加新地址
         </div>
     </div>  

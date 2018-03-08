@@ -14,7 +14,7 @@
                 <div class="cartmainbottom_empty_top">
                     <img src="../../../assets/img/cart/cartempty.png"  alt="" />
                     <div>购物车该补货啦</div>
-                    <span>去商城逛逛</span>
+                    <span routerLink="/home">去商城逛逛</span>
                 </div>
                 <div class="cartmainbottom_empty_main"><span></span>看看这些精品推荐<span></span></div>
                 <ul class="cartmainbottom_empty_bottom">
@@ -40,9 +40,9 @@
                                 <span>+</span>
                             </div> -->
                             <div class="select-box"> 
-                                <span class="select-btn stockCountSub" (click)="stockCountSub(obj.indexid,obj.count,obj.price)">-</span> 
+                                <span class="select-btn stockCountSub" (click)="stockCountSub(obj.indexid,obj.count,obj.price,idx,obj)">-</span> 
                                 <input class="select-btn select-num" type="text" [(ngModel)]="obj.count"  readonly="readonly"> 
-                                <span class="select-btn stockCountAdd" (click)="stockCountAdd(obj.indexid,obj.count,obj.price)">+</span> 
+                                <span class="select-btn stockCountAdd" (click)="stockCountAdd(obj.indexid,obj.count,obj.price,idx,obj)">+</span> 
                             </div>
 
                         </div>

@@ -1,0 +1,36 @@
+﻿{
+    "en":{
+        "name":"Creative Management System",
+        "sign_out":"Sign out",
+        "item1":"Goods Management",
+        "item2":"Orders Management",
+        "item3":"User Management",
+        "search":"Search",
+        "delete":"Delete",
+        "delete_selected":"Delete Selected",
+        "add":"Add",
+        "update":"Update",
+        "go":"Go",
+        "page":"Page",
+        "enter":"Enter",
+        "cancel":"Cancel",
+        "placeholder":"Please enter content"
+    },
+    "cn":{
+        "name":"创质后台管理系统",
+        "sign_out":"退出",
+        "item1":"商品管理",
+        "item2":"订单管理",
+        "item3":"用户管理",
+        "search":"搜索",
+        "delete":"删除",
+        "delete_selected":"删除选中",
+        "add":"添加",
+        "update":"编辑",
+        "go":"前往",
+        "page":"页",
+        "enter":"确定",
+        "cancel":"取消",
+        "placeholder":"请输入内容"
+    }
+}

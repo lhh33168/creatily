@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
 
         return Object.keys(item);
     }
-    selectList(categoryId){
+    selectList(categoryId,event){
         var s = document.querySelector('.show');
         s['style'].display='none';
         var ss =document.querySelector('.selecttype');
@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit {
         // console.log(this.selectshow[0]['img'])
      })
     }
-    selector(){
+    selector(event){
         var ss = document.querySelector('.selecttype');
         var s = document.querySelector('.show');
         ss['style'].display='none';

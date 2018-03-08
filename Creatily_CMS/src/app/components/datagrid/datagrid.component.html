@@ -1,0 +1,82 @@
+<div *ngIf="dataset" class="dataset">
+    <div class="search_box" [style.opacity]="common.opacity">
+        <p class="search">
+            <span>
+                <el-input [model]="input" placeholder="{{common.publicDic[common.lanType]['placeholder']}}" [(ngModel)]="search_data" (ngModelChange)="change()"></el-input>
+            </span>
+            <button (click)="btn_search()">{{common.publicDic[common.lanType]['search']}}</button>
+        </p>
+    </div>
+
+    <div class="add_tool" [class.show]="show">
+        <div class="com">
+            <ng-template ngFor let-key [ngForOf]="opt['add_key']">
+                <div class="fr">
+                    <label for="">
+                    {{privateDic[common.lanType] && privateDic[common.lanType][key] ? privateDic[common.lanType][key] : key}}
+                </label>
+                    ：
+                <input *ngIf="(!columns[0] || columns.indexOf(key) > -1) && filterColumns.indexOf(key) < 0" [(ngModel)]="add_data[key]"/>
+                </div>
+                <br />
+            </ng-template>
+            <div class="tip">
+                <button (click)="cancel()">{{common.publicDic[common.lanType]['cancel']}}</button>
+                <button (click)="enter()">{{common.publicDic[common.lanType]['enter']}}</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="update_tool" [class.show]="show2">
+        <div class="com">
+            <ng-template ngFor let-key [ngForOf]="opt['add_key']">
+                <div class="fr">
+                    <label for="">
+                    {{privateDic[common.lanType] && privateDic[common.lanType][key] ? privateDic[common.lanType][key] : key}}
+                </label>
+                    ：
+                <input *ngIf="(!columns[0] || columns.indexOf(key) > -1) && filterColumns.indexOf(key) < 0" [(ngModel)]="currentObj[key]"/>
+                </div>
+                <br />
+            </ng-template>
+            <div class="tip">
+                <button (click)="cancel2()">{{common.publicDic[common.lanType]['cancel']}}</button>
+                <button (click)="enter2()">{{common.publicDic[common.lanType]['enter']}}</button>
+            </div>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th *ngIf="multiple"><input type="checkbox" [checked]="currentTrIndexs.length == dataset.length" (click)="selectAll()"></th>
+
+                <ng-template ngFor let-key [ngForOf]="getKeys(dataset[0] || {})">
+                    <th *ngIf="(!columns[0] || columns.indexOf(key) > -1) && filterColumns.indexOf(key) < 0">{{privateDic[common.lanType] && privateDic[common.lanType][key] ? privateDic[common.lanType][key] : key}}</th>
+                </ng-template>
+
+                <th><button class="add" *ngIf="currentTrIndexs.length<2" (click)="add()">{{common.publicDic[common.lanType]['add']}}</button> <button *ngIf="currentTrIndexs.length>1" (click)="delete_all()">{{common.publicDic[common.lanType]['delete_selected']}}</button></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let obj of dataset;let idx = index;" [class.actived]="currentTrIndexs.indexOf(idx) > -1" [class.hide]="remove.indexOf(idx) > -1" (click)="selectTr(idx)">
+
+                <td *ngIf="multiple"><input type="checkbox" name="" id="" [checked]="currentTrIndexs.indexOf(idx) > -1"></td>
+
+                <ng-template ngFor let-key [ngForOf]="getKeys(obj)">
+                    <td *ngIf="(!columns[0] || columns.indexOf(key) > -1) && filterColumns.indexOf(key) < 0">{{filterData(key, obj[key])}}</td>
+                </ng-template>
+
+                <td><button class="green" (click)="update(obj,idx)">{{common.publicDic[common.lanType]['update']}}</button> <button (click)="delete(idx,obj[opt['primary_key']],$event)">{{common.publicDic[common.lanType]['delete']}}</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="page">
+        <li>
+          <!-- <span>直接前往</span> -->
+          <el-pagination [total]="rows" [model]="page" [page-count]="page_count" [total]="rows" [page-size]="qty" (modelChange)="page_change($event)"
+            [layout]="['prev', 'pager', 'next', 'jumper']">
+          </el-pagination>
+        </li>
+    </div>
+</div>

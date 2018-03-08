@@ -4,6 +4,7 @@ var app = express();
 var path = require('path');
 var home = require('./home');
 var user = require('./user');
+var admin = require('./admin');
 var details = require('./details');
 var cart = require('./cart');
 
@@ -39,6 +40,7 @@ module.exports = {
         });  
         home.register(app),
         user.register(app),
+        admin.register(app),
         details.register(app);
         cart.register(app);
 

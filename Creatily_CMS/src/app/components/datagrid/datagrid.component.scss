@@ -1,0 +1,134 @@
+.dataset{padding-top: 15px;
+    .search_box{height: 42px;position:fixed;top: 60px;left: 301px;width: 100%;height: 65px;background-color: #FFF;padding: 11px 20px;
+        .search{margin-bottom: 20px;width: 100%;
+            span{display: inline-block;width: 537px;
+                .el-input__inner{
+                    
+                }
+            }
+            button{margin-left: 12px;
+                padding: 8px 25px;cursor: pointer;border:1px solid skyblue;
+                            border-radius:5px;background-color: #FFF;
+            }
+            button:hover{
+                background-color: #f5f5f5;
+            }
+            
+        }
+    }
+    .opacity{
+        opacity:1;
+    }
+}
+
+.add_tool,.update_tool{position: fixed; left: 0;right: 0;top: 0;bottom:0;z-index:999;display: none;
+    background-color:rgba(0,0,0,.3);
+    .com{padding: 88px;background-color: #FFF;position: fixed;left: 50%;top: 44%;transform: translate(-50%, -50%);
+        .tip{
+            position: absolute;left: 50%;bottom:34px;transform: translate(-50%, 0);
+            button{
+                margin-right: 10px;
+                padding: 8px;cursor: pointer;border:1px solid skyblue;
+                    border-radius:5px;background-color: #FFF;
+            }
+        }
+        >div{
+            margin-bottom: 5px;position: relative;
+        }
+        label{
+            font-size: 16px;
+            color:#000;
+        }
+        
+        input{float: right;
+            font-size: 16px;
+            border:1px solid skyblue;
+            color:#000;
+            width: 650px;
+            height: 28px;
+        }
+        
+    }
+}
+.show{
+    display: block;
+}
+table{
+    border-collapse: collapse;
+    border-collapse:separate; border-spacing-top:2px;
+    thead{
+        tr{font-size: 17px;font-weight: 600;
+            display: table-row;
+            vertical-align: inherit;
+            border-color: inherit;
+            button{
+                padding: 8px;background-color: #f55353;cursor: pointer;
+                border-radius:5px;
+            }
+            .add{
+                padding: 8px 25px;cursor: pointer;border:1px solid skyblue;background-color: #FFF;
+                    border-radius:5px;
+            }
+            .add:hover{
+                background-color: #f5f5f5;
+            }
+            th{
+                // width: 140px;
+                text-align: center;
+                border-bottom: 1px solid #e6ebf5;
+                white-space: nowrap;
+                overflow: hidden;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                text-align: center;
+                padding: 12px 28px;
+                // padding-right: 28px;
+                min-width: 0;
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+                text-overflow: ellipsis;
+                vertical-align: middle;
+                position: relative;
+            }
+        }
+    }
+    tbody{
+        button{
+            padding: 8px 12px;color:#fff;cursor: pointer;
+            border-radius:5px;border:1px solid skyblue;background-color: #FFF;color:#000;
+        }
+        button:hover{
+            background-color: #f55353;color:#fff;
+        }
+        .green{
+            
+        }
+        .green:hover{
+            background-color: #58BC58;color:#fff;
+        }
+        tr{font-size: 16px;
+            td{
+                padding: 16px 18px;
+            }
+        }
+        tr:nth-child(2n){
+            background-color: #edede3;
+        }
+        tr.hide{
+            display:none;
+        }
+        tr.actived{
+            background-color: #92acc0;color:#fff;
+        }
+        tr:hover{
+            background-color: #92acc0;color:#fff;
+        }
+    }   
+}
+.page{padding: 26px 0 49px 0;position:relative;
+    li{position:absolute;left: 50%;transform:translate(-50%,0);
+        list-style-type: none;
+    }
+}

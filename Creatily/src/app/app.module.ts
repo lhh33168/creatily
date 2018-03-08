@@ -8,6 +8,8 @@ import { HttpModule } from '@angular/http';
 import { RootRouter } from './router/router';
 import { HttpService } from './utils/http.service';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { NZ_MESSAGE_CONFIG } from 'ng-zorro-antd';
+
 
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -39,6 +41,9 @@ import { RegisterpwdComponent } from './component/registerpwd/registerpwd.compon
 import { UserComponent } from './component/user/user.component';
 import { UsersetComponent } from './component/userset/userset.component';
 import { UserorderComponent } from './component/userorder/userorder.component';
+import { NotificationComponent } from './component/notification/notification.component';
+import { SearchComponent } from './component/search/search.component';
+
 
 
 
@@ -72,7 +77,13 @@ import { UserorderComponent } from './component/userorder/userorder.component';
     RegisterpwdComponent,
     UserComponent,
     UsersetComponent,
-    UserorderComponent
+
+    UserorderComponent,
+
+    NotificationComponent,
+
+    SearchComponent
+
 
   ],
   imports: [
@@ -85,7 +96,7 @@ import { UserorderComponent } from './component/userorder/userorder.component';
     FormsModule,
     NgZorroAntdModule.forRoot()
   ],
-  providers: [HttpService],
+  providers: [HttpService, { provide: NZ_MESSAGE_CONFIG, useValue: { nzMaxStack: 1 } }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

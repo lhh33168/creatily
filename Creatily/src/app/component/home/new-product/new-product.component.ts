@@ -17,14 +17,14 @@ export class NewProductComponent implements OnInit {
   
      })
     var swiper = new Swiper('.newProduct .swiper-container', {
-      slidesPerView: 5,
+      slidesPerView: 1,
       spaceBetween: 40,
       observer:true,
       observeParents:true,
       // init: false,
       breakpoints: {
         1024: {
-          slidesPerView: 4,
+          slidesPerView: 1,
           spaceBetween: 40,
         },
         768: {
@@ -33,7 +33,7 @@ export class NewProductComponent implements OnInit {
         },
         640: {
           slidesPerView: 2.5,
-          spaceBetween: 10,
+          spaceBetween: 20,
         },
         320: {
           slidesPerView: 1,

@@ -40,7 +40,7 @@ export class PaymentComponent implements OnInit {
 
       success = () => {
           let location = this.location;
-          let price = this.price；
+          let price = this.price;
           this.confirmServ.confirm({
           title  : '您已成功支付金额￥'+`${price}`,
           content: '<b>确认返回订单页，取消停留在该页面</b>',

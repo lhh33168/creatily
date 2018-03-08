@@ -30,7 +30,7 @@ export class HttpService{
     post(api: string, params: Object = {}) {
         return new Promise((resolve, reject) => {
             function str(data: Object = {}) {
-                let ret = ''
+                let ret = '';
                 for (let it in data) {
                     ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
                 }

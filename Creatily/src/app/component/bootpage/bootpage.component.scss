@@ -1,6 +1,6 @@
 .bootpage{
-    width:100%;height:100%;position: relative;overflow: hidden;
-}
-.swiper-slide {
-    width: 100%;height: 200px;line-height: 200px;text-align: center;background: #cad;
+    position: fixed;width:100%;height:100%;background-size: 100% 100%;background-image:url(../../../assets/images/poster.jpg);
+    &>span{
+        display: block;width:1.09375rem;height:1.09375rem;background-color:#b9b1b1;border-radius:50%;position: absolute;top:0.46875rem;right: 0.46875rem;line-height:1.09375rem;text-align: center;font-size:0.4375rem;color: #312f2f;
+    }
 }

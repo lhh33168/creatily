@@ -1,0 +1,161 @@
+<div class="community">
+	<div class="swiper-container gallery-top">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide">推荐</div>
+			<div class="swiper-slide">最新</div>
+			<div class="swiper-slide">家饰</div>
+			<div class="swiper-slide">收纳</div>
+			<div class="swiper-slide">餐厨</div>
+			<div class="swiper-slide">家纺</div>
+			<div class="swiper-slide">家具</div>
+		</div>
+	</div>
+	<div class="swiper-container gallery-thumbs">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide">
+				<ul>
+					<li *ngFor="let obj of carthot1;let idx = index;">
+						<div class="tn">
+							<img [src]="obj.userimgurl" alt="" class="tx" />
+							<span class="sp">{{obj.name}}</span>
+						</div>
+						<img [src]="obj.imgurl" alt="" class="tx1" />
+						<div class="dsp">
+							<i class="icon iconfont icon-good" (click)="stockCountAdd_1(obj.id,obj.dianzan,obj.status,$event)"></i>
+							<input class="name" id="dsc_1" type="text" [(ngModel)]="obj.dianzan"  readonly="readonly">
+							
+							<i class="icon iconfont icon-xin" (click)="stockCountAdd_2(obj.id,obj.shoucang,obj.status1)"></i>
+							<input class="name" id="dsc_1" type="text" [(ngModel)]="obj.shoucang"  readonly="readonly">
+							
+							<i class="icon iconfont icon-buoumaotubiao48" (click)="stockCountAdd_3(obj.id,obj.pinglun)"></i>
+							<input class="name" id="dsc_1" type="text" [(ngModel)]="obj.pinglun"  readonly="readonly"> 
+						</div>
+						<div class="fb">{{obj.fabiao}}</div>
+					</li>
+				</ul>
+			</div>
+			<div class="swiper-slide">
+				<ul>
+					<li *ngFor="let obj of carthot2;let idx = index;">
+						<div class="tn">
+							<img [src]="obj.userimgurl" alt="" class="tx" />
+							<span class="sp">{{obj.name}}</span>
+						</div>
+						<img [src]="obj.imgurl" alt="" class="tx1" />
+						<div class="dsp">
+							<i class="icon iconfont icon-good" (click)="stockCountAdd_1(obj.id,obj.dianzan)"></i>
+							<input class="name" id="dsc_1" type="text" [(ngModel)]="obj.dianzan"  readonly="readonly">
+							
+							<i class="icon iconfont icon-xin" (click)="stockCountAdd_2(obj.id,obj.shoucang)"></i>
+							<input class="name" id="dsc_1" type="text" [(ngModel)]="obj.shoucang"  readonly="readonly">
+							
+							<i class="icon iconfont icon-buoumaotubiao48" (click)="stockCountAdd_3(obj.id,obj.pinglun)"></i>
+							<input class="name" id="dsc_1" type="text" [(ngModel)]="obj.pinglun"  readonly="readonly"> 
+						</div>
+						<div class="fb">{{obj.fabiao}}</div>
+					</li>
+				</ul>
+			</div>
+			<div class="swiper-slide">
+				<ul>
+					<li *ngFor="let obj of carthot3;let idx = index;">
+						<div class="tn">
+							<img [src]="obj.userimgurl" alt="" class="tx" />
+							<span class="sp">{{obj.name}}</span>
+						</div>
+						<img [src]="obj.imgurl" alt="" class="tx1" />
+						<div class="dsp">
+							<i class="icon iconfont icon-good" ></i>
+							<span class="name" id="dsc_1">{{obj.dianzan}}</span>
+							<i class="icon iconfont icon-xin" ></i>
+							<span class="name" id="dsc_1">{{obj.shoucang}}</span>
+							<i class="icon iconfont icon-buoumaotubiao48" ></i>
+							<span class="name" id="dsc_1">评论</span>
+						</div>
+						<div class="fb">{{obj.fabiao}}</div>
+					</li>
+				</ul>
+			</div>
+			<div class="swiper-slide">
+				<ul>
+					<li *ngFor="let obj of carthot4;let idx = index;">
+						<div class="tn">
+							<img [src]="obj.userimgurl" alt="" class="tx" />
+							<span class="sp">{{obj.name}}</span>
+						</div>
+						<img [src]="obj.imgurl" alt="" class="tx1" />
+						<div class="dsp">
+							<i class="icon iconfont icon-good" ></i>
+							<span class="name" id="dsc_1">{{obj.dianzan}}</span>
+							<i class="icon iconfont icon-xin" ></i>
+							<span class="name" id="dsc_1">{{obj.shoucang}}</span>
+							<i class="icon iconfont icon-buoumaotubiao48" ></i>
+							<span class="name" id="dsc_1">评论</span>
+						</div>
+						<div class="fb">{{obj.fabiao}}</div>
+					</li>
+				</ul>
+			</div>
+			<div class="swiper-slide">
+				<ul>
+					<li *ngFor="let obj of carthot5;let idx = index;">
+						<div class="tn">
+							<img [src]="obj.userimgurl" alt="" class="tx" />
+							<span class="sp">{{obj.name}}</span>
+						</div>
+						<img [src]="obj.imgurl" alt="" class="tx1" />
+						<div class="dsp">
+							<i class="icon iconfont icon-good" ></i>
+							<span class="name" id="dsc_1">{{obj.dianzan}}</span>
+							<i class="icon iconfont icon-xin" ></i>
+							<span class="name" id="dsc_1">{{obj.shoucang}}</span>
+							<i class="icon iconfont icon-buoumaotubiao48" ></i>
+							<span class="name" id="dsc_1">评论</span>
+						</div>
+						<div class="fb">{{obj.fabiao}}</div>
+					</li>
+				</ul>
+			</div>
+			<div class="swiper-slide">
+				<ul>
+					<li *ngFor="let obj of carthot6;let idx = index;">
+						<div class="tn">
+							<img [src]="obj.userimgurl" alt="" class="tx" />
+							<span class="sp">{{obj.name}}</span>
+						</div>
+						<img [src]="obj.imgurl" alt="" class="tx1" />
+						<div class="dsp">
+							<i class="icon iconfont icon-good" ></i>
+							<span class="name" id="dsc_1">{{obj.dianzan}}</span>
+							<i class="icon iconfont icon-xin" ></i>
+							<span class="name" id="dsc_1">{{obj.shoucang}}</span>
+							<i class="icon iconfont icon-buoumaotubiao48" ></i>
+							<span class="name" id="dsc_1">评论</span>
+						</div>
+						<div class="fb">{{obj.fabiao}}</div>
+					</li>
+				</ul>
+			</div>
+			<div class="swiper-slide">
+				<ul>
+					<li *ngFor="let obj of carthot7;let idx = index;">
+						<div class="tn">
+							<img [src]="obj.userimgurl" alt="" class="tx" />
+							<span class="sp">{{obj.name}}</span>
+						</div>
+						<img [src]="obj.imgurl" alt="" class="tx1" />
+						<div class="dsp">
+							<i class="icon iconfont icon-good" ></i>
+							<span class="name" id="dsc_1">{{obj.dianzan}}</span>
+							<i class="icon iconfont icon-xin" ></i>
+							<span class="name" id="dsc_1">{{obj.shoucang}}</span>
+							<i class="icon iconfont icon-buoumaotubiao48" ></i>
+							<span class="name" id="dsc_1">评论</span>
+						</div>
+						<div class="fb">{{obj.fabiao}}</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

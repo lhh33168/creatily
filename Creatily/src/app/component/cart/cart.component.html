@@ -9,23 +9,23 @@
             <div class="cartmaintop_common"><span>√</span>全场满88包邮</div>
     </div>
     <main class="cartmain">
-        <div class="cartmainbottom">
-            <div class="cartmainbottom_empty" *ngIf="cartItem.length == 0">
+        <div class="cartmainbottom" [ngSwitch]="cartItem.length">
+            <div class="cartmainbottom_empty" *ngSwitchCase="0">
                 <div class="cartmainbottom_empty_top">
                     <img src="../../../assets/img/cart/cartempty.png"  alt="" />
                     <div>购物车该补货啦</div>
-                    <span>去商城逛逛</span>
+                    <span routerLink="/home">去商城逛逛</span>
                 </div>
                 <div class="cartmainbottom_empty_main"><span></span>看看这些精品推荐<span></span></div>
                 <ul class="cartmainbottom_empty_bottom">
-                    <li *ngFor="let obj of carthot">
+                    <li *ngFor="let obj of carthot" routerLink="/detail/{{obj.id}}">
                         <img [src]="obj.imgurl" alt="" />
                         <p>{{obj.proName}}</p>
                         <span>￥{{obj.price.split(',')[0]}}</span>
                     </li>
                 </ul>
             </div>
-            <div class="cartmainbottom_full" *ngIf="cartItem.length>0">
+            <div class="cartmainbottom_full" *ngSwitchDefault>
                 <ul>
                     <li *ngFor="let obj of cartItem;let idx = index;">
                         <input type="radio" [checked]="currentTrIndexs.indexOf(idx) > -1" (click)="selectTr(idx,obj)"/>

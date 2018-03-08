@@ -24,7 +24,26 @@
                 float:left;
                 height:2.5rem;
             }
+            select{
+                height:2.5rem;
+               border:none;
+            }
         }
+        // #sanjiliandong{
+        //     display:flex;justify-content:space-between;
+        //     height:2.5rem;
+        //     .shouhuo{
+        //         padding-left:0.625rem;
+        //         width:5.625rem;
+        //         height:2.5rem;
+        //         padding-right:1.5625rem;
+        //     }
+        //     input{
+        //         border:0;
+        //         height:2.5rem;
+        //         width:10.25rem;
+        //     }
+        // }
     }
     .newAddress_foot{
         height:2.5rem;display:flex;align-items:center;

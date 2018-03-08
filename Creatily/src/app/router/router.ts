@@ -19,7 +19,7 @@ import { RegisterComponent} from '../component/register/register.component';
 import { CommentComponent} from '../component/comment/comment.component';
 import { RegisterpwdComponent } from '../component/registerpwd/registerpwd.component';
 import { UserComponent } from '../component/user/user.component';
-
+import { UsersetComponent } from '../component/userset/userset.component';
 
 const appRoutes:Routes = [
     { path:"", redirectTo:"/bootpage",pathMatch:'full'},
@@ -40,7 +40,8 @@ const appRoutes:Routes = [
     { path: "community", component: CommunityComponent},
 
     { path: "comment/:id", component: CommentComponent},
-    { path: "user", component: UserComponent }
+    { path: "user", component: UserComponent },
+    { path: "userset", component: UsersetComponent }
 
 ]
 

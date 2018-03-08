@@ -14,11 +14,6 @@ export class NewProductComponent implements OnInit {
   ngOnInit(): void {
    this.http.get('newProduct').then((res) => { 
        this.newproduct=res['data']['results'];
-       var fad = this.newproduct;
-       var fadd =this.newprice=[];
-       for(var i=0;i<fad.length;i++){
-          fadd.push(fad[i].price.split(',')[0])
-       }
   
      })
     var swiper = new Swiper('.newProduct .swiper-container', {

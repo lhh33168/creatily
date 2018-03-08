@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router, ActivatedRoute } from '@angular/router';
 import {HttpService} from '../../utils/http.service'
 
 @Component({
@@ -8,43 +8,63 @@ import {HttpService} from '../../utils/http.service'
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-      constructor(private http:HttpService) { };
+      constructor(private http:HttpService,private route: ActivatedRoute, private router: Router) { };
       selectHome:Array<any>=[];
     selectshow:Array<any>=[];
+    homeShow:Array<any>=[];
     selectId:string;
-
-  ngOnInit() {
-       this.http.get('listSelect').then((res)=>{
+    Imgs:string
+  ngOnInit(): void{
+      this.http.get('listSelect').then((res)=>{
         this.selectHome=res['data']['results']
-        console.log( this.selectHome)
      })
+     this.http.get('homeShow').then((res)=>{
+        this.homeShow=res['data']['results']
+        console.log(this.homeShow)
+     })
+      var swiper = new Swiper('.showsImg .swiper-container', {
+        observer:true,
+        observeParents:true,
+        pagination: {
+          el:'.showsImg .swiper-pagination'
+        },
+      });
+    }
+    getKeys(item){
+
+        return Object.keys(item);
     }
     selectList(categoryId){
-        console.log(categoryId)
         var s = document.querySelector('.show');
         s['style'].display='none';
         var ss =document.querySelector('.selecttype');
         ss['style'].display='block';
+        var sss = document.querySelector('.Imgs')
+        sss['style'].width="100%";
        this.selectId=categoryId;
-       console.log(this.selectId)
         this.http.get(`listPass?selectId=`+this.selectId).then((res)=>{
-        console.log(res);
-        this.selectshow=res['data']['results']
+        this.selectshow=res['data']['results'];
+        this.Imgs=this.selectshow[0]['img']
+        console.log(this.selectshow[0]['img'])
      })
     }
     selector(){
-        console.log(666)
         var ss = document.querySelector('.selecttype');
         var s = document.querySelector('.show');
         ss['style'].display='none';
         s['style'].display='block';
         this.http.get('listSelect').then((res)=>{
-        console.log(res)
         this.selectHome=res['data']['results']
-        console.log( this.selectHome)
          })
     }
+    turn(idx){
 
+    this.router.navigate(['detail',idx],{queryParams:{id:idx}  } );
+  }
+  turns(idx){
+
+    this.router.navigate(['detail',idx],{queryParams:{id:idx}  } );
+  }
 }
  
 

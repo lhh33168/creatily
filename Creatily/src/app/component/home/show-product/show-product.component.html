@@ -1,9 +1,12 @@
 <div class="showProduct">
+<div class="show-title">达人SHOW</div>
   <div class="swiper-container">
     <div class="swiper-wrapper">
       <div class="swiper-slide"*ngFor="let obj of showproduct"> 
+        <div class="show-top">
           <img src="{{obj['userimgurl']}}" alt=""class="userImg" />
-          <span>{{obj['name']}}</span>
+          <span class="show-name">{{obj['name']}}</span>
+        </div>
           <img src="{{obj['imgurl']}}"(click)="turn(obj.id)"class="showImg"/>
         <div class="">{{obj['fabiao']}}</div>
       </div>

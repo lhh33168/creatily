@@ -8,18 +8,18 @@
     <div class="register-content-input">
       <div class="register-input-phone">
         <i class="iconfont icon-wode"></i>
-        <input type="tel" class="phoneInput" #regFocus placeholder="请输入手机号码" maxlength="11" [(ngModel)]="regPhone" (input)="RegPhoneA($event)" required (blur)="getRegPhone(regPhone)"/>
-        <em class="InputClearA" *ngIf="regShowA" (click)="showAclear()">&times;</em>
+        <input type="tel" class="phoneInput" #regFocus placeholder="请输入手机号码" maxlength="11" [(ngModel)]="regPhone" (input)="RegPhoneA($event)" required />
+        <em class="InputClearA" *ngIf="regShowA" (click)="phoneClear()">&times;</em>
       </div>
       <div class="register-input-code">
         <i class="iconfont icon-msnui-auth-code"></i>
         <button class="getCode" (click)="getCode(regPhone)" [disabled]="codeDisabled">{{codetext}}</button>
-        <input type="text" #codeFocus class="codeInput" placeholder="请输入验证码" [(ngModel)]="inputCode" (input)="inputPhoneB($event)" />
+        <input type="text" #phoneCodeFocus class="codeInput" placeholder="请输入验证码" [(ngModel)]="inputCode" (input)="inputPhoneB($event)" maxlength="6"/>
       </div>
       <div class="register-deal">
         注册代表您同意&nbsp;<a routerLink="/privacy">用户协议</a>
       </div>
-      <button class="register-submit" [disabled]="regSubmit" (click)="regsubmit(regPhone)">下一步</button>
+      <button class="register-submit" #nextSubmitA [disabled]="nextSubmit" (click)="regsubmit(regPhone,inputCode)">下一步</button>
     </div>
   </div>
 </div>

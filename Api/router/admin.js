@@ -122,6 +122,17 @@ module.exports = {
 			db.select2(`SELECT * FROM goodlist WHERE CONCAT(${req.query.key}) LIKE "%${req.query.data}%"`,function(result){
 				res.send(result);
 			})
+		}),
+		//前台搜索
+		app.get('/go_search',function(req,res){
+			console.log(req.query);
+			console.log(`SELECT * FROM community WHERE CONCAT(IFNULL('name',''),IFNULL('fabiao','')) LIKE "%${req.query.data}%";
+			SELECT * FROM goodlist WHERE CONCAT(IFNULL('proName',''),IFNULL('recommend','')) LIKE "%${req.query.data}%";`);
+			db.select2(
+			`SELECT * FROM community WHERE CONCAT(IFNULL(name,''),IFNULL(fabiao,'')) LIKE "%${req.query.data}%";
+			SELECT * FROM goodlist WHERE CONCAT(IFNULL(proName,''),IFNULL(recommend,'')) LIKE "%${req.query.data}%";`,function(result){
+				res.send(result);
+			})
 		})
 	}
 }

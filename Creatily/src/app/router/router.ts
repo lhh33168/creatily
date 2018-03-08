@@ -20,6 +20,11 @@ import { CommentComponent} from '../component/comment/comment.component';
 import { RegisterpwdComponent } from '../component/registerpwd/registerpwd.component';
 import { UserComponent } from '../component/user/user.component';
 import { UsersetComponent } from '../component/userset/userset.component';
+<<<<<<< HEAD
+import { NotificationComponent } from '../component/notification/notification.component';
+=======
+import { SearchComponent } from '../component/search/search.component';
+>>>>>>> 54d8e43d7c552fca90495ac3406e81bd519bc0c9
 
 const appRoutes:Routes = [
     { path:"", redirectTo:"/bootpage",pathMatch:'full'},
@@ -34,11 +39,16 @@ const appRoutes:Routes = [
     { path: "order", component: OrderComponent},
     { path: "payment/:price/:ordernumber", component: PaymentComponent},
     { path: "address", component: AddressComponent},
+<<<<<<< HEAD
+    { path: "newAddress", component: NewAddressComponent},
+=======
     { path: "newAddress/:id", component: NewAddressComponent},
+    { path: "search", component: SearchComponent},
 
 
+>>>>>>> 10ded42355eba65e0e23189eb924e31c19f4d357
     { path: "community", component: CommunityComponent},
-
+    { path: "notification", component: NotificationComponent},
     { path: "comment/:id", component: CommentComponent},
     { path: "user", component: UserComponent },
     { path: "userset", component: UsersetComponent }

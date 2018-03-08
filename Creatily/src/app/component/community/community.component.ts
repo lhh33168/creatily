@@ -39,31 +39,24 @@ export class CommunityComponent implements OnInit {
     
     this.http.get('space').then((res) => {
     				 this.carthot1 = res['data'].results;
-             console.log(this.carthot1)
           });
     this.http.get('unboxing').then((res) => {
     				 this.carthot2 = res['data'].results;
-             console.log(this.carthot2)
           });
     this.http.get('shop').then((res) => {
     				 this.carthot3 = res['data'].results;
-             console.log(this.carthot3)
           });
 	 	this.http.get('specia').then((res) => {
 				 this.carthot4 = res['data'].results;
-	     console.log(this.carthot4)
 	  });
 	  this.http.get('brand').then((res) => {
 				 this.carthot5 = res['data'].results;
-	     console.log(this.carthot5)
 	  });
 	  this.http.get('media').then((res) => {
 				 this.carthot6 = res['data'].results;
-	     console.log(this.carthot6)
 	  });
 	  this.http.get('jianfan').then((res) => {
 				 this.carthot7 = res['data'].results;
-	     console.log(this.carthot7)
 	  })
 	  
     

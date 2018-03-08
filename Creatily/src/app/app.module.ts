@@ -40,6 +40,7 @@ import { CommentComponent } from './component/comment/comment.component';
 import { RegisterpwdComponent } from './component/registerpwd/registerpwd.component';
 import { UserComponent } from './component/user/user.component';
 import { UsersetComponent } from './component/userset/userset.component';
+import { NotificationComponent } from './component/notification/notification.component';
 
 
 
@@ -72,7 +73,8 @@ import { UsersetComponent } from './component/userset/userset.component';
     CommentComponent,
     RegisterpwdComponent,
     UserComponent,
-    UsersetComponent
+    UsersetComponent,
+    NotificationComponent
 
   ],
   imports: [

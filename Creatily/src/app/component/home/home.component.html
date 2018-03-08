@@ -3,17 +3,19 @@
     <div class="homeheader">
         <div  class="searchBar" id="searchBar" ></div>
         <ul *ngIf="selectHome"class="typelist">
-            <li (click)="selector($event)">推荐</li>
-            <li *ngFor ="let obj of selectHome"(click)="selectList(obj['categoryId'])">{{obj['category']}}</li>
+            <li (click)="selector($event)"class="li">推荐</li>
+            <li *ngFor ="let obj of selectHome"(click)="selectList(obj['categoryId'],$event)"class="li">{{obj['category']}}</li>
         </ul>
     </div>
     <div *ngIf="selectshow"class="selecttype">
         <img src="{{Imgs}}" alt=""class="Imgs" />
         <div class="Imgss">
             <div *ngFor ="let obj of selectshow"class="homecate">
-                <span><img src="{{obj['imgurl']}}" alt=""class="goodsImg"(click)="turn(obj.id)" /></span>
-            <span>{{obj['proName']}}</span>
-            <div class="price">{{obj['price'].split(',')[0]}}</div>
+                <div>
+                  <img src="{{obj['imgurl']}}" alt=""class="goodsImg"(click)="turn(obj.id)" />
+                </div>
+                <div class="proName">{{obj['proName']}}</div>
+                <div class="price">{{obj['price'].split(',')[0]}}</div>
             </div>
         </div>
     </div>

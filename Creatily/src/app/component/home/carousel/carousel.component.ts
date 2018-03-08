@@ -35,4 +35,7 @@ export class CarouselComponent implements OnInit {
 
     this.router.navigate(['detail',idx],{queryParams:{id:idx}  } );
   }
+  notification(){
+    this.router.navigate(['/notification']);
+  }
 }

@@ -16,6 +16,7 @@ export class CartComponent implements OnInit {
       cartItem: Array<any> = [];
       dataCountSet: Array<any> = [];
       dataCountSetPrice : number = 0;
+      userid: number = 123;
 
       constructor(private http: HttpService, private route: ActivatedRoute, private router: Router, private confirmServ: NzModalService) { }
 
@@ -23,20 +24,24 @@ export class CartComponent implements OnInit {
           this.http.get('get_hot').then((res) => { 
               this.carthot = res['data'].results;
           })
-          this.getCartItem();
+          if(this.userid){
+              this.getCartItem();
+          }
       }
       getCartItem(){
           let params = {}
-          this.http.get('get_cart',params = {uid:1}).then((res) => { 
-                  this.cartItem = res['data'].results;
-                  this.dataset = res['data'].results;
-                  // console.log(res)
+          this.http.get('get_cart',params = {userid:this.userid}).then((res) => { 
+             
+                  this.cartItem = res['data']['results'];
+                  this.dataset = res['data']['results'];
+                  // console.log(res) 
+              
            })    
       }
       getCartItem1(){
           let params = {}
           if(this.cartItem.length>1){
-              this.http.get('get_cart',params = {uid:1}).then((res) => { 
+              this.http.get('get_cart',params = {userid:this.userid}).then((res) => { 
                   this.cartItem = res['data'].results;
                   this.dataset = res['data'].results;
                   // console.log(res)
@@ -60,30 +65,39 @@ export class CartComponent implements OnInit {
       selectTr(_idx,_obj){
             // console.log(_obj,_idx)
             // console.log(this.dataCountSet)
-
             if(this.currentTrIndexs.indexOf(_idx) > -1){
                 this.currentTrIndexs.splice(this.currentTrIndexs.indexOf(_idx), 1);
-                this.dataCountSet.splice(this.dataCountSet.indexOf(_idx), 1);
+                this.dataCountSet.splice(this.dataCountSet.indexOf(_obj), 1);
                 this.getPrice();
             } else {
                 this.currentTrIndexs.push(_idx);
                 this.dataCountSet.push(_obj);
                 this.getPrice();
             }
+            this.getCartItem();
+      }
+      selectTrSingle(_idx,_obj){
+            // console.log(_obj,_idx)
+            // console.log(this.dataCountSet)
+            if(this.currentTrIndexs.indexOf(_idx) > -1){
+                this.dataCountSet.splice(this.currentTrIndexs.indexOf(_idx) , 1 , _obj);
+                this.getPrice();
+            } 
+               
       }
       selectAll(){
-        if(this.currentTrIndexs.length != this.dataset.length){
-            this.currentTrIndexs = [];
-            this.dataCountSet = this.dataset;
-            for(let i = 0; i < this.dataset.length; i++){
-                this.currentTrIndexs.push(i);
+            if(this.currentTrIndexs.length != this.dataset.length){
+                this.currentTrIndexs = [];
+                this.dataCountSet = this.dataset;
+                for(let i = 0; i < this.dataset.length; i++){
+                    this.currentTrIndexs.push(i);
+                }
+                this.getPrice();
+            } else {
+                this.currentTrIndexs = [];
+                this.dataCountSet = [];
+                this.getPrice();
             }
-            this.getPrice();
-        } else {
-            this.currentTrIndexs = [];
-            this.dataCountSet = [];
-            this.getPrice();
-        }
      }
      deleteCart(indexid){
          let params;
@@ -93,23 +107,30 @@ export class CartComponent implements OnInit {
               this.success(); 
           })
      }
-     stockCountAdd(indexid,qty,price){
+     stockCountAdd(indexid,qty,price,_idx,_obj){
          let params;
+         _obj.count += 1;
+         this.selectTrSingle(_idx,_obj);
          this.http.post('add_cartcount',params = {indexid:indexid,qty:qty}).then((res) => { 
               // console.log(res)
-              if(this.dataCountSetPrice != 0){
-                this.dataCountSetPrice += price*1
+              if(this.dataCountSetPrice != 0 && this.currentTrIndexs.indexOf(_idx) > -1){
+                this.dataCountSetPrice-price*1 += price*1
               }
           }).then(()=>{
               this.getCartItem();
          })
      }
-     stockCountSub(indexid,qty,price){
+     stockCountSub(indexid,qty,price,_idx,_obj){
+         if(_obj.count>1){
+             _obj.count -= 1;
+         }
+         console.log(_obj.count);
          let params;
+         this.selectTrSingle(_idx,_obj);
          this.http.post('sub_cartcount',params = {indexid:indexid,qty:qty}).then((res) => { 
               // console.log(res)
-              if(this.dataCountSetPrice>price*1){
-                  this.dataCountSetPrice -= price*1    
+              if(this.dataCountSetPrice>price*1 && this.currentTrIndexs.indexOf(_idx) > -1){
+                  this.dataCountSetPrice+price*1 -= price*1    
               }
           }).then(()=>{
               this.getCartItem();
@@ -119,7 +140,7 @@ export class CartComponent implements OnInit {
          if(this.dataCountSet.length>0){
              this.router.navigate(['/order'])
          }else{
-             this.info()
+             this.info();
          }
          for(let i =0;i<this.dataCountSet.length;i++){
              let params ;

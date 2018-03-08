@@ -89,7 +89,7 @@ module.exports = {
             var name = _req.body.name;
             var phone = _req.body.phone;
             var address = _req.body.address;
-            db.update(`update address set name = "${name}" , phone = "${phone}" , address = "${address}"  where id = ${id}`,function(res2){
+            db.update(`update address set name = "${name}" , phone = "${phone}" , address = "${address}" ,default_address = 0  where id = ${id}`,function(res2){
                     _res.send(res2);
                   
             })
@@ -132,13 +132,15 @@ module.exports = {
         //     })
         // }),
         _app.get('/get_orders',function(req,res){
-            db.select2(`select * from orders where status = 0`,function(result){
+            var userid = req.query.userid;
+            db.select2(`select * from orders where status = 0 && userid = ${userid}`,function(result){
                 console.log(result.data.results);
                 res.send(result);  
             })
         });
         _app.post('/delete_order',function(_req,_res){
-            db.delete(`DELETE FROM orders where status = 0`,function(res){
+            var userid = _req.body.userid;
+            db.delete(`DELETE FROM orders where status = 0 && userid = ${userid}`,function(res){
                 _res.send(res);
             })
         });
@@ -150,6 +152,18 @@ module.exports = {
                 db.update(`update orders set ordernumber = ${ordernumber} where indexid = ${indexid} `,function(res2){  
                         db.select2(`select * from orders where status = 1 && indexid = ${indexid}`,function(result){
                             _res.send(result)
+                    })  
+                })
+            })
+        });
+        _app.post('/change_order_detail',function(_req,_res){
+            var userid = _req.body.userid;
+            var ordernumber = _req.body.ordernumber;
+            console.log(ordernumber)
+            db.update(`update orders set ordernumber = ${ordernumber} where status = 0 && userid = ${userid}`,function(res){ 
+                    db.select2(`select * from orders where status = 0 && userid = ${userid}`,function(result){
+                        _res.send(result)
+                         db.update(`update orders set status = 1 where status = 0 && userid = ${userid} `,function(res2){
                     })  
                 })
             })
@@ -170,16 +184,16 @@ module.exports = {
             })
         });
         _app.get('/get_cart',function(_req,_res){
-            let uid =_req.query.uid;
+            let userid =_req.query.userid;
             let sql =`
                 select   
                     *
                 from
                     cart
                 where 
-                    userid = ${uid}
+                    userid = ${userid}
                 `;
-            db.select(sql,function(res){
+            db.select2(sql,function(res){
                 _res.send(res)
             })
         })

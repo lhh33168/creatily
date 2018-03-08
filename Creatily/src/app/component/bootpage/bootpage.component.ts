@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./bootpage.component.scss']
 })
 export class BootpageComponent implements OnInit {
-  count: Number = 10;
+  count: number = 10;
   constructor(private router: Router) { }
 
   ngOnInit() {

@@ -221,7 +221,7 @@ export class DetailComponent implements OnInit {
                     this.router.navigate(['/order',{status:1}]);
                 });
             }else{
-                this.router.navigate(['/login']);
+                this.router.navigate(['/login',{status:1}]);
             }
         }
     };

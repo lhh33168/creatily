@@ -40,7 +40,7 @@ import { CommentComponent } from './component/comment/comment.component';
 import { RegisterpwdComponent } from './component/registerpwd/registerpwd.component';
 import { UserComponent } from './component/user/user.component';
 import { UsersetComponent } from './component/userset/userset.component';
-import { SearchComponent } from './src/app/components/search/search.component';
+import { SearchComponent } from './component/search/search.component';
 
 
 

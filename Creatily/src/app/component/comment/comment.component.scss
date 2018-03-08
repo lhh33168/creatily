@@ -13,7 +13,7 @@
         }
     }
     .comment-container{
-        flex:1;overflow-x:hidden;
+        flex:1;overflow-x:hidden;padding-bottom: 50px;
         .swiper-slide{width:100%;height:56%;}
         .swiper-pagination-bullet-active{background: #FFD914;}
         .fabiao{
@@ -21,20 +21,96 @@
             .fabiao-top{
                 width:100%;height:3.25rem;line-height:2.0rem;border-bottom: 0.03125rem solid #ccc;padding:0.625rem 0;
                 .userimg-box{
-                    background: #000;width:2.0rem;height:2.0rem;float:left;border-radius:1.0rem;
+                    width:2.0rem;height:2.0rem;float:left;
+                    img{width:100%;border-radius:1.0rem;}
                 }
                 .Cname{
                     padding-left:1.0rem;font-size:1.0rem;
                 }
                 .icon-shixincaidan{
-                    float:right;font-size: 1.5rem;
+                    float:right;font-size: 1rem;
                 }
             }
             .fabiao-connent{
                 p{
-                    margin-top: 0.5rem;
+                    margin: 0.5rem;font-size:0.8125rem
+                }
+                .zan_xin{
+                    width:50%;height:5.0rem;margin:0.015625rem auto;
+                    i{
+                        font-size:2.0rem;display:block;width:3.0rem;height:3.0rem;border:0.03125rem solid #ccc;border-radius:50%;
+                    }
+                    div{
+                        font-size:1.0rem;
+                    }
+                    .dianzan{
+                        width:3.0rem;float:left;text-align:center;
+                    }
+                    .shoucang{
+                        width:3.0rem;float:right;text-align:center;
+                    }
                 }
             }
         }
+        .dianzan_p{
+            width:100%;border-bottom: 0.03125rem solid #ccc;padding:0.625rem;
+            .zan_tx{
+                .zan_txb{
+                    display:inline-block;width:1.5rem;height:1.5rem;
+                    img{width:100%;border-radius:1.0rem;}
+                }
+            }
+            .zan_cx{
+                text-align:center;
+            }
+        }
+        .ht_top{
+            width:100%;height:3.0rem;line-height:1.71875rem;border-bottom: 0.03125rem solid #ccc;padding:0.625rem;font-size:0.8125rem;
+            .ht_count{float:left;}
+            .ht_tab{
+                float:right;
+                span{
+                    display: inline-block;width: 3.125rem;border:0.03125rem solid #ccc;text-align:center;
+                }
+                span:nth-child(1){
+                    background: #ccc;border-radius: 0.3125rem 0 0 0.3125rem;
+                }
+                span:nth-child(2){
+                    border-radius: 0 0.3125rem 0.3125rem 0;
+                }
+            }
+        }
+        .ht_content{
+            width:100%;border-bottom: 0.03125rem solid #ccc;padding:0.625rem;font-size:0.8125rem;
+            .ht_ren{
+                width:100%;height:3.25rem;line-height:2.0rem;
+                .ht_userimg-box{
+                    width:2.0rem;height:2.0rem;float:left;
+                    img{width:100%;border-radius:1.0rem;}
+                }
+                .ht_name{
+                    padding-left:1.0rem;font-size:0.5rem;
+                }
+                .icon-shixincaidan{
+                    float:right;font-size: 1rem;
+                }
+            }
+            p{
+                font-size: 0.8125rem;
+            }
+            .ht_bt{
+                margin-top:0.5rem;
+                .ht_time{
+                    float:left;
+                }
+                .ht_z_pl{
+                    float:right;
+                }
+            }
+        }
+    }
+    .comment_addmyht{
+        width:100%;height:2.8125rem;background: #FFD914;line-height: 2.8125rem;text-align: center;font-size: 1rem;
+        i{padding:0 0.625rem;}
     }
 }

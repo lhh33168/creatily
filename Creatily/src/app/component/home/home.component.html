@@ -1,8 +1,9 @@
-<div class="home">
+
+<div id="home">
     <div class="homeheader">
         <div  class="searchBar" id="searchBar" ></div>
         <ul *ngIf="selectHome"class="typelist">
-            <li (click)="selector()">推荐</li>
+            <li (click)="selector($event)">推荐</li>
             <li *ngFor ="let obj of selectHome"(click)="selectList(obj['categoryId'])">{{obj['category']}}</li>
         </ul>
     </div>

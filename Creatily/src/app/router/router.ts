@@ -35,8 +35,6 @@ const appRoutes:Routes = [
     { path: "payment", component: PaymentComponent},
     { path: "address", component: AddressComponent},
     { path: "newAddress", component: NewAddressComponent},
-
-
     { path: "community", component: CommunityComponent},
 
     { path: "comment/:id", component: CommentComponent},

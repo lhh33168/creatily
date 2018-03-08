@@ -15,26 +15,28 @@ export class OrderComponent implements OnInit {
       dataCountSetPrice : number = 0;
       multiple: boolean = true;
       ordernumber : number;
+      userid : number = 123;
 
       constructor(private http: HttpService, private router: Router, private route : ActivatedRoute, private confirmServ: NzModalService) { }
 
       ngOnInit() {
           let params;
-          this.http.get('get_orders',params = {userid:123}).then((res) => { 
-              this.order = res['data'].results;
-              // console.log(this.order)
-          }).then(()=>{
-              this. getPrice();
-          })
-          
-          this.http.get('get_address',params = {userid:123}).then((res) => {        
-              for(let i = 0;i<res['data'].results.length;i++){
-                  if(res['data'].results[i].default_address==1){
-                      this.address.push(res['data'].results[i]);
+          if(this.userid){
+              this.http.get('get_orders',params = {userid:this.userid}).then((res) => { 
+                  this.order = res['data'].results;
+                  // console.log(this.order)
+              }).then(()=>{
+                  this. getPrice();
+              }) 
+              this.http.get('get_address',params = {userid:this.userid}).then((res) => {        
+                  for(let i = 0;i<res['data'].results.length;i++){
+                      if(res['data'].results[i].default_address==1){
+                          this.address.push(res['data'].results[i]);
+                      }
                   }
-              }
-              // console.log(this.address);
-          })
+                  // console.log(this.address);
+              })
+          }      
       }
       deleteOrder(){
          this.http.post('delete_order').then((res) => { 

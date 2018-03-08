@@ -16,6 +16,7 @@ export class CartComponent implements OnInit {
       cartItem: Array<any> = [];
       dataCountSet: Array<any> = [];
       dataCountSetPrice : number = 0;
+      userid: number = 1;
 
       constructor(private http: HttpService, private route: ActivatedRoute, private router: Router, private confirmServ: NzModalService) { }
 
@@ -23,22 +24,24 @@ export class CartComponent implements OnInit {
           this.http.get('get_hot').then((res) => { 
               this.carthot = res['data'].results;
           })
-          this.getCartItem();
+          if(this.userid){
+              this.getCartItem();
+          }
       }
       getCartItem(){
           let params = {}
-          this.http.get('get_cart',params = {uid:1}).then((res) => { 
-              if(res){
+          this.http.get('get_cart',params = {uid:this.userid}).then((res) => { 
+             
                   this.cartItem = res['data']['results'];
                   this.dataset = res['data']['results'];
-                  console.log(res) 
-               }
+                  // console.log(res) 
+              
            })    
       }
       getCartItem1(){
           let params = {}
           if(this.cartItem.length>1){
-              this.http.get('get_cart',params = {uid:1}).then((res) => { 
+              this.http.get('get_cart',params = {uid:this.userid}).then((res) => { 
                   this.cartItem = res['data'].results;
                   this.dataset = res['data'].results;
                   // console.log(res)

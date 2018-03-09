@@ -7,20 +7,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-  userInfo: string = window.sessionStorage.getItem("userInfo");
-  userImg: string = null;
-  userName: string = null; 
+  userInfo: string = window.sessionStorage.getItem('userInfo');
+  userImg: String = '../../../assets/images/default-user.png';
+  userName: String;
   constructor(private router: Router) { }
-  // 拦截
+
   ngOnInit() {
     if (this.userInfo == null) {
       this.router.navigate(['reglogin']);
-    }else{
-      let sessionRes = JSON.parse(this.userInfo);
+    } else if (this.userInfo) {
+      const sessionRes = JSON.parse(this.userInfo);
       this.userName = sessionRes['username'];
       this.userImg = sessionRes['headphoto'];
     }
   }
-
-
 }

@@ -53,59 +53,77 @@ export class LoginComponent implements AfterViewInit, OnInit {
     }
   }
   // 清除
-  loginPhoneclear(){
+  loginPhoneclear() {
     this.loginphone = null;
-    this.loginshowA = true;
+    this.loginshowA = false;
     this.ngAfterViewInit();
     this.logindisable = true;
-    this.loginSubmit.nativeElement.style.color = "#9C9C9C";
+    this.loginSubmit.nativeElement.style.color = '#9C9C9C';
   }
   loginPassclear(){
     this.loginpass = null;
     this.loginshowB = false;
     this.loginpassFocus.nativeElement.focus();
     this.logindisable = true;
-    this.loginSubmit.nativeElement.style.color = "#9C9C9C";
+    this.loginSubmit.nativeElement.style.color = '#9C9C9C';
   }
 
   loginpassshow() {
-    this.loginType = this.loginType == 'password' ? 'text' : 'password';
+    this.loginType = this.loginType === 'password' ? 'text' : 'password';
   }
 
-  loginsubmit(phone,password){
-    let phoneExp = /^1[34578]\d{9}$/;
-    let passExp = /^\S{6,20}$/;
+  loginsubmit(phone, password) {
+    const phoneExp = /^1[34578]\d{9}$/;
+    const passExp = /^\S{6,20}$/;
     if(!phoneExp.test(phone)){
       this.phoneError();
       return false;
-    } else if (!passExp.test(password)){
+    } else if (!passExp.test(password)) {
       this.passError();
       return false;
     } else {
       this.logindisable = true;
-      this.http.get('loginSub', { "userphone": phone, "password": password }).then((res) => {
-        if (res['state'] == "success") {
-          console.log(res['data']['index_id'], res['data']['userphone']);
-          // let resdata = res['data'][0]; 
-          window.sessionStorage.setItem("userInfo", JSON.stringify({ 
-            "id": res['data']['index_id'], 
-            "username": res['data']['user_id'],
-            "userphone":res['data']['userphone'],
-            "headphoto": res['data']['headphoto'],
-          }));
+      this.http.get('loginSub', { 'userphone': phone, 'password': password }).then((res) => {
+        // console.log(res);
+        if (res['state'] === 'notphone') {
+          this.loginPhoneError();
+        } else if (res['state'] === 'faild') {
+          this.loginerror();
+        } else if (res['state'] === 'success') {
+          // console.log(66666);
+          window.sessionStorage.setItem('userInfo', JSON.stringify(
+            {'id': res['data']['index_id'],
+            'username': res['data']['user_id'],
+            'userphone': res['data']['userphone'],
+            'headphoto': res['data']['headphoto']
+            }
+          ));
           this.loginsuccess();
         } else {
-          this.loginerror();
+          console.log('服务器已断开!');
         }
       });
     }
   }
-  
-  loginsuccess(){
-    let $self = this;
-    this.confirmServ.success({
+  loginPhoneError() {
+    const $self = this;
+    this.confirmServ.error({
       title: '温馨提示',
-      content: '恭喜您登录成功，现在为您跳转到登录页',
+      content: '该手机号码不存在!',
+      okText: '确定',
+      onOk() {
+        $self.loginphone = null;
+        $self.loginpass = null;
+        $self.logindisable = true;
+        $self.ngAfterViewInit();
+      }
+    });
+  }
+  loginsuccess () {
+    const $self = this;
+    this.confirmServ.success({
+      title: '#58bc58提示您',
+      content: '恭喜您登录成功，现在为您跳转用户页！',
       okText: '确定',
       onOk() {
         $self.router.navigate(['user']);
@@ -114,7 +132,7 @@ export class LoginComponent implements AfterViewInit, OnInit {
   }
   // 密码出错
   passError() {
-    let $self = this;
+    const $self = this;
     this.confirmServ.error({
       title: '温馨提示',
       content: '该密码输入不规范,请重新输入',
@@ -127,7 +145,7 @@ export class LoginComponent implements AfterViewInit, OnInit {
     });
   }
   phoneError() {
-    let $self = this;
+    const $self = this;
     this.confirmServ.error({
       title: '温馨提示',
       content: '手机号码输入不规范',
@@ -141,7 +159,7 @@ export class LoginComponent implements AfterViewInit, OnInit {
   }
 
   loginerror() {
-    let $self = this;
+    const $self = this;
     this.confirmServ.error({
       title: '温馨提示',
       content: '密码错误，请重新登录!',

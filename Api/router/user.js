@@ -17,15 +17,15 @@ module.exports = {
 			// 验证码存数据库
 			db.insert(`insert into user (userphone, phonecode) values (${phoneVal} , ${codeNum})`, function (result){
 				// if(result.state){
-				httpCode(phoneVal, codeNum).then(function(res){
-					// console.log(res);
-					// responer.send({state:""})
-					if(res.respCode==00000){
-						responer.send("发送成功");
-					}else{
-						responer.send("发送失败");							
-					}
-				});
+				// httpCode(phoneVal, codeNum).then(function(res){
+				// 	// console.log(res);
+				// 	// responer.send({state:""})
+				// 	if(res.respCode==00000){
+				// 		responer.send("发送成功");
+				// 	}else{
+				// 		responer.send("发送失败");							
+				// 	}
+				// });
 			});
 		})
 		app.get('/testCode', (request, responer)=>{
@@ -61,17 +61,25 @@ module.exports = {
 			})
 		});
 		app.get('/loginSub', function(request, responer){
-			var username = request.query.userphone;
-			var password = request.query.password;
-			const md5loginPass = md5(password);
-			// console.log(username)
-			db.select2(`select * from user where userphone=${username} and password="${md5loginPass}"`, function (result) {
-				if (result.data.results.length < 0) {
-					responer.send({ state: "faild" });
-				} else {
-					responer.send({ state: "success", data: result.data.results[0]});
+			const username = request.query.userphone;
+			db.select2(`select * from user where userphone = ${username}`,function(result){
+				if (result.data.results.length == 0) {
+					responer.send({ state: "notphone" });
+				}else{
+					const password = request.query.password;
+					const md5loginPass = md5(password);
+					// console.log(username, md5loginPass)
+					db.select2(`select * from user where userphone = ${username} and password = "${md5loginPass}"`, function(res){
+						// console.log(res);
+						if (res.data.results.length > 0) {
+							responer.send({ state: "success", data: res.data.results[0] });
+						} else if(res.error) {
+							responer.send({ state: "netFaild" });
+						}else{
+							responer.send({ state: "faild" });
+						}
+					})
 				}
-				// console.log(result.data)
 			})
 		})
 		// 订单

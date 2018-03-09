@@ -1,16 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component} from '@angular/core';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-reglogin',
   templateUrl: './reglogin.component.html',
   styleUrls: ['./reglogin.component.scss']
 })
-export class RegloginComponent implements OnInit {
+export class RegloginComponent {
+  constructor(private router: Router) { }
 
-  constructor() { }
-
-  ngOnInit() {
-      
+  getBackIndex() {
+    this.router.navigate(['home']);
   }
-  
 }

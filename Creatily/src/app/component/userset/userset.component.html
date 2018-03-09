@@ -8,11 +8,11 @@
             <li class="user-head">
                 <span>头像</span>
                 <span>
-                    <img [src]="userImg"/>
+                    <img [src]="usersetImg"/>
                 </span>
             </li>
             <li>
-                <a routerLink="/">
+                <a routerLink="**">
                     <span>修改用户名</span>
                     <span>
                         <i class="iconfont icon-fanhui"></i>
@@ -20,7 +20,7 @@
                 </a>
             </li>
             <li>
-                <a routerLink="/">
+                <a routerLink="**">
                     <span>更换手机号</span>
                     <span>
                         <i class="iconfont icon-fanhui"></i>
@@ -29,5 +29,5 @@
             </li>
         </ul>
     </div>
-    <div class="userset-exit">退出</div>
+    <div class="userset-exit" (click)="tuichu()">退出</div>
 </div>

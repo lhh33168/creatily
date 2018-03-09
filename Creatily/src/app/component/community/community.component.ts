@@ -58,8 +58,12 @@ export class CommunityComponent implements OnInit {
 	  this.http.get('jianfan').then((res) => {
 				 this.carthot7 = res['data'].results;
 	  })
-	  
-    
+  }
+  
+  getdata(xm){
+  	if(xm.length>0){
+  		this.carthot1=xm[0];
+  	}
   }
   
   getKeys(item){
@@ -67,7 +71,7 @@ export class CommunityComponent implements OnInit {
       }
   
   stockCountAdd_1_1(id,dianzan,status,event){
-  	let params;
+  			let params;
          this.http.post('add_cartcount_a1',params = {id:id,dianzan:dianzan,status:status}).then((res) => { 
               
                this.carthot1 =res['data'].results;
@@ -87,7 +91,10 @@ export class CommunityComponent implements OnInit {
               
          });
          
-         
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3780f893b5945650d3e0595fb1081f79b9da0a7b
          this.http.post('add_cartcount_a4',params = {id:id,dianzan:dianzan,status:status}).then((res) => { 
               
                this.carthot4 =res['data'].results;
@@ -160,12 +167,11 @@ export class CommunityComponent implements OnInit {
   
   stockCountAdd_tp(id){
   	let params;
-         this.router.navigate(['comment',id],{params:{id:id}  } );
+    this.router.navigate(['comment',id]);
   }
   
   stockCountAdd_3(id){
   	let params;
-         this.router.navigate(['comment',id],{params:{id:id}  } );
+    this.router.navigate(['comment',id],{params:{id:id}  } );
   }
-
 }

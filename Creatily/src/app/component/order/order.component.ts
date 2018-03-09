@@ -50,7 +50,7 @@ export class OrderComponent implements OnInit {
           this.route.params.subscribe((params) =>{
                  
                  this.status = params['status'];
-                 console.log( this.status )
+                 // console.log( this.status )
           });      
       }
       deleteOrder(){
@@ -68,7 +68,8 @@ export class OrderComponent implements OnInit {
       }
       goToPay(){
           let params;
-          this.ordernumber = parseInt(Math.random()*(1000000000-10000000+1)+10000000,10);
+          let randomnumber = Math.random()*(1000000000-10000000+1)+10000000;
+          this.ordernumber = parseInt(`${randomnumber}`,10);
           // console.log(typeOf(this.ordernumber))
           if(this.address.length===0){
                this.error();

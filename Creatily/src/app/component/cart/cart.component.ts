@@ -131,7 +131,7 @@ export class CartComponent implements OnInit {
          if(_obj.count>1){
              _obj.count -= 1;
          }
-         console.log(_obj.count);
+         // console.log(_obj.count);
          let params;
          this.selectTrSingle(_idx,_obj);
          this.http.post('sub_cartcount',params = {indexid:indexid,qty:qty}).then((res) => { 

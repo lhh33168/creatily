@@ -7,6 +7,7 @@ module.exports = {
 			let arr = Object.keys(req.body);
 			let key = '';
 			let value = [];
+			let str = '';
 			for(let i=0;i<arr.length;i++){
 				key+=","+arr[i];
 				str+=",?"
@@ -111,7 +112,7 @@ module.exports = {
 			console.log(req.body);
 			let key = '';
 			let value = [];
-			str = '';
+			let str = '';
 			for(let i=0;i<arr.length;i++){
 				key+=","+arr[i];
 				str+=",?"

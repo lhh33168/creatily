@@ -8,7 +8,7 @@ import { HttpService } from '../../utils/http.service';
 })
 export class UserorderComponent implements OnInit {
   navActive:number = 1;
-
+  tempArr: Array<any>;
   navList: Array<any> = [
     { navidx: 1, navname: "全部" },
     { navidx: 2, navname: "待付款" },
@@ -28,5 +28,9 @@ export class UserorderComponent implements OnInit {
     this.$http.get('dingdan',{idxState:idx}).then((res)=>{
       this.dingdanlist = res['data'];
     })
+  };
+
+  getdingDan(){
+    
   }
 }

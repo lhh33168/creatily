@@ -16,17 +16,18 @@ module.exports = {
 			// console.log("phoneNumber", phoneVal, "codeNum", codeNum);
 			// 验证码存数据库
 			db.insert(`insert into user (userphone, phonecode) values (${phoneVal} , ${codeNum})`, function (result){
-				// if(result.state){
-				// httpCode(phoneVal, codeNum).then(function(res){
-				// 	// console.log(res);
-				// 	// responer.send({state:""})
-				// 	if(res.respCode==00000){
-				// 		responer.send("发送成功");
-				// 	}else{
-				// 		responer.send("发送失败");							
-				// 	}
-				// });
-			});
+				if(result.state){
+					httpCode(phoneVal, codeNum).then(function(res){
+						// console.log(res);
+						// responer.send({state:""})
+						if(res.respCode==00000){
+							responer.send("发送成功");
+						}else{
+							responer.send("发送失败");							
+						}
+					});
+				}
+			})
 		})
 		app.get('/testCode', (request, responer)=>{
 			const phoneval = request.query.phone;

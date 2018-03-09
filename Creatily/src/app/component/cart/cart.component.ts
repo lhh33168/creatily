@@ -114,7 +114,7 @@ export class CartComponent implements OnInit {
          this.http.post('add_cartcount',params = {indexid:indexid,qty:qty}).then((res) => { 
               // console.log(res)
               if(this.dataCountSetPrice != 0 && this.currentTrIndexs.indexOf(_idx) > -1){
-                this.dataCountSetPrice-price*1 += price*1
+                this.dataCountSetPrice-price*1 += price*1;
               }
           }).then(()=>{
               this.getCartItem();

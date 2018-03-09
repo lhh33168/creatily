@@ -110,7 +110,7 @@ export class NewAddressComponent implements OnInit {
           var userJsonStr = sessionStorage.getItem('userInfo');
           if(userJsonStr){
               var usermessage = JSON.parse(userJsonStr);
-              this.userid = usermessage.id;console.log(this.userid)
+              this.userid = usermessage.id;
           }
           this.getCitys();
           this.route.params.subscribe((params) => {

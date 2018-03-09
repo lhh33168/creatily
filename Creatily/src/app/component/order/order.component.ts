@@ -25,7 +25,7 @@ export class OrderComponent implements OnInit {
           var userJsonStr = sessionStorage.getItem('userInfo');
           if(userJsonStr){
               var usermessage = JSON.parse(userJsonStr);
-              this.userid = usermessage.id;console.log(this.userid)
+              this.userid = usermessage.id;
           }
           if(this.userid){
               this.http.get('get_orders',params = {userid:this.userid}).then((res) => { 

@@ -14,7 +14,7 @@ export class OrderComponent implements OnInit {
       address: Array<any> = [];
       dataCountSetPrice : number = 0;
       multiple: boolean = true;
-      ordernumber : number;
+      ordernumber : any;
       userid : number;
       status : number;
 
@@ -23,8 +23,10 @@ export class OrderComponent implements OnInit {
       ngOnInit() {
           let params;
           var userJsonStr = sessionStorage.getItem('userInfo');
-          var usermessage = JSON.parse(userJsonStr);
-          this.userid = usermessage.id;console.log(this.userid)
+          if(userJsonStr){
+              var usermessage = JSON.parse(userJsonStr);
+              this.userid = usermessage.id;
+          }
           if(this.userid){
               this.http.get('get_orders',params = {userid:this.userid}).then((res) => { 
                   if(res['state']==true){
@@ -48,7 +50,7 @@ export class OrderComponent implements OnInit {
           this.route.params.subscribe((params) =>{
                  
                  this.status = params['status'];
-                 console.log( this.status )
+                 // console.log( this.status )
           });      
       }
       deleteOrder(){
@@ -66,7 +68,9 @@ export class OrderComponent implements OnInit {
       }
       goToPay(){
           let params;
-          this.ordernumber = parseInt(Math.random()*(1000000000-10000000+1)+10000000,10);
+          let randomnumber = Math.random()*(1000000000-10000000+1)+10000000;
+          this.ordernumber = parseInt(`${randomnumber}`,10);
+          // console.log(typeOf(this.ordernumber))
           if(this.address.length===0){
                this.error();
           }else if(this.multiple==false){

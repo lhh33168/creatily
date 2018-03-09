@@ -29,7 +29,7 @@
                 <ul>
                     <li *ngFor="let obj of cartItem;let idx = index;">
                         <input type="radio" [checked]="currentTrIndexs.indexOf(idx) > -1" (click)="selectTr(idx,obj)"/>
-                        <img [src]="obj.imgurl"/>
+                        <img [src]="obj.imgurl" routerLink="/detail/{{obj.goodsid}}"/>
                         <div class="cartmainbottom_full_center">
                             <p>{{obj.proname}}</p>
                             <span class="cartmainbottom_full_center_c" *ngIf="obj['size'] && obj['size'].length>0">类型：{{obj.size}}</span>

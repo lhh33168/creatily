@@ -11,8 +11,8 @@ import { NzMessageService } from 'ng-zorro-antd';
 })
 export class CommentComponent implements OnInit {
 
-    userid: number = 123;
-    username: string = 'ljt';
+    userid: number;
+    username: string;
     headShow: boolean = true;
     headShow2: boolean = false;
     commentId: number;
@@ -32,6 +32,15 @@ export class CommentComponent implements OnInit {
     constructor(private route: ActivatedRoute, private router: Router, private http: HttpService, private location: Location, private _message: NzMessageService) { }
 
     ngOnInit(): void{
+
+        var userJsonStr = sessionStorage.getItem('userInfo');
+        var usermessage = JSON.parse(userJsonStr);
+        // console.log(usermessage)
+        if(usermessage){
+            this.userid = usermessage.id;
+            this.username = usermessage.username;
+        };
+
         this.route.params.subscribe((params) => {
             // console.log(params)
             this.commentId = params['id'];
@@ -99,21 +108,35 @@ export class CommentComponent implements OnInit {
     };
 
     add_zan(event){
-        console.log(event.target.classList)
+        // console.log(event.target.classList)
         let params;
-
-        this.http.post('add_zan',params = {id:this.commentId,dianzan:this.dianzan_count,status:this.status}).then((res) => {
-                this.ngOnInit();
-            })
+        if(this.userid && this.username){
+            this.http.post('add_zan',params = {id:this.commentId,dianzan:this.dianzan_count,status:this.status}).then((res) => {
+                    this.ngOnInit();
+                })
+        }else{
+            this.router.navigate(['/reglogin']);
+        }
 
     };
 
     add_shoucang(event){
-        console.log(event.target.classList)
+        // console.log(event.target.classList)
         let params;
-        this.http.post('add_shoucang',params = {id:this.commentId,shoucang:this.shoucang_count,status1:this.status1}).then((res) => { 
-            this.ngOnInit();
-        });
+        if(this.userid && this.username){
+            this.http.post('add_shoucang',params = {id:this.commentId,shoucang:this.shoucang_count,status1:this.status1}).then((res) => { 
+                this.ngOnInit();
+                });
+        }else{
+            this.router.navigate(['/reglogin']);
+        }
     };
 
+    myhuitie(){
+        if(this.userid && this.username){
+
+        }else{
+            this.router.navigate(['/reglogin']);
+        }
+    }
 }

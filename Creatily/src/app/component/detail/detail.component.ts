@@ -177,7 +177,7 @@ export class DetailComponent implements OnInit {
         if(this.userid && this.username){
             this.router.navigate(['/cart']);
         }else{
-            this.router.navigate(['/login']);
+            this.router.navigate(['/reglogin']);
         }
     };
 
@@ -214,7 +214,7 @@ export class DetailComponent implements OnInit {
                     this.tip = [];
                     this.classlist = {};
                 }else{
-                    this.router.navigate(['/login']);
+                    this.router.navigate(['/reglogin']);
                 }
             // console.log(this.classlist)
         }
@@ -242,7 +242,7 @@ export class DetailComponent implements OnInit {
                     this.router.navigate(['/order',{status:1}]);
                 });
             }else{
-                this.router.navigate(['/login']);
+                this.router.navigate(['/reglogin']);
             }
         }
     };

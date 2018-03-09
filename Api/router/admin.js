@@ -95,9 +95,13 @@ module.exports = {
 				if(arr[i] == "id"){
 					continue;
 				}
+				if(req.body[arr[i]] == 'null'){
+					continue;
+				}
 				str+=","+arr[i]+"="+"'"+req.body[arr[i]]+"'";
 			}
 			str = str.slice(1);
+			console.log(`UPDATE goodlist SET ${str} WHERE id = ${req.body.id}`);
 			db.update(`UPDATE goodlist SET ${str} WHERE id = ${req.body.id}`,function(result){
 				res.send(result);
 			})

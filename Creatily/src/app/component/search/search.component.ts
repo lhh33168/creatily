@@ -8,8 +8,7 @@ import {HttpService} from '../../utils/http.service'
     styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-    //@Input() table: string;
-    @Output() search_data = new EventEmitter <Array>();
+    @Output() search_data = new EventEmitter();
   
     _search_data:string = null;
 

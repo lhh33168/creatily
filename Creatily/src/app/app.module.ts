@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { WeUiModule } from 'ngx-weui';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RootRouter } from './router/router';
@@ -10,7 +11,7 @@ import { HttpService } from './utils/http.service';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { NZ_MESSAGE_CONFIG } from 'ng-zorro-antd';
 
-
+import { HomeComponent } from './component/home/home.component';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { BootpageComponent } from './component/bootpage/bootpage.component';
@@ -31,7 +32,7 @@ import { CommunityComponent } from './component/community/community.component';
 import { CarouselComponent } from './component/home/carousel/carousel.component';
 import { NewProductComponent } from './component/home/new-product/new-product.component';
 import { ShowProductComponent } from './component/home/show-product/show-product.component';
-import { HomeComponent } from './component/home/home.component';
+
 
 
 
@@ -61,26 +62,18 @@ import { SearchComponent } from './component/search/search.component';
     PaymentComponent,
     NewAddressComponent,
     AddressComponent,
-
-
     CommunityComponent,
-
-
     CarouselComponent,
     NewProductComponent,
     ShowProductComponent,
     HomeComponent,
     RegisterpwdComponent,
-
     CommentComponent,
     RegisterpwdComponent,
     UserComponent,
     UsersetComponent,
-<<<<<<< HEAD
-    NotificationComponent
-=======
+    NotificationComponent,
     SearchComponent
->>>>>>> 10ded42355eba65e0e23189eb924e31c19f4d357
 
   ],
   imports: [
@@ -91,6 +84,7 @@ import { SearchComponent } from './component/search/search.component';
     BrowserModule,
     HttpModule,
     FormsModule,
+    CommonModule,
     NgZorroAntdModule.forRoot()
   ],
   providers: [HttpService, { provide: NZ_MESSAGE_CONFIG, useValue: { nzMaxStack: 1 } }],

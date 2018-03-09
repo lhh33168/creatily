@@ -76,4 +76,4 @@ export class RegisterpwdComponent implements OnInit {
     });
     }
 }
-}
+

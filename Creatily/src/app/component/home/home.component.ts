@@ -27,8 +27,8 @@ export class HomeComponent implements OnInit {
         observeParents:true,
         pagination: {
           el:'.showsImg .swiper-pagination'
-        },
-      });
+        }
+      })
     }
     getKeys(item){
 

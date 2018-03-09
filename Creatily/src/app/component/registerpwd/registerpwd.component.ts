@@ -81,7 +81,9 @@ export class RegisterpwdComponent implements OnInit {
         $self.submitPwd = true;
       }
     });
-  }
+
+    }
+
   passsuccess(){
     let $self = this;
     this.confirmServ.success({
@@ -110,3 +112,4 @@ export class RegisterpwdComponent implements OnInit {
     });
   }
 }
+

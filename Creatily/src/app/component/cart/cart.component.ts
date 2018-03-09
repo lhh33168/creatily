@@ -16,11 +16,16 @@ export class CartComponent implements OnInit {
       cartItem: Array<any> = [];
       dataCountSet: Array<any> = [];
       dataCountSetPrice : number = 0;
-      userid: number = 123;
+      userid: number;
 
       constructor(private http: HttpService, private route: ActivatedRoute, private router: Router, private confirmServ: NzModalService) { }
 
       ngOnInit() {
+          var userJsonStr = sessionStorage.getItem('userInfo');
+          if(userJsonStr){
+              var usermessage = JSON.parse(userJsonStr);
+              this.userid = usermessage.id;
+          }
           this.http.get('get_hot').then((res) => { 
               this.carthot = res['data'].results;
           })
@@ -31,10 +36,11 @@ export class CartComponent implements OnInit {
       getCartItem(){
           let params = {}
           this.http.get('get_cart',params = {userid:this.userid}).then((res) => { 
-             
+              if(res['state']==true){
                   this.cartItem = res['data']['results'];
                   this.dataset = res['data']['results'];
-                  // console.log(res) 
+                  // console.log(res)   
+              }
               
            })    
       }
@@ -50,7 +56,7 @@ export class CartComponent implements OnInit {
               this.cartItem = [];
               this.dataset = [];
           }
-          console.log(this.cartItem.length)
+          // console.log(this.cartItem.length)
       }
       getPrice(){
               this.dataCountSetPrice = 0;
@@ -114,7 +120,8 @@ export class CartComponent implements OnInit {
          this.http.post('add_cartcount',params = {indexid:indexid,qty:qty}).then((res) => { 
               // console.log(res)
               if(this.dataCountSetPrice != 0 && this.currentTrIndexs.indexOf(_idx) > -1){
-                this.dataCountSetPrice-price*1 += price*1;
+                  this.dataCountSetPrice = this.dataCountSetPrice-price*1
+                  this.dataCountSetPrice += price*1 
               }
           }).then(()=>{
               this.getCartItem();
@@ -124,13 +131,14 @@ export class CartComponent implements OnInit {
          if(_obj.count>1){
              _obj.count -= 1;
          }
-         console.log(_obj.count);
+         // console.log(_obj.count);
          let params;
          this.selectTrSingle(_idx,_obj);
          this.http.post('sub_cartcount',params = {indexid:indexid,qty:qty}).then((res) => { 
               // console.log(res)
               if(this.dataCountSetPrice>price*1 && this.currentTrIndexs.indexOf(_idx) > -1){
-                  this.dataCountSetPrice+price*1-= price*1    
+                  this.dataCountSetPrice = this.dataCountSetPrice+price*1
+                  this.dataCountSetPrice -= price*1   
               }
           }).then(()=>{
               this.getCartItem();

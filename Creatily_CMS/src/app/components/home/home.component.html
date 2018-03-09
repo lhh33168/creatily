@@ -1,8 +1,9 @@
 <div class="home">
     <div class="container" el-container direction="vertical">
-
         <div class="header" el-header>
-            <h3 *ngIf="common.publicDic[common.lanType]">{{common.publicDic[common.lanType]['name'] || ''}}</h3>
+            <h3 *ngIf="common.publicDic[common.lanType]">{{common.publicDic[common.lanType]['name'] || ''}}
+                <img src="../../../assets/images/poster.jpg" alt="" />
+            </h3>
             <p class="p3">
                 <i class="iconfont icon-zhongyingwenqiehuan"></i>
                 <select [(ngModel)]="common.lanType">
@@ -21,13 +22,14 @@
         <div class="bot" el-container>
             <div class="aside" el-aside>
                 <ul>
+                    <li (click)="active($event)" [class.active]="this.router_act.indexOf('/home/admin')>-1"><a routerLink="/home/admin" *ngIf="common.publicDic[common.lanType]">{{common.publicDic[common.lanType]['item3']}}</a><i class="iconfont icon-qianjin"></i></li>
                     <li (click)="active($event)" [class.active]="this.router_act.indexOf('/home/goods')>-1"><a routerLink="/home/goods" *ngIf="common.publicDic[common.lanType]">{{common.publicDic[common.lanType]['item1']}}</a><i class="iconfont icon-qianjin"></i></li>
                     <li (click)="active($event)" [class.active]="this.router_act.indexOf('/home/orders')>-1"><a routerLink="/home/orders" *ngIf="common.publicDic[common.lanType]">{{common.publicDic[common.lanType]['item2']}}</a><i class="iconfont icon-qianjin"></i></li>
-                    <li (click)="active($event)" [class.active]="this.router_act.indexOf('/home/admin')>-1"><a routerLink="/home/admin" *ngIf="common.publicDic[common.lanType]">{{common.publicDic[common.lanType]['item3']}}</a><i class="iconfont icon-qianjin"></i></li>
                 </ul>
             </div>
             <div class="main" el-main (scroll)="scroll($event)">
                 <router-outlet></router-outlet>
+                <img src="../../../assets/images/poster.jpg" alt="" [class.act]="cur_router != '/home'"/>
             </div>
         </div>
     </div>

@@ -15,6 +15,7 @@ export class NewAddressComponent implements OnInit {
       phone:any ='';
       definite:any ='';
       multiple: boolean = false;
+      userid:number;
       /************************* 省级联动 ********************************/
       citys: any;                                             //省级 数据
       city1Array: any = [];
@@ -106,14 +107,19 @@ export class NewAddressComponent implements OnInit {
       constructor(private http: HttpService, private confirmServ: NzModalService, private route: ActivatedRoute, private router: Router) { }
 
       ngOnInit() {
+          var userJsonStr = sessionStorage.getItem('userInfo');
+          if(userJsonStr){
+              var usermessage = JSON.parse(userJsonStr);
+              this.userid = usermessage.id;
+          }
           this.getCitys();
           this.route.params.subscribe((params) => {
-            // console.log(params);
-            this.id = params['id'];         
+              // console.log(params);
+              this.id = params['id'];         
           });
           let params;
           this.http.get('get_compile_address',params = {id:this.id}).then((res) => { 
-             if(res.state==true){
+             if(res['state']==true){
                  this.city1NgModel = res['data'].results[0].address.split(',')[0];
                  this.definite = res['data'].results[0].address.split(',')[1];
                  this.review = res['data'].results[0].name;
@@ -151,13 +157,13 @@ export class NewAddressComponent implements OnInit {
         });
       }
       addAddress(name,phone,address,city1NgModel){
-          let params;
-          if(this.id == ':10000'){
+          let params;console.log(this.id,name)
+          if(this.id == undefined){
               if(this.multiple){
                   if(!name || !phone || !city1NgModel || !address){
                       this.error();
                   }else{
-                      this.http.post('add_address_def',params = {userid:123,name:name,phone:phone,address:city1NgModel +',' + address}).then((res) => { 
+                      this.http.post('add_address_def',params = {userid:this.userid,name:name,phone:phone,address:city1NgModel +',' + address}).then((res) => { 
                           this.success();          
                       })         
                   }
@@ -165,7 +171,7 @@ export class NewAddressComponent implements OnInit {
                   if(!name || !phone || !city1NgModel || !address){
                       this.error();
                   }else{
-                      this.http.post('add_address',params = {userid:123,name:name,phone:phone,address:city1NgModel +',' + address}).then((res) => { 
+                      this.http.post('add_address',params = {userid:this.userid,name:name,phone:phone,address:city1NgModel +',' + address}).then((res) => { 
                           this.success();         
                       })         
                   }
@@ -175,7 +181,7 @@ export class NewAddressComponent implements OnInit {
                   if(!name || !phone || !city1NgModel || !address){
                       this.error();
                   }else{
-                      this.http.post('update_address_def',params = {userid:123,name:name,phone:phone,address:city1NgModel +',' + address,id:this.id}).then((res) => { 
+                      this.http.post('update_address_def',params = {userid:this.userid,name:name,phone:phone,address:city1NgModel +',' + address,id:this.id}).then((res) => { 
                           this.success();          
                       })         
                   }
@@ -183,7 +189,7 @@ export class NewAddressComponent implements OnInit {
                   if(!name || !phone || !city1NgModel || !address){
                       this.error();
                   }else{
-                      this.http.post('update_address',params = {userid:123,name:name,phone:phone,address:city1NgModel +',' + address,id:this.id}).then((res) => { 
+                      this.http.post('update_address',params = {userid:this.userid,name:name,phone:phone,address:city1NgModel +',' + address,id:this.id}).then((res) => { 
                           this.success();         
                       })         
                   }

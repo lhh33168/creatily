@@ -50,7 +50,7 @@ module.exports = {
            console.log(arr)
 
            db.update(`update address set default_address = 0 where user_id = ${userid} && default_address = 1`,function(res){
-                    db.insert(`INSERT INTO address (name,user_id,phone,address,default_address) VALUES(?,?,?,?,?)`,arr,function(res2){
+                    db.insert2(`INSERT INTO address (name,user_id,phone,address,default_address) VALUES(?,?,?,?,?)`,arr,function(res2){
                     _res.send(res2);
                })       
            })
@@ -60,7 +60,7 @@ module.exports = {
            var arr =[_req.body.name,_req.body.userid,_req.body.phone,_req.body.address]
            console.log(arr)
 
-           db.insert(`INSERT INTO address (name,user_id,phone,address) VALUES(?,?,?,?)`,arr,function(res){
+           db.insert2(`INSERT INTO address (name,user_id,phone,address) VALUES(?,?,?,?)`,arr,function(res){
                 _res.send(res);
            })                
         });
@@ -99,7 +99,7 @@ module.exports = {
            console.log(arr)
            // var sql =`INSERT INTO cart(uerid,proid) VALUES(${uid},${_req.body.proid})`
 
-           db.insert(`INSERT INTO orders (indexid,userid,count,color,size,goodsid,username,price,proname,imgurl) VALUES(?,?,?,?,?,?,?,?,?,?)`,arr,function(res){
+           db.insert2(`INSERT INTO orders (indexid,userid,count,color,size,goodsid,username,price,proname,imgurl) VALUES(?,?,?,?,?,?,?,?,?,?)`,arr,function(res){
                 _res.send(res);
            })
            // var arr = [_req.body.indexid]

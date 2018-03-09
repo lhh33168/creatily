@@ -12,6 +12,20 @@
             float:right;
         }
     }
+    .head2{
+        box-sizing:border-box;width:100%;height: 2.5rem;line-height:2.5rem;position:absolute;z-index: 999;padding:0 0.625rem;background: #fff;text-align: center;font-size: 1rem;border-bottom:0.03125rem solid #ccc;
+        i{
+            text-align: center;font-size: 1.25rem;
+        }
+
+        .goback2{
+            float:left;
+            span{position: absolute;font-size: 0.8rem;}
+        }
+        .share2{
+            float:right;
+        }
+    }
     .comment-container{
         flex:1;overflow-x:hidden;padding-bottom: 50px;
         .swiper-slide{width:100%;height:56%;}
@@ -48,6 +62,9 @@
                     }
                     .shoucang{
                         width:3.0rem;float:right;text-align:center;
+                    }
+                    .actived{
+                        color:#FFD914;border-color:#FFD914;
                     }
                 }
             }

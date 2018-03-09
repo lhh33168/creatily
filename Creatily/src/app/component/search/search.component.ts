@@ -8,8 +8,7 @@ import {HttpService} from '../../utils/http.service'
     styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-    //@Input() table: string;
-    @Output() search_data = new EventEmitter<Array>();
+    @Output() search_data = new EventEmitter();
   
     _search_data:string = null;
 
@@ -23,6 +22,7 @@ export class SearchComponent implements OnInit {
             if(res['state']){
                 this.search_data.emit(res['data']['results'] || []);
                 console.log(this.search_data);
+                console.log(res['data']['results']);
             }
         })
     }

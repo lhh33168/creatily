@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
     }
 
     constructor(
-        public activeRoute:ActivatedRoute,private router: Router,private common:CommonService
+        public activeRoute:ActivatedRoute,private router: Router,public common:CommonService
     ) { }
 
     ngOnInit(){

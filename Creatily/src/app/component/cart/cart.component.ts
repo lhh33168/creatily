@@ -56,7 +56,7 @@ export class CartComponent implements OnInit {
               this.cartItem = [];
               this.dataset = [];
           }
-          console.log(this.cartItem.length)
+          // console.log(this.cartItem.length)
       }
       getPrice(){
               this.dataCountSetPrice = 0;

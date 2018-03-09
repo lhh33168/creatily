@@ -36,10 +36,10 @@
             border-bottom: 6px solid #F2F1F0;
             .swiper-wrapper {
                 position: relative;
-                left: -150px;
+                left: -137px;
                 .swiper-slide {
                     background-color: #fff;
-                    width: 60px;
+                    width: 62px;
                     height: 36px;
                     line-height: 36px;
                     text-align: center;
@@ -99,7 +99,10 @@
                             height: 45px;
                             line-height: 45px;
                             .iconfont {
-                                font-size: 20px;
+                                font-size: 22px;
+                            }
+                            .iconfont:hover{
+                            color: yellow;
                             }
                             #dsc_1 {
                                 border: none;

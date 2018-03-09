@@ -95,7 +95,6 @@ export class CommunityComponent implements OnInit {
               
          });
          
-         let params;
          
          this.http.post('add_cartcount_a4',params = {id:id,dianzan:dianzan,status:status}).then((res) => { 
               

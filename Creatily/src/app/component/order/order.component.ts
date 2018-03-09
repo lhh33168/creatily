@@ -15,27 +15,34 @@ export class OrderComponent implements OnInit {
       dataCountSetPrice : number = 0;
       multiple: boolean = true;
       ordernumber : number;
-      userid : number = 123;
+      userid : number;
       status : number;
 
       constructor(private http: HttpService, private router: Router, private route : ActivatedRoute, private confirmServ: NzModalService) { }
 
       ngOnInit() {
           let params;
+          var userJsonStr = sessionStorage.getItem('userInfo');
+          var usermessage = JSON.parse(userJsonStr);
+          this.userid = usermessage.id;console.log(this.userid)
           if(this.userid){
               this.http.get('get_orders',params = {userid:this.userid}).then((res) => { 
-                  this.order = res['data'].results;
-                  // console.log(this.order)
+                  if(res['state']==true){
+                      this.order = res['data'].results;
+                      // console.log(this.order)
+                  }
               }).then(()=>{
                   this. getPrice();
               }) 
-              this.http.get('get_address',params = {userid:this.userid}).then((res) => {        
-                  for(let i = 0;i<res['data'].results.length;i++){
-                      if(res['data'].results[i].default_address==1){
-                          this.address.push(res['data'].results[i]);
+              this.http.get('get_address',params = {userid:this.userid}).then((res) => {  
+                  if(res['state']==true){
+                      for(let i = 0;i<res['data'].results.length;i++){
+                          if(res['data'].results[i].default_address==1){
+                              this.address.push(res['data'].results[i]);
+                          }
                       }
                   }
-                  // console.log(this.address);
+                      // console.log(this.address);
               })
           }
           this.route.params.subscribe((params) =>{
@@ -58,6 +65,7 @@ export class OrderComponent implements OnInit {
           // console.log(this.dataCountSetPrice)   
       }
       goToPay(){
+          let params;
           this.ordernumber = parseInt(Math.random()*(1000000000-10000000+1)+10000000,10);
           if(this.address.length===0){
                this.error();
@@ -69,7 +77,7 @@ export class OrderComponent implements OnInit {
                this.http.post('change_order_detail',params = {ordernumber:this.ordernumber,userid:this.userid}).then((res) => { 
                         console.log(res)
                         this.order = [];
-                        this.router.navigate(['payment',this.dataCountSetPrice,res.data.results[0].ordernumber]);    
+                        this.router.navigate(['payment',this.dataCountSetPrice,res['data'].results[0].ordernumber]);    
                  })
           }else{ 
              // console.log(this.ordernumber)

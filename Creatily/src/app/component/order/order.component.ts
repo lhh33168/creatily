@@ -90,7 +90,7 @@ export class OrderComponent implements OnInit {
                  this.http.post('change_order',params = {indexid:this.order[i].indexid,ordernumber:this.ordernumber,userid:this.userid}).then((res) => { 
                         // console.log(res)
                         this.order = [];
-                        this.router.navigate(['payment',this.dataCountSetPrice,res.data.results[0].ordernumber]);    
+                        this.router.navigate(['payment',this.dataCountSetPrice,res['data'].results[0].ordernumber]);    
                  })
              }
           }

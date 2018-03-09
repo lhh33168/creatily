@@ -91,10 +91,7 @@ export class CommunityComponent implements OnInit {
               
          });
          
-<<<<<<< HEAD
-=======
-         
->>>>>>> d51a426e0eaa3a6affd63fc7d495abd9d194f88b
+
          this.http.post('add_cartcount_a4',params = {id:id,dianzan:dianzan,status:status}).then((res) => { 
               
                this.carthot4 =res['data'].results;

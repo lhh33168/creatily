@@ -13,9 +13,9 @@ const appRoutes:Routes = [
     children: [
         {path:'goods',component:GoodsComponent},
         {path:'orders',component:OrdersComponent},
-        {path:'admin',component:AdminComponent},
+        {path:'admin',component:AdminComponent}
     ]},
-    {path:'**',component:UserComponent}
+    {path:'**',component:UserComponent},
 ]
 
 export const RootRouter = RouterModule.forRoot(

@@ -48,7 +48,11 @@ import { SeekComponent } from './component/seek/seek.component';
 
 
 import { RangePipe } from '../app/utils/range.pipe';
+
 import { CheckedComponent } from './component/home/checked/checked.component';
+
+import { ScrolltoTopComponent } from './component/scrolltotop/scrolltotop.component';
+
 
 @NgModule({
   declarations: [
@@ -65,13 +69,13 @@ import { CheckedComponent } from './component/home/checked/checked.component';
     PaymentComponent,
     NewAddressComponent,
     AddressComponent,
-<<<<<<< HEAD
-    CommunityComponent,
-=======
 
     CommunityComponent,
 
->>>>>>> bf146480b5c2637888e36c507bcc665cc0f14c73
+
+    CommunityComponent,
+
+
     CarouselComponent,
     NewProductComponent,
     ShowProductComponent,
@@ -89,18 +93,24 @@ import { CheckedComponent } from './component/home/checked/checked.component';
     UserorderComponent,
 
 
-<<<<<<< HEAD
+
     SeekComponent
 
 
-=======
+
     SearchComponent,
->>>>>>> bf146480b5c2637888e36c507bcc665cc0f14c73
+
 
     RangePipe,
 
 
+
 CheckedComponent
+
+    RangePipe,
+
+    ScrolltoTopComponent
+
   ],
   imports: [
     FlexLayoutModule,

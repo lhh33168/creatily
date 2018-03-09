@@ -9,10 +9,12 @@ module.exports = {
 			let value = [];
 			for(let i=0;i<arr.length;i++){
 				key+=","+arr[i];
+				str+=",?"
 				value.push(req.body[arr[i]]);
 			}
 			key = key.slice(1);
-			db.insert(`INSERT INTO user(${key}) VALUES(?,?)`,value,function(result){
+			str = str.slice(1);
+			db.insert2(`INSERT INTO user(${key}) VALUES(${str})`,value,function(result){
                 res.send(result);
             })
 		}),
@@ -53,7 +55,7 @@ module.exports = {
 		}),
 		//分页
 		app.get('/get_admin_page',function(req,res){
-			db.select2(`select SQL_CALC_FOUND_ROWS * from user limit ${(req.query._page-1)*req.query._page},${req.query._qty};SELECT FOUND_ROWS() as rowsCount;`,function(result){
+			db.select2(`select SQL_CALC_FOUND_ROWS * from user limit ${(req.query._page-1)*req.query._qty},${req.query._qty};SELECT FOUND_ROWS() as rowsCount;`,function(result){
 				res.send(result);
 			})
 		}),
@@ -71,7 +73,7 @@ module.exports = {
 			})
 		}),
 		app.get('/get_goods_page',function(req,res){
-			db.select2(`select SQL_CALC_FOUND_ROWS * from goodlist limit ${(req.query._page-1)*req.query._page},${req.query._qty};SELECT FOUND_ROWS() as rowsCount;`,function(result){
+			db.select2(`select SQL_CALC_FOUND_ROWS * from goodlist limit ${(req.query._page-1)*req.query._qty},${req.query._qty};SELECT FOUND_ROWS() as rowsCount;`,function(result){
 				res.send(result);
 			})
 		}),
@@ -93,23 +95,33 @@ module.exports = {
 				if(arr[i] == "id"){
 					continue;
 				}
+				if(req.body[arr[i]] == 'null'){
+					continue;
+				}
 				str+=","+arr[i]+"="+"'"+req.body[arr[i]]+"'";
 			}
 			str = str.slice(1);
+			console.log(`UPDATE goodlist SET ${str} WHERE id = ${req.body.id}`);
 			db.update(`UPDATE goodlist SET ${str} WHERE id = ${req.body.id}`,function(result){
 				res.send(result);
 			})
 		}),
 		app.post('/add_goods',function(req,res){
 			let arr = Object.keys(req.body);
+			console.log(req.body);
 			let key = '';
 			let value = [];
+			str = '';
 			for(let i=0;i<arr.length;i++){
 				key+=","+arr[i];
+				str+=",?"
 				value.push(req.body[arr[i]]);
+				console.log(value);
 			}
 			key = key.slice(1);
-			db.insert(`INSERT INTO goodlist(${key}) VALUES(?,?)`,value,function(result){
+			str = str.slice(1);
+			console.log(`INSERT INTO goodlist(${key}) VALUES(${str})`,value);
+			db.insert2(`INSERT INTO goodlist(${key}) VALUES(${str})`,value,function(result){
                 res.send(result);
             })
 		}),

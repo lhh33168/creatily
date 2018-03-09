@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SearchComponent } from './search.component';
+import { ScrolltoTopComponent } from './scrolltotop.component';
 
-describe('SearchComponent', () => {
-  let component: SearchComponent;
-  let fixture: ComponentFixture<SearchComponent>;
+describe('ScrolltoTopComponent', () => {
+  let component: ScrolltoTopComponent;
+  let fixture: ComponentFixture<ScrolltoTopComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchComponent ]
+      declarations: [ ScrolltoTopComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SearchComponent);
+    fixture = TestBed.createComponent(ScrolltoTopComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

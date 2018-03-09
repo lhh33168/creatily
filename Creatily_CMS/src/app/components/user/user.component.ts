@@ -26,7 +26,8 @@ export class UserComponent implements OnInit {
                     if(res["data"] && res["data"].results.length>0){
                         alert("success");
                         sessionStorage.setItem('user_id', JSON.stringify(this.username));
-                        this.router.navigate(['/home'],{'queryParams':{'user_id':this.username}});
+                        //this.router.navigate(['/home'],{'queryParams':{'user_id':this.username}});
+                        this.router.navigate(['/home']);
                     }else{
                         alert("fail");
                     }

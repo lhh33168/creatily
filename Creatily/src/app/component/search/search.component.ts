@@ -9,7 +9,7 @@ import {HttpService} from '../../utils/http.service'
 })
 export class SearchComponent implements OnInit {
     //@Input() table: string;
-    @Output() search_data = new EventEmitter<Array>();
+    @Output() search_data = new EventEmitter <Array>();
   
     _search_data:string = null;
 

@@ -23,6 +23,7 @@ export class SearchComponent implements OnInit {
             if(res['state']){
                 this.search_data.emit(res['data']['results'] || []);
                 console.log(this.search_data);
+                console.log(res['data']['results']);
             }
         })
     }

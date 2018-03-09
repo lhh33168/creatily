@@ -1,13 +1,13 @@
 
 <div id="home">
     <div class="homeheader">
-        <div  class="searchBar" id="searchBar" ></div>
+        <input type="text"(click)="aa()" />
         <ul *ngIf="selectHome"class="typelist">
             <li (click)="selector($event)"class="li">推荐</li>
             <li *ngFor ="let obj of selectHome"(click)="selectList(obj['categoryId'],$event)"class="li">{{obj['category']}}</li>
         </ul>
     </div>
-        <div class="show" >
+        <div class="show">
         <app-carousel></app-carousel>
         <app-new-product></app-new-product>
         <app-show-product></app-show-product>

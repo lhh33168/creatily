@@ -67,6 +67,9 @@ export class HomeComponent implements OnInit {
 
     this.router.navigate(['detail',idx],{queryParams:{id:idx}  } );
   }
+  aa(){
+     this.router.navigate(['/seek']);
+  }
 }
  
 

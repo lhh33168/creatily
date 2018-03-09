@@ -27,7 +27,7 @@ import { UserorderComponent } from '../component/userorder/userorder.component';
 import { NotificationComponent } from '../component/notification/notification.component';
 
 import { SearchComponent } from '../component/search/search.component';
-
+import { SeekComponent } from '../component/seek/seek.component';
 
 const appRoutes:Routes = [
     { path:"", redirectTo:"/bootpage",pathMatch:'full'},
@@ -45,7 +45,7 @@ const appRoutes:Routes = [
     { path: "newAddress", component: NewAddressComponent},
     { path: "newAddress/:id", component: NewAddressComponent},
     { path: "search", component: SearchComponent},
-    { path: "search", component: SearchComponent},
+    { path: "seek", component: SeekComponent},
     { path: "community", component: CommunityComponent},
     { path: "notification", component: NotificationComponent},
     { path: "comment/:id", component: CommentComponent},

@@ -44,6 +44,7 @@ import { UsersetComponent } from './component/userset/userset.component';
 import { UserorderComponent } from './component/userorder/userorder.component';
 import { NotificationComponent } from './component/notification/notification.component';
 import { SearchComponent } from './component/search/search.component';
+import { SeekComponent } from './component/seek/seek.component';
 
 
 
@@ -78,7 +79,10 @@ import { SearchComponent } from './component/search/search.component';
     SearchComponent,
 
 
-    UserorderComponent
+    UserorderComponent,
+
+
+    SeekComponent
 
 
 

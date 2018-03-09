@@ -1,0 +1,16 @@
+<div>
+<app-search (search_data)="getdata($event)"></app-search>
+<div class="cancel"(click)="getback()">取消</div>
+<div *ngIf="seeking"class="selecttype">
+        <img src="{{Imgs}}" alt=""class="Imgs" />
+        <div class="Imgss">
+            <div *ngFor ="let obj of seeking"class="homecate">
+                <div>
+                  <img src="{{obj['imgurl']}}" alt=""class="goodsImg"(click)="turn(obj.id)" />
+                </div>
+                <div class="proName">{{obj['proName']}}</div>
+                <div class="price">{{obj['price'].split(',')[0]}}</div>
+            </div>
+        </div>
+    </div>
+</div>

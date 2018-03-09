@@ -17,7 +17,7 @@ export class CarouselComponent implements OnInit {
        this.carousel=res['data']['results']
      })
      var swiper = new Swiper('.carousel .swiper-container', {
-      spaceBetween: 30,
+      spaceBetween: 0,
       centeredSlides: true,
       observer:true,
     observeParents:true,

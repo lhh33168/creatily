@@ -1,6 +1,8 @@
 <div class="user-dingdan">
     <div class="userset-title">
-        <getback></getback>
+        <div class="getback" (click)="back()">
+            <i class="iconfont icon-fanhui"></i>
+        </div>
         <span>我的订单</span>
     </div>
     <div class="userset-nav" *ngIf="navList">
@@ -38,14 +40,14 @@
                         <div class="dingdan-jiesuan" [ngSwitch]="item['state']">
                             <span *ngSwitchCase=1>
                                 <button (click)="carceldingdan(item['userId'],item['ordernumber'])">取消订单</button>
-                                <a routerLink="/payment/{{arr1[idx]}}/{{item['ordernumber']}}" class="fukuan">待付款</a>                                
+                                <a routerLink="/payment/{{arr1[idx]}}/{{item['ordernumber']}}" class="fukuan">立即付款</a>                                
                             </span>
                             <span *ngSwitchCase=2>
                                 <button (click)="carceldingdan(item['userId'],item['ordernumber'])">取消订单</button>
                                 <button>待发货</button>
                             </span>
                             <span *ngSwitchCase=3>
-                                <button>确认收货</button>
+                                <button (click)="conmitshouhuo(item['userId'],item['ordernumber'])">确认收货</button>
                             </span>
                         </div>
                     </div>

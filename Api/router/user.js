@@ -131,6 +131,19 @@ module.exports = {
 					responer.send({state: "faild" });
 				}
 			})
+		});
+		app.post('/commitshouhuo', function (request, responer){
+			var username = request.body.username;
+			var goodsnum = request.body.goodsnum;
+			var sql = `UPDATE orders SET status = 4 WHERE userid = ${username} and ordernumber=${goodsnum}`;
+			// UPDATE orders SET status = 4 WHERE userid = 173 and ordernumber = 241899079
+			db.update(sql, function (res) {
+				if (res.state) {
+					responer.send({ state: "success" });
+				} else {
+					responer.send({ state: "faild" });
+				}
+			})
 		})
 	}
 }

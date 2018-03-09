@@ -11,8 +11,8 @@ import { NzMessageService } from 'ng-zorro-antd';
 })
 export class DetailComponent implements OnInit {
 
-    userid: number = 123;
-    username: string = 'ljt';
+    userid: number;
+    username: string;
     proId: number;
     dataset: Array<any> = [];
     groundImg: Array<string> = [];
@@ -36,6 +36,15 @@ export class DetailComponent implements OnInit {
     constructor(private route: ActivatedRoute, private router: Router, private http: HttpService, private location: Location, private _message: NzMessageService) { }
 
     ngOnInit(): void{
+
+        var userJsonStr = sessionStorage.getItem('userInfo');
+        var usermessage = JSON.parse(userJsonStr);
+        // console.log(usermessage)
+        if(usermessage){
+            this.userid = usermessage.id;
+            this.username = usermessage.username;
+        };
+
         this.route.params.subscribe((params) => {
             // console.log(params);
             this.proId = params['id'];
@@ -78,8 +87,12 @@ export class DetailComponent implements OnInit {
 
     getTipCount(){
         this.http.get('getcartslist',{userid:this.userid}).then((res) => {
-            // console.log(res['data']['results'][0]['count(*)'])
-            this.tipCount = res['data']['results'][0]['count(*)'];
+            // console.log(res['data'])
+            if(res['data']){
+                this.tipCount = res['data']['results'][0]['count(*)'];
+            }else{
+                this.tipCount = 0;
+            }
         })
     };
 
@@ -160,6 +173,14 @@ export class DetailComponent implements OnInit {
         }
     };
 
+    gotoCart(){
+        if(this.userid && this.username){
+            this.router.navigate(['/cart']);
+        }else{
+            this.router.navigate(['/login']);
+        }
+    };
+
     addtoCart(){
             this.headShow = false;
             this.categroyShow = true;
@@ -221,7 +242,7 @@ export class DetailComponent implements OnInit {
                     this.router.navigate(['/order',{status:1}]);
                 });
             }else{
-                this.router.navigate(['/login',{status:1}]);
+                this.router.navigate(['/login']);
             }
         }
     };

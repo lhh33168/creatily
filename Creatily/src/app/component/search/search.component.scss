@@ -1,0 +1,44 @@
+.search1 {
+    position: fixed;
+    top: 0px;
+    z-index: 2;
+    width: 100%;
+    padding: 0.256rem 0.426667rem;
+    height: 70px;
+    background-color: #FFFFFF;
+    .sd {
+        border-radius: 20px;
+        position: relative;
+        .cz{
+            font-weight: bold;
+            font-family:arial;
+            font-size: 18px;
+            font-style: italic;
+        }
+        .tp {
+            position: absolute;
+            right: -12px;
+            top: 1px;
+            z-index: 1000;
+            width: 55px;
+            height: 27px;
+            font-size: 18px;
+            color: #000000;
+        }
+        input {
+            padding: 5px 4px;
+            position: absolute;
+            right: 7px;
+            top: 1px;
+            width: 80%;
+            height: 27px;
+            border-radius: 20px;
+            background: #fbfafa;
+            border: 2px solid #f5f4f3;
+            outline: none;
+            padding: 0.213333rem;
+            appearance: none;
+            font-size: 13px;
+        }
+    }
+}

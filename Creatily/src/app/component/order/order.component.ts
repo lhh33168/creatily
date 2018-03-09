@@ -14,34 +14,43 @@ export class OrderComponent implements OnInit {
       address: Array<any> = [];
       dataCountSetPrice : number = 0;
       multiple: boolean = true;
-      ordernumber : number;
-      userid : number = 123;
+      ordernumber : any;
+      userid : number;
       status : number;
 
       constructor(private http: HttpService, private router: Router, private route : ActivatedRoute, private confirmServ: NzModalService) { }
 
       ngOnInit() {
           let params;
+          var userJsonStr = sessionStorage.getItem('userInfo');
+          if(userJsonStr){
+              var usermessage = JSON.parse(userJsonStr);
+              this.userid = usermessage.id;
+          }
           if(this.userid){
               this.http.get('get_orders',params = {userid:this.userid}).then((res) => { 
-                  this.order = res['data'].results;
-                  // console.log(this.order)
+                  if(res['state']==true){
+                      this.order = res['data'].results;
+                      // console.log(this.order)
+                  }
               }).then(()=>{
                   this. getPrice();
               }) 
-              this.http.get('get_address',params = {userid:this.userid}).then((res) => {        
-                  for(let i = 0;i<res['data'].results.length;i++){
-                      if(res['data'].results[i].default_address==1){
-                          this.address.push(res['data'].results[i]);
+              this.http.get('get_address',params = {userid:this.userid}).then((res) => {  
+                  if(res['state']==true){
+                      for(let i = 0;i<res['data'].results.length;i++){
+                          if(res['data'].results[i].default_address==1){
+                              this.address.push(res['data'].results[i]);
+                          }
                       }
                   }
-                  // console.log(this.address);
+                      // console.log(this.address);
               })
           }
           this.route.params.subscribe((params) =>{
                  
                  this.status = params['status'];
-                 console.log( this.status )
+                 // console.log( this.status )
           });      
       }
       deleteOrder(){
@@ -58,7 +67,10 @@ export class OrderComponent implements OnInit {
           // console.log(this.dataCountSetPrice)   
       }
       goToPay(){
-          this.ordernumber = parseInt(Math.random()*(1000000000-10000000+1)+10000000,10);
+          let params;
+          let randomnumber = Math.random()*(1000000000-10000000+1)+10000000;
+          this.ordernumber = parseInt(`${randomnumber}`,10);
+          // console.log(typeOf(this.ordernumber))
           if(this.address.length===0){
                this.error();
           }else if(this.multiple==false){
@@ -69,7 +81,7 @@ export class OrderComponent implements OnInit {
                this.http.post('change_order_detail',params = {ordernumber:this.ordernumber,userid:this.userid}).then((res) => { 
                         console.log(res)
                         this.order = [];
-                        this.router.navigate(['payment',this.dataCountSetPrice,res.data.results[0].ordernumber]);    
+                        this.router.navigate(['payment',this.dataCountSetPrice,res['data'].results[0].ordernumber]);    
                  })
           }else{ 
              // console.log(this.ordernumber)
@@ -82,7 +94,7 @@ export class OrderComponent implements OnInit {
                  this.http.post('change_order',params = {indexid:this.order[i].indexid,ordernumber:this.ordernumber,userid:this.userid}).then((res) => { 
                         // console.log(res)
                         this.order = [];
-                        this.router.navigate(['payment',this.dataCountSetPrice,res.data.results[0].ordernumber]);    
+                        this.router.navigate(['payment',this.dataCountSetPrice,res['data'].results[0].ordernumber]);    
                  })
              }
           }

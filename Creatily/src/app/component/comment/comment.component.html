@@ -3,7 +3,12 @@
         <i class="goback iconfont icon-fanhui" (click)="goBack()"></i>
         <i class="share iconfont icon-share"></i>
     </div>
-    <div class="comment-container">
+    <div class="head2" *ngIf="headShow2">
+        <div class="goback2" (click)="goBack()"><i class="iconfont icon-fanhui"></i><span>返回</span></div>
+        <span>{{Cname}}的帖子</span>
+        <i class="share2 iconfont icon-share"></i>
+    </div>
+    <div class="comment-container" (scroll)="scroll_c($event)">
         <div class="swiper-container">  
             <div class="swiper-wrapper">  
                 <img class="swiper-slide" *ngFor= "let item of groundImg" src={{item}}/>  
@@ -16,17 +21,19 @@
                     <img src="{{userimgurl}}" alt="" />
                 </div>
                 <span class="Cname">{{Cname}}</span>
-                <i class="iconfont icon-shixincaidan"></i>
+                <nz-popconfirm [nzTitle]="'举报'" (nzOnConfirm)="confirm()" (nzOnCancel)="cancel()" [nzPlacement]="'left'">
+                    <i nz-popconfirm class="iconfont icon-shixincaidan"></i>
+                </nz-popconfirm>
             </div>
             <div class="fabiao-connent">
                 <p>{{fabiao}}</p>
                 <div class="zan_xin">
                     <div class="dianzan">
-                        <i class="iconfont icon-good"></i>
+                        <i class="iconfont icon-good" (click)="add_zan($event)" [class.actived]="heightlight1"></i>
                         <div>{{dianzan_count}}</div>
                     </div>
                     <div class="shoucang">
-                        <i class="iconfont icon-xin"></i>
+                        <i class="iconfont icon-xin" (click)="add_shoucang($event)" [class.actived]="heightlight2"></i>
                         <div>{{shoucang_count}}</div>
                     </div>
                 </div>
@@ -34,7 +41,7 @@
         </div>
         <div class="dianzan_p">
             <div class="zan_tx">
-                <span class="zan_txb">
+                <span class="zan_txb" *ngFor="let item of [] | range: dianzan_count">
                     <img src="{{userimgurl}}" alt="" />
                 </span>
             </div>
@@ -54,7 +61,9 @@
                     <img src="{{userimgurl}}" alt="" />
                 </div>
                 <span class="ht_name">小石头</span>
-                <i class="iconfont icon-shixincaidan"></i>
+                <nz-popconfirm [nzTitle]="'举报'" (nzOnConfirm)="confirm()" (nzOnCancel)="cancel()" [nzPlacement]="'left'">
+                    <i nz-popconfirm class="iconfont icon-shixincaidan"></i>
+                </nz-popconfirm>
             </div>
             <p>好！（此回复虽有且仅有一个字，却深刻的表达了回复人的深深祝福与刻骨的情感，可谓言简意骇，一字千金，字字扣人心弦，字字催人泪下，足可见回复人扎实的文字功底和信手拈来的写作技巧以及惨绝人寰的创新潜质。再加上以感叹号收尾，点睛之笔，妙笔生花，意境深远，照应前文，升华主题）
             </p>
@@ -69,5 +78,5 @@
             </div>
         </div>
     </div>
-    <div class="comment_addmyht"><i class="iconfont icon-buoumaotubiao48"></i>添加我的回帖</div>
+    <div class="comment_addmyht" (click)="myhuitie()"><i class="iconfont icon-buoumaotubiao48"></i>添加我的回帖</div>
 </div>

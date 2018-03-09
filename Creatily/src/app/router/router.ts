@@ -28,6 +28,7 @@ import { NotificationComponent } from '../component/notification/notification.co
 import { SearchComponent } from '../component/search/search.component';
 
 
+
 const appRoutes:Routes = [
     { path:"", redirectTo:"/bootpage",pathMatch:'full'},
     { path: "bootpage", component: BootpageComponent },
@@ -41,7 +42,7 @@ const appRoutes:Routes = [
     { path: "order", component: OrderComponent},
     { path: "payment/:price/:ordernumber", component: PaymentComponent},
     { path: "address", component: AddressComponent},
-    { path: "newAddress/:id", component: NewAddressComponent},
+    { path: "newAddress", component: NewAddressComponent},
     { path: "search", component: SearchComponent},
 
 
@@ -52,7 +53,6 @@ const appRoutes:Routes = [
         { path: "dingdan", component: UserorderComponent },
         { path: "userset", component: UsersetComponent }
     ] },
-    
 
 ]
 

@@ -21,7 +21,9 @@
                     <img src="{{userimgurl}}" alt="" />
                 </div>
                 <span class="Cname">{{Cname}}</span>
-                <i class="iconfont icon-shixincaidan"></i>
+                <nz-popconfirm [nzTitle]="'举报'" (nzOnConfirm)="confirm()" (nzOnCancel)="cancel()" [nzPlacement]="'left'">
+                    <i nz-popconfirm class="iconfont icon-shixincaidan"></i>
+                </nz-popconfirm>
             </div>
             <div class="fabiao-connent">
                 <p>{{fabiao}}</p>
@@ -59,7 +61,9 @@
                     <img src="{{userimgurl}}" alt="" />
                 </div>
                 <span class="ht_name">小石头</span>
-                <i class="iconfont icon-shixincaidan"></i>
+                <nz-popconfirm [nzTitle]="'举报'" (nzOnConfirm)="confirm()" (nzOnCancel)="cancel()" [nzPlacement]="'left'">
+                    <i nz-popconfirm class="iconfont icon-shixincaidan"></i>
+                </nz-popconfirm>
             </div>
             <p>好！（此回复虽有且仅有一个字，却深刻的表达了回复人的深深祝福与刻骨的情感，可谓言简意骇，一字千金，字字扣人心弦，字字催人泪下，足可见回复人扎实的文字功底和信手拈来的写作技巧以及惨绝人寰的创新潜质。再加上以感叹号收尾，点睛之笔，妙笔生花，意境深远，照应前文，升华主题）
             </p>

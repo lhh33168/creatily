@@ -2,7 +2,7 @@ var mysql = require('mysql');
 
 var db = mysql.createPool({
     connectionLimit: 10,
-    host: "localhost",
+    host: "10.3.132.101",
     user: 'root',
     password: '',
     database: 'creatily',
@@ -12,6 +12,16 @@ var db = mysql.createPool({
 module.exports = {
     insert:function(sql,callback){
         db.query(sql,function(error,results,filters){
+            if(error){
+                callback({state:false,error:error});
+            }else{
+                callback({state:true,data:{results,filters}});
+                console.log("insert:新增成功!");
+            }
+        })
+    },
+    insert2:function(sql,value,callback){
+        db.query(sql,value,function(error,results,filters){
             if(error){
                 callback({state:false,error:error});
             }else{

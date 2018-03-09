@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpService } from '../../utils/http.service';
 import { Location } from '@angular/common';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-comment',
@@ -28,7 +29,7 @@ export class CommentComponent implements OnInit {
     status: number;
     status1: number;
 
-    constructor(private route: ActivatedRoute, private router: Router, private http: HttpService, private location: Location) { }
+    constructor(private route: ActivatedRoute, private router: Router, private http: HttpService, private location: Location, private _message: NzMessageService) { }
 
     ngOnInit(): void{
         this.route.params.subscribe((params) => {
@@ -87,6 +88,14 @@ export class CommentComponent implements OnInit {
             this.headShow = true;
             this.headShow2 = false;
         }
+    };
+
+    cancel = function () {
+        this._message.info('已取消')
+    };
+
+    confirm = () => {
+        this._message.info('举报成功')
     };
 
     add_zan(event){

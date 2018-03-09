@@ -1,13 +1,22 @@
 
 <div id="home">
-    <div class="homeheader">
-        <div  class="searchBar" id="searchBar" ></div>
+    <div class="homeheader">   
+        <div class="search1">
+          <div class="sd">
+            <span class="cz">创  质</span>
+            <span class="tp" ><i class="iconfont icon-fangdajing"(click)="search()"></i></span>
+            <!--<img src="../img/search.png" class="tp" (click)="search()" />-->
+            <input placeholder="搜索商品，帖子和用户"(click)="aa()" />
+          </div>
+        </div>
+        <div class="gds"> 
+        </div>
         <ul *ngIf="selectHome"class="typelist">
             <li (click)="selector($event)"class="li">推荐</li>
             <li *ngFor ="let obj of selectHome"(click)="selectList(obj['categoryId'],$event)"class="li">{{obj['category']}}</li>
         </ul>
     </div>
-        <div class="show" >
+        <div class="show">
         <app-carousel></app-carousel>
         <app-new-product></app-new-product>
         <app-show-product></app-show-product>
@@ -18,11 +27,10 @@
                     <div class="showsImg">
                       <div class="swiper-container">
                         <div class="swiper-wrapper">
-                          <ng-template ngFor let-key [ngForOf]="getKeys(obj['groundImg'].split(','))" >
                           <div class="swiper-slide"> 
-                              <img src="{{obj['groundImg'].split(',')[key]}}" alt=""class="navImg" />
+                              <img src="{{obj['imgurl']}}" alt=""class="navImg" />
                             </div>
-                          </ng-template>
+      
                         </div>
                         <div class="swiper-pagination"></div>
                       </div>
@@ -32,7 +40,7 @@
                          <div class="size">1.{{obj['size']}}</div>
                          <div class="recommend">2.{{obj['recommend']}}</div>
                          <div class="overflow">
-                             <div class="price">{{obj['price'].split(',')[0]}}</div>
+                             <div class="price">{{obj['price'] ? obj['price'].split(',')[0] :[] }}</div>
                              <button>购买</button>
                          </div>
                     </div>

@@ -40,9 +40,12 @@ import { CommentComponent } from './component/comment/comment.component';
 import { RegisterpwdComponent } from './component/registerpwd/registerpwd.component';
 import { UserComponent } from './component/user/user.component';
 import { UsersetComponent } from './component/userset/userset.component';
+import { UserorderComponent } from './component/userorder/userorder.component';
+import { NotificationComponent } from './component/notification/notification.component';
 import { SearchComponent } from './component/search/search.component';
 
 
+import { RangePipe } from '../app/utils/range.pipe';
 
 @NgModule({
   declarations: [
@@ -60,9 +63,7 @@ import { SearchComponent } from './component/search/search.component';
     NewAddressComponent,
     AddressComponent,
 
-
     CommunityComponent,
-
 
     CarouselComponent,
     NewProductComponent,
@@ -74,8 +75,14 @@ import { SearchComponent } from './component/search/search.component';
     RegisterpwdComponent,
     UserComponent,
     UsersetComponent,
-    SearchComponent
 
+    UserorderComponent,
+
+    NotificationComponent,
+
+    SearchComponent,
+
+    RangePipe
   ],
   imports: [
     FlexLayoutModule,

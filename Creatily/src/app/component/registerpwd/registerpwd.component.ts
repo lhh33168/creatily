@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { NzModalService } from 'ng-zorro-antd';
+import { NzModalService, NzMessageService } from 'ng-zorro-antd';
 import { HttpService } from '../../utils/http.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registerpwd',
@@ -17,7 +18,7 @@ export class RegisterpwdComponent implements OnInit {
   showPwdB:Boolean = false;
   submitPwd:Boolean = true;
   passShow:String = "password";
-  constructor(private http: HttpService, private activatedRoute: ActivatedRoute, private confirmServ: NzModalService) { }
+  constructor(private http: HttpService, private activatedRoute: ActivatedRoute, private confirmServ: NzModalService, private _message: NzMessageService, private router: Router) { }
 
   ngAfterViewInit() {
     this.pwdfocus.nativeElement.focus();
@@ -60,7 +61,12 @@ export class RegisterpwdComponent implements OnInit {
       return false;
     }else{
       this.http.post('register',{ "phone": userphone, "password": passvalue}).then((res)=>{
-        
+        // console.log(res);
+        if (res['state'] == "success") {
+          this.passsuccess();
+        }else{
+          this.passerror();
+        }
       });
     }
   }
@@ -71,8 +77,36 @@ export class RegisterpwdComponent implements OnInit {
       content: '该密码输入不规范,请重新输入',
       onOk() {
         $self.ngAfterViewInit();
-        this.submitPwd = true;
+        $self.pwdPassword = null;
+        $self.submitPwd = true;
       }
     });
-    }
+  }
+  passsuccess(){
+    let $self = this;
+    this.confirmServ.success({
+      title: '温馨提示',
+      content: '恭喜您注册成功，现在为您跳转到登录页',
+      okText: '确定',
+      cancelText:'取消',
+      onOk() {
+        $self.router.navigate(['login'], { queryParams: { myphone: $self.pwdPhone } });
+        $self.submitPwd = true;
+      },
+      onCancel() {
+        return false;
+      }
+    });
+  }
+  passerror(){
+    let $self = this;
+    this.confirmServ.error({
+      title: '温馨提示',
+      content: '网络出错！请重新输入！',
+      okText: '确定',
+      onOk() {
+        $self.clearPwdA();
+      }
+    });
+  }
 }

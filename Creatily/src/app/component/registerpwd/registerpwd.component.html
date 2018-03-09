@@ -17,7 +17,9 @@
         <em class="InputClearPwdB" *ngIf="showPwdB" (click)="clearPwdA()">&times;</em>
       </div>
       <div class="regpwd-deal">密码长度6-16位，支持数字，字符和符号</div>
-      <button class="regpwd-submit" #zhuce (click)="regpwdSubmit(pwdPassword)" [disabled]="submitPwd">注册</button>
+      
+        <button class="regpwd-submit" #zhuce (click)="regpwdSubmit(pwdPassword)" [disabled]="submitPwd">注册</button>      
+      
     </div>
   </div>
 </div>

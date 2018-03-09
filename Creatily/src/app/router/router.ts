@@ -40,7 +40,7 @@ const appRoutes:Routes = [
     { path: "detail/:id", component: DetailComponent},
     { path: "cart", component: CartComponent},
     { path: "order", component: OrderComponent},
-    { path: "payment/:price/:ordernumber", component: 
+    { path: "payment/:price/:ordernumber", component: PaymentComponent},
     { path: "address", component: AddressComponent},
 
      { path: "home", component: HomeComponent},

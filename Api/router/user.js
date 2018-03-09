@@ -24,13 +24,8 @@ module.exports = {
 							responer.send("发送成功");
 						}else{
 							responer.send("发送失败");							
-<<<<<<< HEAD
 						}
 					});
-=======
-						}	
-				  	})
->>>>>>> 80ce3101a47466014c0cfe524f87437f402960d3
 				}
 			})
 		})

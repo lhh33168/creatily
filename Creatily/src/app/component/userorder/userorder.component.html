@@ -44,7 +44,9 @@
                                 <button (click)="carceldingdan(item['userId'],item['ordernumber'])">取消订单</button>
                                 <button>待发货</button>
                             </span>
-                            <button *ngSwitchCase=4>确认收货</button>                            
+                            <span *ngSwitchCase=3>
+                                <button>确认收货</button>
+                            </span>
                         </div>
                     </div>
                 </div>

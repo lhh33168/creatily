@@ -8,7 +8,7 @@ import { Location } from '@angular/common';
 })
 export class CheckedComponent implements OnInit {
 
-    @Output() search_data = new EventEmitter<Array>();
+    @Output() search_data = new EventEmitter();
   
     _search_data:string = null;
 

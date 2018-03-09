@@ -94,7 +94,7 @@ import { ScrolltoTopComponent } from './component/scrolltotop/scrolltotop.compon
 
 
 
-    SeekComponent
+    SeekComponent,
 
 
 
@@ -105,7 +105,7 @@ import { ScrolltoTopComponent } from './component/scrolltotop/scrolltotop.compon
 
 
 
-CheckedComponent
+CheckedComponent,
 
     RangePipe,
 

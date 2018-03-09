@@ -20,6 +20,16 @@ module.exports = {
             }
         })
     },
+    insert2:function(sql,value,callback){
+        db.query(sql,value,function(error,results,filters){
+            if(error){
+                callback({state:false,error:error});
+            }else{
+                callback({state:true,data:{results,filters}});
+                console.log("insert:新增成功!");
+            }
+        })
+    },
     select:function(sql,callback){
         db.query(sql,function(error,results,filters){
             if(error){

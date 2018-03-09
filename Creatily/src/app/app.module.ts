@@ -45,7 +45,7 @@ import { NotificationComponent } from './component/notification/notification.com
 import { SearchComponent } from './component/search/search.component';
 
 
-
+import { RangePipe } from '../app/utils/range.pipe';
 
 @NgModule({
   declarations: [
@@ -63,9 +63,7 @@ import { SearchComponent } from './component/search/search.component';
     NewAddressComponent,
     AddressComponent,
 
-
     CommunityComponent,
-
 
     CarouselComponent,
     NewProductComponent,
@@ -82,9 +80,9 @@ import { SearchComponent } from './component/search/search.component';
 
     NotificationComponent,
 
-    SearchComponent
+    SearchComponent,
 
-
+    RangePipe
   ],
   imports: [
     FlexLayoutModule,

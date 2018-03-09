@@ -1,0 +1,15 @@
+<div class="seek">
+<app-checked (search_data)="getdata($event)"></app-checked>
+<div *ngIf="seeking"class="selecttype">
+        <img src="{{Imgs}}" alt=""class="Imgs" />
+        <div class="Imgss">
+            <div *ngFor ="let obj of seeking"class="homecate">
+                <div>
+                  <img src="{{obj['imgurl']}}" alt=""class="goodsImg"(click)="turn(obj.id)" />
+                </div>
+                <div class="proName">{{obj['proName']}}</div>
+                <div class="price">{{obj['price'].split(',')[0]}}</div>
+            </div>
+        </div>
+    </div>
+</div>

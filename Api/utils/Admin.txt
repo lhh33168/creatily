@@ -8,6 +8,7 @@
     "filterCols":"address,add_time",
     "multiple":true,
     "management":["admin"],
+    "key":"index_id",
     "opt":{
         "primary_key":"user_id",
         "delete":"delete_admin",

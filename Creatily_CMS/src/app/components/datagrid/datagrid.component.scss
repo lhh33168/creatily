@@ -1,4 +1,7 @@
-.dataset{padding-top: 15px;
+.dataset{padding-top: 25px;
+    .icon-icon--{
+        font-size: 26px;
+    }
     .search_box{height: 42px;position:fixed;top: 60px;left: 301px;width: 100%;height: 65px;background-color: #FFF;padding: 11px 20px;
         .search{margin-bottom: 20px;width: 100%;
             span{display: inline-block;width: 537px;
@@ -20,7 +23,12 @@
         opacity:1;
     }
 }
-
+.big{
+    position:absolute;left: 0px;top: 60px;bottom: 0;right: 0;z-index:9999;background-color: #FFF;padding-top: 42px;
+    .search_box{
+        left: 68px;background: none;
+    }
+}
 .add_tool,.update_tool{position: fixed; left: 0;right: 0;top: 0;bottom:0;z-index:999;display: none;
     background-color:rgba(0,0,0,.3);
     .com{padding: 88px;background-color: #FFF;position: fixed;left: 50%;top: 44%;transform: translate(-50%, -50%);
@@ -35,18 +43,25 @@
         >div{
             margin-bottom: 5px;position: relative;
         }
-        label{
-            font-size: 16px;
-            color:#000;
+        .f{width: 758px;overflow: hidden;
+            label{
+                font-size: 16px;
+                color:#000;
+                float: left;
+                height: 28px;line-height: 28px;
+            }
+            
+            input{float: right;
+                font-size: 16px;
+                border:1px solid skyblue;
+                color:#000;
+                width: 650px;
+                height: 28px;
+                line-height: 28px;
+                padding-left: 7px;
+            }
         }
         
-        input{float: right;
-            font-size: 16px;
-            border:1px solid skyblue;
-            color:#000;
-            width: 650px;
-            height: 28px;
-        }
         
     }
 }
@@ -55,7 +70,6 @@
 }
 table{
     border-collapse: collapse;
-    border-collapse:separate; border-spacing-top:2px;
     thead{
         tr{font-size: 17px;font-weight: 600;
             display: table-row;
@@ -113,9 +127,9 @@ table{
                 padding: 16px 18px;
             }
         }
-        tr:nth-child(2n){
-            background-color: #edede3;
-        }
+        // tr:nth-child(2n){
+        //     background-color: #edede3;
+        // }
         tr.hide{
             display:none;
         }
@@ -127,6 +141,9 @@ table{
         }
     }   
 }
+table{ border-top:1px solid #e6ebf5; background-color: #FFF;}
+table tr th,table tr { border:1px solid #e6ebf5; }
+table tr td { border:1px solid #e6ebf5; }
 .page{padding: 26px 0 49px 0;position:relative;
     li{position:absolute;left: 50%;transform:translate(-50%,0);
         list-style-type: none;

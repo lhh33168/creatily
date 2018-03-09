@@ -18,6 +18,7 @@
 .settings/
 *.sublime-workspace
 
+
 # IDE - VSCode
 .vscode/*
 !.vscode/settings.json
@@ -38,7 +39,7 @@ testem.log
 # e2e
 /e2e/*.js
 /e2e/*.map
-
+package-lock.json
 # System Files
 .DS_Store
 Thumbs.db

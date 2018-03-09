@@ -12,6 +12,7 @@ import {Utils} from '../../utils/utils'
 export class DatagridComponent implements OnInit {
     apiconfig:string;
     dataset:Array<any> = null;
+    key:string = null;
     columns:Array<string> = null;
     filterColumns:Array<string> = null;
     privateDic:Object;
@@ -32,6 +33,7 @@ export class DatagridComponent implements OnInit {
     page_count=0;
     user_id;
     management = null;
+    big = false;
 
 
     @Input() config:string;
@@ -50,6 +52,8 @@ export class DatagridComponent implements OnInit {
             }else{
                 this.apiconfig = configRes['api'];
             }
+
+            this.key = configRes['key'];
 
             let cols = configRes['cols'];
             this.columns = !cols || cols =='*' ? [] : cols.split(',');
@@ -85,12 +89,16 @@ export class DatagridComponent implements OnInit {
                 this.dataset = apiRes['data']["results"] || [];
             })
         }
-        
     }
 
     getKeys(obj,a){
         return Object.keys(obj) || [];
     }
+
+    size(){
+        this.big = !this.big;
+    }
+
     add(){
         if(this.management && this.management.indexOf(this.user_id) < 0){
             alert("没有权限，请联系管理员！");
@@ -212,6 +220,7 @@ export class DatagridComponent implements OnInit {
 
     page_change(page){
         this.init(page);
+        this.currentTrIndexs = [];
     }
 
     selectTr(_idx){

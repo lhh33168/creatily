@@ -24,8 +24,8 @@ module.exports = {
 							responer.send("发送成功");
 						}else{
 							responer.send("发送失败");							
-						}	
-				  	})
+						}
+					});
 				}
 			})
 		})
@@ -74,7 +74,7 @@ module.exports = {
 						// console.log(res);
 						if (res.data.results.length > 0) {
 							responer.send({ state: "success", data: res.data.results[0] });
-						} else if(res.error) {
+						} else if (res.state == false) {
 							responer.send({ state: "netFaild" });
 						}else{
 							responer.send({ state: "faild" });
@@ -85,19 +85,50 @@ module.exports = {
 		})
 		// 订单
 		app.get('/dingdan',function(request,responer){
-			var idxState = request.query.idxState;
-			var sql = 'select * from orders'
-			if(idxState == 1){
+			var stateidx = request.query.idxState;
+			var userId = request.query.usernameIdA;
+			console.log(stateidx, userId);
+			var sql = `select * from orders where userid = ${userId}`;
+			if (stateidx == 1){
 				sql = sql;
-			}else if (idxState == 2){
-				sql += ' where status = 1';
+			}else if (stateidx == 2){
+				sql += ' and status = 1';//代付款
+			}else if (stateidx == 3){
+				sql += ' and status = 2';//代发货
+			}else if (stateidx == 4){
+				sql += ' and status = 3';//已发货		
+			}else if (stateidx == 5) {
+				sql += ' and status = 4';//已完成
 			}
-
 			db.select2(sql,function(result){
-				if(result.data.results.length > 0){
-					responer.send({ state: true, data: result.data.results});
+				// console.log(result);
+				// if(result.data.results.length > 0){
+				// 	responer.send({ state: ""success"", data: result.data.results});
+				// } else if(result.state == false){
+				// 	responer.send({ state: "faild" });
+				// }else {
+				// 	responer.send({ state: "error" });
+				// }
+				if(result.state){
+					responer.send({ state: "success", data: result.data.results });
 				}else{
-					responer.send({ state: false });
+					responer.send({ state: "faild" });
+				}
+			})
+		});
+		// 取消订单
+		app.post('/deldingdan',function(request,responer){
+			var username = request.body.username;
+			var goodsnum = request.body.goodsnum;
+			// console.log(username, goodsnum);
+			var sql = `DELETE FROM orders WHERE userid = ${username} and ordernumber = ${goodsnum}`;
+			db.delete(sql,function(res){
+				if (res.state == false){
+					responer.send({ state: "NetFaild" });
+				}else if (res.state) {
+					responer.send({state: "success"});
+				} else {
+					responer.send({state: "faild" });
 				}
 			})
 		})

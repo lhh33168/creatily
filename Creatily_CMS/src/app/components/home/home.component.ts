@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
     public user_id:any;
     lanType: string = "cn";
     router_act:Array<string> = [];
+    cur_router:string;
 
     close(){
         sessionStorage.removeItem('user_id');
@@ -18,8 +19,8 @@ export class HomeComponent implements OnInit {
     }
     active(event){
         this.router_act=[];
+        this.cur_router = this.router.url;
         this.router_act.push(this.router.url);
-        console.log(this.router_act);
     }
 
     constructor(
@@ -27,6 +28,7 @@ export class HomeComponent implements OnInit {
     ) { }
 
     ngOnInit(){
+        this.cur_router = this.router.url;
         this.user_id = JSON.parse(sessionStorage.getItem('user_id'));
         if(!this.user_id){
             this.router.navigate(['/']);
@@ -41,5 +43,6 @@ export class HomeComponent implements OnInit {
         //console.log(event.target.scrollTop);
         this.common.opacity = 1 - (event.target.scrollTop/120)*0.1 < 0 ? 0 : 1 - (event.target.scrollTop/120)*0.2 > 1 ? 1 : 1 - (event.target.scrollTop/120)*0.2
     }
+    
 
 }

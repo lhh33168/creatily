@@ -8,6 +8,7 @@
     "filterCols":"id,graphics,groundImg,imgurl",
     "multiple":true,
     "management":["admin"],
+    "key":"id",
     "opt":{
         "primary_key":"id",
         "delete":"delete_goods",
@@ -17,7 +18,7 @@
         "add":"add_goods",
         "add_key":["categoryId","proName","price","recommend","size","color","hot","carousel","newproduct"],
         "show_key":["id","categoryId","proName","price","recommend","size","color","hot","carousel","newproduct"],
-        "add_all":"add_all",
+        "add_all":"add_goods",
         "selete":"selete_goods",
         "selete_all":{
             "api":"selete_all_goods",
@@ -26,18 +27,26 @@
     },
     "dictionary":{
         "cn":{
-            "user_id":"用户名",
-            "password":"密码",
-            "add_time":"注册时间",
-            "address":"地址",
-            "userphone":"手机号"
+            "categoryId":"商品编号",
+            "proName":"商品名称",
+            "price":"价格",
+            "recommend":"描述",
+            "size":"大小",
+            "color":"颜色",
+            "hot":"热门",
+            "carousel":"首页轮播",
+            "newproduct":"新品"
         },
         "en":{
-            "user_id":"UserId",
-            "password":"Password",
-            "add_time":"AddTime",
-            "address":"Address",
-            "userphone":"UserPhone"
+            "categoryId":"CategoryId",
+            "proName":"ProName",
+            "price":"Price",
+            "recommend":"Recommend",
+            "size":"Size",
+            "color":"Color",
+            "hot":"Hot",
+            "carousel":"Carousel",
+            "newproduct":"Newproduct"
         }
     },
     "filterData":{

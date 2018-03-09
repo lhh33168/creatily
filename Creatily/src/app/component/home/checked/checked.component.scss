@@ -1,0 +1,49 @@
+.checked .search1 {
+     border-bottom:"1px solid #f6f6f6";
+    .sdd{
+        float:left;
+    }
+    .cancel{
+        position:absolute;
+        right: 17px;
+        top: 6px;
+        color:yellow;
+        font-size:16px;
+    }
+    .sd {
+        overflow:hidden;
+        height:40px;
+        border-radius: 20px;
+        position: relative;
+        .cz{
+            font-family:arial;
+            font-size: 19px;
+            font-style: italic;
+        }
+        .tp {
+            position: absolute;
+             right: 60px;
+            top: 4px;
+            z-index: 1000;
+            width: 55px;
+            height: 27px;
+            font-size: 18px;
+            color: #000000;
+        }
+        input {
+            padding: 5px 4px;
+            position: absolute;
+            left: 10px;
+            top: 5px;
+            width: 70%;
+            height: 27px;
+            border-radius: 20px;
+            background: #fbfafa;
+            border: 2px solid #f5f4f3;
+            outline: none;
+            padding: 0.213333rem;
+            appearance: none;
+            font-size: 13px;
+        }
+    }
+}

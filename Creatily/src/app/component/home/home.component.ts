@@ -17,21 +17,21 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void{
       this.http.get('listSelect').then((res)=>{
         this.selectHome=res['data']['results']
+        console.log(this.selectHome[0])
      })
      this.http.get('homeShow').then((res)=>{
         this.homeShow=res['data']['results']
-        console.log(this.homeShow)
+        console.log(this.homeShow[0])
      })
       var swiper = new Swiper('.showsImg .swiper-container', {
         observer:true,
         observeParents:true,
         pagination: {
           el:'.showsImg .swiper-pagination'
-        },
-      });
+        }
+      })
     }
     getKeys(item){
-
         return Object.keys(item);
     }
     selectList(categoryId,event){
@@ -61,11 +61,14 @@ export class HomeComponent implements OnInit {
     }
     turn(idx){
 
-    this.router.navigate(['detail',idx],{queryParams:{id:idx}  } );
+    this.router.navigate(['detail',idx]   );
   }
   turns(idx){
 
-    this.router.navigate(['detail',idx],{queryParams:{id:idx}  } );
+    this.router.navigate(['detail',idx]  );
+  }
+  aa(){
+     this.router.navigate(['/seek']);
   }
 }
  

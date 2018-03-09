@@ -157,7 +157,7 @@ export class NewAddressComponent implements OnInit {
         });
       }
       addAddress(name,phone,address,city1NgModel){
-          let params;console.log(this.id,name)
+          let params;
           if(this.id == undefined){
               if(this.multiple){
                   if(!name || !phone || !city1NgModel || !address){

@@ -11,25 +11,47 @@
         </div>
         <div class="userset-content">
             <div class="dingdan" *ngFor="let value of navList" [style.display] = "(navActive == value.navidx)? 'block' : 'none'" >
-                <div class="dingdan-content" *ngIf="dingdanlist">
-                    <div *ngFor="let item of dingdanlist;let idx = index" class="gooddan" >
+                <div class="dingdan-content" *ngIf="filterArr">
+                    <div *ngFor="let item of filterArr ;let idx = index" class="gooddan">
                         <div class="dingdanNum">订单编号:{{item['ordernumber']}}</div>
-                        <div class="dingdan-good">
-                            <div class="dingdan-img">
-                                <img src="{{item.imgurl}}"/>
-                            </div>
-                            <div class="dingdan-msg">
-                                <ul>
-                                    <li class="dingdan-title">{{item['proname']}}</li>
-                                    <li class="dingdan-size">{{item['color'] || item['size'] }}</li>
-                                    <li class="dingdan-numTol">
-                                        <span>￥{{item['count']*item['price']}}</span>
-                                        <span class="dingdan-num">&times;{{item['count']}}</span>
-                                    </li>
-                                </ul>
+                        <div class="dingdanlist" *ngIf="item['goodsArr']" >
+                            <div class="dingdan-good" *ngFor="let items of item['goodsArr']">
+                                <a routerLink="/detail/{{items.goodsId}}" class="dingdan-img">
+                                    <img src="{{items['goodsImg']}}" />
+                                </a>
+                                <div class="dingdan-msg">
+                                    <ul>
+                                        <li class="dingdan-title">{{items['goodsName']}}</li>
+                                        <li class="dingdan-size">{{items['goodsColor'] || item['goodsSize'] }}</li>
+                                        <li class="dingdan-numTol">
+                                            <span>￥{{items['goodsPrice']}}</span>
+                                            <span class="dingdan-num">&times;{{items['goodsNum']}}</span>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
+                        <div class="dingdan-zongjia">
+                            <span class="dingdan-number">共<strong>{{item['goodsArr'].length*1}}件</strong></span>
+                            <span class="dingdan-total">应付总额:<strong>￥{{arr1[idx]}}</strong></span>
+                        </div>
+                        <div class="dingdan-jiesuan" [ngSwitch]="item['state']">
+                            <span *ngSwitchCase=1>
+                                <button (click)="carceldingdan(item['userId'],item['ordernumber'])">取消订单</button>
+                                <a routerLink="/payment/{{arr1[idx]}}/{{item['ordernumber']}}" class="fukuan">待付款</a>                                
+                            </span>
+                            <span *ngSwitchCase=2>
+                                <button (click)="carceldingdan(item['userId'],item['ordernumber'])">取消订单</button>
+                                <button>待发货</button>
+                            </span>
+                            <span *ngSwitchCase=3>
+                                <button>确认收货</button>
+                            </span>
+                        </div>
                     </div>
+                </div>
+                <div class="dingdan-content" *ngIf="filterArr.length == 0">
+                    <img [src]="imgres"/>
                 </div>
             </div>
         </div>

@@ -64,6 +64,18 @@ export class AddressComponent implements OnInit {
               this.getAddressItem();
           })
       }
+      success(id){
+          let $self = this;
+          this.confirmServ.confirm({
+          title  : '您是否确认删除',
+          content: '<b>确定吗？</b>',
+          onOk() {
+              $self.deleteAddress(id);
+          },
+          onCancel() {
+          }
+        });
+      }
       updateAddress(id){
           
            this.router.navigate(['newAddress',{id:id}])

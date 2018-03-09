@@ -27,13 +27,14 @@ export class PaymentComponent implements OnInit {
 
       }
 
-      showConfirm = () => {
+      showConfirm(){
+          let $self = this;
           let location = this.location;
           this.confirmServ.confirm({
           title  : '您是否确认退出支付',
           content: '<b>忍心离开吗？</b>',
           onOk() {
-             this.router.navigate(['dingdan']);  
+              $self.router.navigate(['user/dingdan']);  
           },
           onCancel() {
           }

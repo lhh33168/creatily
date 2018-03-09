@@ -33,7 +33,7 @@ export class CarouselComponent implements OnInit {
   }
   turn(idx){
 
-    this.router.navigate(['detail',idx],{queryParams:{id:idx}  } );
+    this.router.navigate(['detail',idx]  );
   }
   notification(){
     this.router.navigate(['/notification']);

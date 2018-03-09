@@ -57,16 +57,17 @@ export class RegisterComponent {
   // 获取验证码及判断
   getCode(regPhone){
     // 正则验证
-    
     if (this.phoneExp(regPhone)){
       this.clearInputPhone()
       this.phoneError();
       return false;
     }else{
       this.http.get('firstphone', { "phone": regPhone}).then((res)=>{
-        if(res.results.length == 0){
-          this.sendCode(regPhone);
+        if(res['results'].length == 0){
+          this.codeDisabled = true;
           this.code.nativeElement.focus();
+          this.sendCode();
+          this.http.post('getphoneCode', { "codephone": regPhone });
         }else{
           this.phoneCunzai();
           return false;
@@ -102,22 +103,23 @@ export class RegisterComponent {
     });
   }
   // 倒计时
-  sendCode(phoneVal){
-    let count = 10 ;
+  sendCode(){
+    let count = 20 ;
+    let phoneVal = this.regPhone;
     let timer = setInterval(()=>{
       let daoshu = count--;
       this.codetext = `${daoshu}s后重新获取`;
       this.codeDisabled = true;
-      if (count<=0){
-        this.codetext = "重新获取验证码";
+      if (count<0){
+        this.codetext = "点击获取验证码";
         clearInterval(timer);
-        if (this.regPhone!=null){
+        if (this.regPhone != null && this.inputCode!=null){
           this.codeDisabled = false;
+          this.nextSubmit = false;
         }
+        return false;
       }
     },1000);
-    // 将获取手机号码发送后端处理
-    this.http.post('getCode',{"phone":phoneVal});
   }
 
   inputPhoneB(event){
@@ -135,8 +137,9 @@ export class RegisterComponent {
     if (this.regPhone != null){
       this.http.get('testCode', { "phone": phoneval, "code": codeval }).then((res) => {
         // console.log(res);
-        if (res.status == "success") {
+        if (res['status'] == "success") {
           // this.pwdInput = phoneval;
+          // console.log("验证成功")
           this.router.navigate(['register'], {queryParams: { myphone: phoneval}});
           this.nextSubmit = true;
         } else {

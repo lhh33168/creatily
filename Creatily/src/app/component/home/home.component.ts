@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
 
         return Object.keys(item);
     }
-    selectList(categoryId){
+    selectList(categoryId,event){
         var s = document.querySelector('.show');
         s['style'].display='none';
         var ss =document.querySelector('.selecttype');
@@ -44,11 +44,13 @@ export class HomeComponent implements OnInit {
        this.selectId=categoryId;
         this.http.get(`listPass?selectId=`+this.selectId).then((res)=>{
         this.selectshow=res['data']['results'];
+          // console.log(this.selectshow)
+        
         this.Imgs=this.selectshow[0]['img']
-        console.log(this.selectshow[0]['img'])
+        // console.log(this.selectshow[0]['img'])
      })
     }
-    selector(){
+    selector(event){
         var ss = document.querySelector('.selecttype');
         var s = document.querySelector('.show');
         ss['style'].display='none';

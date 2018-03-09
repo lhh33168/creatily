@@ -16,7 +16,7 @@ export class CartComponent implements OnInit {
       cartItem: Array<any> = [];
       dataCountSet: Array<any> = [];
       dataCountSetPrice : number = 0;
-      userid: number = 1;
+      userid: number = 123;
 
       constructor(private http: HttpService, private route: ActivatedRoute, private router: Router, private confirmServ: NzModalService) { }
 
@@ -41,7 +41,7 @@ export class CartComponent implements OnInit {
       getCartItem1(){
           let params = {}
           if(this.cartItem.length>1){
-              this.http.get('get_cart',params = {uid:this.userid}).then((res) => { 
+              this.http.get('get_cart',params = {userid:this.userid}).then((res) => { 
                   this.cartItem = res['data'].results;
                   this.dataset = res['data'].results;
                   // console.log(res)
@@ -67,19 +67,21 @@ export class CartComponent implements OnInit {
             // console.log(this.dataCountSet)
             if(this.currentTrIndexs.indexOf(_idx) > -1){
                 this.currentTrIndexs.splice(this.currentTrIndexs.indexOf(_idx), 1);
-                this.dataCountSet.splice(this.dataCountSet.indexOf(_idx), 1);
+                this.dataCountSet.splice(this.dataCountSet.indexOf(_obj), 1);
                 this.getPrice();
             } else {
                 this.currentTrIndexs.push(_idx);
                 this.dataCountSet.push(_obj);
                 this.getPrice();
             }
+            this.getCartItem();
       }
       selectTrSingle(_idx,_obj){
             // console.log(_obj,_idx)
             // console.log(this.dataCountSet)
             if(this.currentTrIndexs.indexOf(_idx) > -1){
-                this.dataCountSet.splice(this.dataCountSet.indexOf(_idx), 1,_obj);
+                this.dataCountSet.splice(this.currentTrIndexs.indexOf(_idx) , 1 , _obj);
+                this.getPrice();
             } 
                
       }
@@ -112,7 +114,7 @@ export class CartComponent implements OnInit {
          this.http.post('add_cartcount',params = {indexid:indexid,qty:qty}).then((res) => { 
               // console.log(res)
               if(this.dataCountSetPrice != 0 && this.currentTrIndexs.indexOf(_idx) > -1){
-                this.dataCountSetPrice += price*1
+                this.dataCountSetPrice-price*1 += price*1
               }
           }).then(()=>{
               this.getCartItem();
@@ -128,7 +130,7 @@ export class CartComponent implements OnInit {
          this.http.post('sub_cartcount',params = {indexid:indexid,qty:qty}).then((res) => { 
               // console.log(res)
               if(this.dataCountSetPrice>price*1 && this.currentTrIndexs.indexOf(_idx) > -1){
-                  this.dataCountSetPrice -= price*1    
+                  this.dataCountSetPrice+price*1 -= price*1    
               }
           }).then(()=>{
               this.getCartItem();
@@ -143,7 +145,7 @@ export class CartComponent implements OnInit {
          for(let i =0;i<this.dataCountSet.length;i++){
              let params ;
              let size = this.dataCountSet[i].size ? this.dataCountSet[i].size : '';
-             let color = this.dataCountSet[i].color ? this.dataCountSet[i].color : ''
+             let color = this.dataCountSet[i].color ? this.dataCountSet[i].color : '';
              this.http.post('add_order',params = {indexid:this.dataCountSet[i].indexid,count:this.dataCountSet[i].count,userid:this.dataCountSet[i].userid,username:this.dataCountSet[i].username,goodsid:this.dataCountSet[i].goodsid,proname:this.dataCountSet[i].proname,imgurl:this.dataCountSet[i].imgurl,size:size,color:color,price:this.dataCountSet[i].price}).then((res) => { 
                   // console.log(res)
               })

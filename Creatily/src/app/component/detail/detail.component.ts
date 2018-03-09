@@ -11,7 +11,7 @@ import { NzMessageService } from 'ng-zorro-antd';
 })
 export class DetailComponent implements OnInit {
 
-    userid: number = 1;
+    userid: number = 123;
     username: string = 'ljt';
     proId: number;
     dataset: Array<any> = [];
@@ -217,7 +217,7 @@ export class DetailComponent implements OnInit {
             this.classlist['imgurl'] = this.groundImg[this.currentImgIdx];
             this.classlist['price'] = this.currentSizePrice;
             this.http.post('add_order',this.classlist).then((res)=>{
-                this.router.navigate(['/order']);
+                this.router.navigate(['/order',{status:1}]);
             });
         }
     };

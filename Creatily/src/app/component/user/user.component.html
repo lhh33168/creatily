@@ -1,13 +1,13 @@
 <div class="userpage">
-    <a routerLink="/userset" class="iconfont icon-iconfonticonfontjixieqimo"></a>    
+    <a routerLink="/user/userset" class="iconfont icon-iconfonticonfontjixieqimo"></a>    
     <div class="user-canner">
         <!-- <srollTop>封装</srollTop> -->
         <!-- 用户信息 -->
         <div class="user-personal">
             <div class="user-photo">
-                <img src="../../../assets/images/default-user.png" />
+                <img [src]="userImg" />
             </div>
-            <div class="user-name">6666</div>
+            <div class="user-name">{{userName}}</div>
             <div class="user-message">
                 <a routerLink="/user/usermsg">点击此处更改个人描述</a>
             </div>
@@ -18,8 +18,9 @@
         <div class="user-mydingdan">
             <span>我的订单</span>
             <span>
-                <a routerLink="userdingdan">查看全部订单
-                    <i class="iconfont icon-fanhui"></i>
+                <a routerLink="/user/dingdan">
+                    查看全部订单
+                    <i class="iconfont icon-fanhui"></i>   
                 </a>
             </span>
         </div>
@@ -123,3 +124,4 @@
     </div>
 </div>
 <footer></footer>
+<router-outlet></router-outlet>

@@ -77,7 +77,6 @@ export class CommunityComponent implements OnInit {
          this.http.post('add_cartcount_a2',params = {id:id,dianzan:dianzan,status:status}).then((res) => { 
               
                this.carthot2 =res['data'].results;
-               console.log(this.carthot2)
               
          });
          
@@ -161,14 +160,11 @@ export class CommunityComponent implements OnInit {
   }
   
   stockCountAdd_tp(id){
-  	console.log(999)
-  	console.log(id)
   	let params;
          this.router.navigate(['comment',id],{params:{id:id}  } );
   }
   
   stockCountAdd_3(id){
-  	console.log(id)
   	let params;
          this.router.navigate(['comment',id],{params:{id:id}  } );
   }

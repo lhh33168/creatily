@@ -6,7 +6,7 @@ function getCode(phone,ramdomCode){
     var codeApi = "https://api.miaodiyun.com/20150822/industrySMS/sendSMS";
     var date = new Date().getTime();
     var sid = "3c3098bd371647ac8ec866b3e41ae413"
-    var autotoken = "...";
+    var autotoken = "..";
     var md5Res = md5(sid + autotoken + date);
     var codeParams = {
         accountSid: sid,

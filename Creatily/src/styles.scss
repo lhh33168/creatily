@@ -6,6 +6,39 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input
 ul,ol,li{
 	list-style:none;
 }
+* {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+img {
+    border: none;
+    width: 100%;
+}
+
+.success {
+    -webkit-animation: fadeIn 01s ease 0.2s 1 both;
+    animation: fadeIn 1s ease 0.2s 1 both;
+}
+
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
 a{
 	text-decoration:none;
 }

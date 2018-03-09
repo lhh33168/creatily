@@ -162,12 +162,10 @@ export class CommunityComponent implements OnInit {
   }
   
   stockCountAdd_tp(id){
-  	let params;
     this.router.navigate(['comment',id]);
   }
   
   stockCountAdd_3(id){
-  	let params;
-    this.router.navigate(['comment',id],{params:{id:id}  } );
+    this.router.navigate(['comment',id]);
   }
 }

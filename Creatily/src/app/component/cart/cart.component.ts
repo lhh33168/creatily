@@ -130,7 +130,7 @@ export class CartComponent implements OnInit {
          this.http.post('sub_cartcount',params = {indexid:indexid,qty:qty}).then((res) => { 
               // console.log(res)
               if(this.dataCountSetPrice>price*1 && this.currentTrIndexs.indexOf(_idx) > -1){
-                  this.dataCountSetPrice+price*1 -= price*1    
+                  this.dataCountSetPrice+price*1-= price*1    
               }
           }).then(()=>{
               this.getCartItem();

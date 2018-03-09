@@ -44,8 +44,10 @@ export class HomeComponent implements OnInit {
        this.selectId=categoryId;
         this.http.get(`listPass?selectId=`+this.selectId).then((res)=>{
         this.selectshow=res['data']['results'];
+          // console.log(this.selectshow)
+        
         this.Imgs=this.selectshow[0]['img']
-        console.log(this.selectshow[0]['img'])
+        // console.log(this.selectshow[0]['img'])
      })
     }
     selector(event){

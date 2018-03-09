@@ -50,7 +50,7 @@ module.exports = {
            console.log(arr)
 
            db.update(`update address set default_address = 0 where user_id = ${userid} && default_address = 1`,function(res){
-                    db.insert(`INSERT INTO address (name,user_id,phone,address,default_address) VALUES(?,?,?,?,?)`,arr,function(res2){
+                    db.insert2(`INSERT INTO address (name,user_id,phone,address,default_address) VALUES(?,?,?,?,?)`,arr,function(res2){
                     _res.send(res2);
                })       
            })
@@ -60,7 +60,7 @@ module.exports = {
            var arr =[_req.body.name,_req.body.userid,_req.body.phone,_req.body.address]
            console.log(arr)
 
-           db.insert(`INSERT INTO address (name,user_id,phone,address) VALUES(?,?,?,?)`,arr,function(res){
+           db.insert2(`INSERT INTO address (name,user_id,phone,address) VALUES(?,?,?,?)`,arr,function(res){
                 _res.send(res);
            })                
         });
@@ -99,7 +99,7 @@ module.exports = {
            console.log(arr)
            // var sql =`INSERT INTO cart(uerid,proid) VALUES(${uid},${_req.body.proid})`
 
-           db.insert(`INSERT INTO orders (indexid,userid,count,color,size,goodsid,username,price,proname,imgurl) VALUES(?,?,?,?,?,?,?,?,?,?)`,arr,function(res){
+           db.insert2(`INSERT INTO orders (indexid,userid,count,color,size,goodsid,username,price,proname,imgurl) VALUES(?,?,?,?,?,?,?,?,?,?)`,arr,function(res){
                 _res.send(res);
            })
            // var arr = [_req.body.indexid]
@@ -132,13 +132,15 @@ module.exports = {
         //     })
         // }),
         _app.get('/get_orders',function(req,res){
-            db.select2(`select * from orders where status = 0`,function(result){
+            var userid = req.query.userid;
+            db.select2(`select * from orders where status = 0 && userid = ${userid}`,function(result){
                 console.log(result.data.results);
                 res.send(result);  
             })
         });
         _app.post('/delete_order',function(_req,_res){
-            db.delete(`DELETE FROM orders where status = 0`,function(res){
+            var userid = _req.body.userid;
+            db.delete(`DELETE FROM orders where status = 0 && userid = ${userid}`,function(res){
                 _res.send(res);
             })
         });
@@ -150,6 +152,18 @@ module.exports = {
                 db.update(`update orders set ordernumber = ${ordernumber} where indexid = ${indexid} `,function(res2){  
                         db.select2(`select * from orders where status = 1 && indexid = ${indexid}`,function(result){
                             _res.send(result)
+                    })  
+                })
+            })
+        });
+        _app.post('/change_order_detail',function(_req,_res){
+            var userid = _req.body.userid;
+            var ordernumber = _req.body.ordernumber;
+            console.log(ordernumber)
+            db.update(`update orders set ordernumber = ${ordernumber} where status = 0 && userid = ${userid}`,function(res){ 
+                    db.select2(`select * from orders where status = 0 && userid = ${userid}`,function(result){
+                        _res.send(result)
+                         db.update(`update orders set status = 1 where status = 0 && userid = ${userid} `,function(res2){
                     })  
                 })
             })

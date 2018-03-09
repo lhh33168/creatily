@@ -10,7 +10,17 @@ var db = mysql.createPool({
 });
 
 module.exports = {
-    insert:function(sql,value,callback){
+    insert:function(sql,callback){
+        db.query(sql,function(error,results,filters){
+            if(error){
+                callback({state:false,error:error});
+            }else{
+                callback({state:true,data:{results,filters}});
+                console.log("insert:新增成功!");
+            }
+        })
+    },
+    insert2:function(sql,value,callback){
         db.query(sql,value,function(error,results,filters){
             if(error){
                 callback({state:false,error:error});
@@ -53,7 +63,7 @@ module.exports = {
     update:function(sql,callback){
         db.query(sql,function(error,results,filters){
             if(error){
-                console.log(error)
+                // console.log(error)
                 callback({state:false,error:error});
             }else{
                 callback({ state: true, data: { results, filters }, message: "更新受影响的行:" + results.changedRows})

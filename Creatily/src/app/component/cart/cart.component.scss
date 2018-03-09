@@ -17,7 +17,7 @@
             .cartmainbottom_empty_top{
                 display:flex;flex-direction:column;justify-content:space-around;
                 img{
-                    align-self:center;
+                    align-self:center;width:12.75rem;height:17.9375rem;
                 }
                 div{
                     align-self:center;height:3.75rem;line-height:3.75rem;
@@ -63,7 +63,7 @@
                         .cartmainbottom_full_center{
                             display:flex;flex-direction:column;justify-content:space-around;
                             p{
-                                color:#323232;
+                                color:#323232;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:9.375rem;
                             }
                             .cartmainbottom_full_center_c{
                                 color:#ABABAB;height:2.0625rem;line-height:2.0625rem;

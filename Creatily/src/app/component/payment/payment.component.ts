@@ -33,7 +33,7 @@ export class PaymentComponent implements OnInit {
           title  : '您是否确认退出支付',
           content: '<b>忍心离开吗？</b>',
           onOk() {
-             location.back();
+             this.router.navigate(['dingdan']);  
           },
           onCancel() {
           }
@@ -45,7 +45,7 @@ export class PaymentComponent implements OnInit {
           let price = this.price;
           this.confirmServ.confirm({
           title  : '您已成功支付金额￥'+`${price}`,
-          content: '<b>确认返回订单页，取消停留在该页面</b>',
+          content: '<b>确认返回，取消停留在该页面</b>',
           onOk() {
              location.back();
           },
@@ -57,12 +57,13 @@ export class PaymentComponent implements OnInit {
             let price = this.price;
             let params;
             this.http.post('payment_order',params = {ordernumber:this.ordernumber}).then((res) => { 
-                console.log(res)
-                this.location.back();
                 this.confirmServ.success({
                     title: '您已成功支付金额￥'+`${price}`,
-                    content: '返回订单页'
+                    content: '返回商品页'
                 });
+                setTimeout(()=>{
+                    this.router.navigate(['home']);
+                }, 1000)   
             })   
       }
 

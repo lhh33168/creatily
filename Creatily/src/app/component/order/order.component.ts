@@ -58,6 +58,7 @@ export class OrderComponent implements OnInit {
           // console.log(this.dataCountSetPrice)   
       }
       goToPay(){
+          let params;
           this.ordernumber = parseInt(Math.random()*(1000000000-10000000+1)+10000000,10);
           if(this.address.length===0){
                this.error();
@@ -69,7 +70,7 @@ export class OrderComponent implements OnInit {
                this.http.post('change_order_detail',params = {ordernumber:this.ordernumber,userid:this.userid}).then((res) => { 
                         console.log(res)
                         this.order = [];
-                        this.router.navigate(['payment',this.dataCountSetPrice,res.data.results[0].ordernumber]);    
+                        this.router.navigate(['payment',this.dataCountSetPrice,res['data'].results[0].ordernumber]);    
                  })
           }else{ 
              // console.log(this.ordernumber)

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../utils/http.service';
+import { Router } from '@angular/router';
+import { NzModalService, NzMessageService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-userorder',
@@ -22,7 +24,8 @@ export class UserorderComponent implements OnInit {
   arr1: Array<any> = [];
   nzShowPagination: Boolean = false;
   dingdanlist:Array<any>;
-  constructor(private $http: HttpService ) { }
+  constructor(private $http: HttpService, private router: Router, private confirmServ: NzModalService,
+    private _message: NzMessageService) { }
 
 
   // 1、
@@ -44,14 +47,15 @@ export class UserorderComponent implements OnInit {
   // 获取
   // 初始默认1
   getdingDan(idx, name){
-    console.log(idx,name);
-    
+    // console.log(idx,name);
     // console.log(idx);
     this.$http.get('dingdan', { idxState: idx, usernameIdA: name}).then((res) => {
-      if (res['state']=='success'){
-        console.log(res);
+      // console.log(res);
+      if (res['state']){
+        // console.log(res);
         let arrFiler = res['data'];
         this.filterArr = this.arrFilter(arrFiler);
+
       } else if (res['state'] == 'faild'){
         this.filterArr = [];
       } else {
@@ -61,6 +65,9 @@ export class UserorderComponent implements OnInit {
   }
   getKeys(item) {
     return Object.keys(item);
+  }
+  back(){
+    this.router.navigate(['user']);
   }
   // 过滤
   arrFilter(arrObj) {
@@ -131,5 +138,36 @@ export class UserorderComponent implements OnInit {
       }
     }
     return "success";
+  }
+  // 确认收货
+  conmitshouhuo(useid,idNum){
+    const $self = this;
+    this.confirmServ.warning({
+      title: '温馨提示',
+      content: '是否确认已收货?否则后果自负!',
+      okText: '确定',
+      cancelText: '取消',
+      onOk() {
+        $self.changgestatus(useid, idNum);
+      }
+    });
+
+
+    
+  }
+
+
+  // 更改状态
+  changgestatus(useid,idNum){
+    let delRes = this.spliceArr(idNum);
+    if (delRes == 'success') {
+      this.arrFilter(this.filterArr);//返回最新数组
+      this.$http.post('commitshouhuo', { username: useid, goodsnum: idNum }).then((res) => {
+        if (res['state'] == 'success') {
+          // this.getdingDan();
+          console.log("OK");
+        }
+      });
+    }
   }
 }

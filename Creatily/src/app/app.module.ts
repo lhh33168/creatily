@@ -46,6 +46,7 @@ import { SearchComponent } from './component/search/search.component';
 
 
 import { RangePipe } from '../app/utils/range.pipe';
+import { ScrolltoTopComponent } from './component/scrolltotop/scrolltotop.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +83,9 @@ import { RangePipe } from '../app/utils/range.pipe';
 
     SearchComponent,
 
-    RangePipe
+    RangePipe,
+
+    ScrolltoTopComponent
   ],
   imports: [
     FlexLayoutModule,

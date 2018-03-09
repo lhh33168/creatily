@@ -1,19 +1,18 @@
 import { Component, OnInit, Output, EventEmitter} from '@angular/core';
-import {HttpService} from '../../utils/http.service'
-
-
+import {HttpService} from '../../../utils/http.service'
+import { Location } from '@angular/common';
 @Component({
-    selector: 'app-search',
-    templateUrl: './search.component.html',
-    styleUrls: ['./search.component.scss']
+  selector: 'app-checked',
+  templateUrl: './checked.component.html',
+  styleUrls: ['./checked.component.scss']
 })
-export class SearchComponent implements OnInit {
-    //@Input() table: string;
+export class CheckedComponent implements OnInit {
+
     @Output() search_data = new EventEmitter<Array>();
   
     _search_data:string = null;
 
-    constructor(private $:HttpService) { }
+    constructor(private $:HttpService, private location: Location) { }
 
     ngOnInit() {
     }
@@ -27,4 +26,7 @@ export class SearchComponent implements OnInit {
             }
         })
     }
+    getback(){
+      this.location.back();
+  }
 }

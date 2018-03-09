@@ -8,7 +8,7 @@
         <span>商品详情</span>
         <i class="share2 iconfont icon-share"></i>
     </div>
-    <div class="detail-container" (scroll)="test($event)">
+    <div class="detail-container" (scroll)="scroll_c($event)">
         <div class="swiper-container">  
             <div class="swiper-wrapper">  
                 <img class="swiper-slide" *ngFor= "let item of groundImg" src={{item}}/>  
@@ -82,7 +82,7 @@
     <div class="bottom-toolbar">
         <div class="btn-bar1">
             <i class="iconfont icon-serve"></i>
-            <i class="iconfont icon-gouwuche" routerLink="/cart"><span class="cartTips" *ngIf="tipCount && tipCount != 0">{{tipCount}}</span></i>
+            <i class="iconfont icon-gouwuche" (click)="gotoCart()"><span class="cartTips" *ngIf="tipCount && tipCount != 0">{{tipCount}}</span></i>
         </div>    
         <div class="btn-bar2"> 
             <input id="addCart" type="button" class="have-btn1" value="加入购物车" (click)="addtoCart()"> 

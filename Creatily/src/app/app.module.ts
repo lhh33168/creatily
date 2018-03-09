@@ -47,7 +47,8 @@ import { SearchComponent } from './component/search/search.component';
 import { SeekComponent } from './component/seek/seek.component';
 
 
-
+import { RangePipe } from '../app/utils/range.pipe';
+import { CheckedComponent } from './component/home/checked/checked.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,13 @@ import { SeekComponent } from './component/seek/seek.component';
     PaymentComponent,
     NewAddressComponent,
     AddressComponent,
+<<<<<<< HEAD
     CommunityComponent,
+=======
+
+    CommunityComponent,
+
+>>>>>>> bf146480b5c2637888e36c507bcc665cc0f14c73
     CarouselComponent,
     NewProductComponent,
     ShowProductComponent,
@@ -82,10 +89,18 @@ import { SeekComponent } from './component/seek/seek.component';
     UserorderComponent,
 
 
+<<<<<<< HEAD
     SeekComponent
 
 
+=======
+    SearchComponent,
+>>>>>>> bf146480b5c2637888e36c507bcc665cc0f14c73
 
+    RangePipe,
+
+
+CheckedComponent
   ],
   imports: [
     FlexLayoutModule,

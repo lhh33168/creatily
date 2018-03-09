@@ -11,8 +11,8 @@ import { NzMessageService } from 'ng-zorro-antd';
 })
 export class DetailComponent implements OnInit {
 
-    userid: number = 123;
-    username: string = 'ljt';
+    userid: number;
+    username: string;
     proId: number;
     dataset: Array<any> = [];
     groundImg: Array<string> = [];
@@ -36,6 +36,15 @@ export class DetailComponent implements OnInit {
     constructor(private route: ActivatedRoute, private router: Router, private http: HttpService, private location: Location, private _message: NzMessageService) { }
 
     ngOnInit(): void{
+
+        var userJsonStr = sessionStorage.getItem('userInfo');
+        var usermessage = JSON.parse(userJsonStr);
+        // console.log(usermessage)
+        if(usermessage){
+            this.userid = usermessage.id;
+            this.username = usermessage.username;
+        };
+
         this.route.params.subscribe((params) => {
             // console.log(params);
             this.proId = params['id'];
@@ -78,8 +87,12 @@ export class DetailComponent implements OnInit {
 
     getTipCount(){
         this.http.get('getcartslist',{userid:this.userid}).then((res) => {
-            // console.log(res['data']['results'][0]['count(*)'])
-            this.tipCount = res['data']['results'][0]['count(*)'];
+            // console.log(res['data'])
+            if(res['data']){
+                this.tipCount = res['data']['results'][0]['count(*)'];
+            }else{
+                this.tipCount = 0;
+            }
         })
     };
 
@@ -87,7 +100,7 @@ export class DetailComponent implements OnInit {
         this.location.back();
     };
 
-    test(event){
+    scroll_c(event){
         // console.log(event.target.scrollTop)
         if(event.target.scrollTop>=400){
             this.headShow = false;
@@ -160,8 +173,15 @@ export class DetailComponent implements OnInit {
         }
     };
 
-    addtoCart(){
+    gotoCart(){
         if(this.userid && this.username){
+            this.router.navigate(['/cart']);
+        }else{
+            this.router.navigate(['/login']);
+        }
+    };
+
+    addtoCart(){
             this.headShow = false;
             this.categroyShow = true;
             if((this.size.length>0) && this.classlist && (!this.classlist['size'] || this.classlist['size'] == null)){
@@ -171,31 +191,32 @@ export class DetailComponent implements OnInit {
                 // console.log('请选择颜色')
                 this._message.info('请选择颜色');
             }else{
-                this.classlist['count'] = this.count;
-                this.classlist['userid'] = this.userid;
-                this.classlist['username'] = this.username;
-                this.classlist['goodsid'] = this.proId;
-                this.classlist['proname'] = this.dataset['proName'];
-                this.classlist['imgurl'] = this.groundImg[this.currentImgIdx];
-                this.classlist['price'] = this.currentSizePrice;
-                // console.log(this.classlist)
-                this.http.post('add_cart',this.classlist).then((res)=>{
-                    // console.log('已加入购物车')
-                    this._message.info('已加入购物车');
-                }).then(() => {
-                    this.getTipCount();
-                })
-                this.count = 1;
-                this.currentSizeIdx = null;
-                this.currentColorIdx = null;
-                this.currentImgIdx = 0;
-                this.currentSizePrice = this.dataset['price'].split(',')[0];
-                this.tip = [];
-                this.classlist = {};
-            }
+                if(this.userid && this.username){
+                    this.classlist['count'] = this.count;
+                    this.classlist['userid'] = this.userid;
+                    this.classlist['username'] = this.username;
+                    this.classlist['goodsid'] = this.proId;
+                    this.classlist['proname'] = this.dataset['proName'];
+                    this.classlist['imgurl'] = this.groundImg[this.currentImgIdx];
+                    this.classlist['price'] = this.currentSizePrice;
+                    // console.log(this.classlist)
+                    this.http.post('add_cart',this.classlist).then((res)=>{
+                        // console.log('已加入购物车')
+                        this._message.info('已加入购物车');
+                    }).then(() => {
+                        this.getTipCount();
+                    })
+                    this.count = 1;
+                    this.currentSizeIdx = null;
+                    this.currentColorIdx = null;
+                    this.currentImgIdx = 0;
+                    this.currentSizePrice = this.dataset['price'].split(',')[0];
+                    this.tip = [];
+                    this.classlist = {};
+                }else{
+                    this.router.navigate(['/login']);
+                }
             // console.log(this.classlist)
-        }else{
-            this.router.navigate(['/login']);
         }
     };
 
@@ -209,16 +230,20 @@ export class DetailComponent implements OnInit {
             // console.log('请选择颜色')
             this._message.info('请选择颜色');
         }else{
-            this.classlist['count'] = this.count;
-            this.classlist['userid'] = this.userid;
-            this.classlist['username'] = this.username;
-            this.classlist['goodsid'] = this.proId;
-            this.classlist['proname'] = this.dataset['proName'];
-            this.classlist['imgurl'] = this.groundImg[this.currentImgIdx];
-            this.classlist['price'] = this.currentSizePrice;
-            this.http.post('add_order',this.classlist).then((res)=>{
-                this.router.navigate(['/order',{status:1}]);
-            });
+            if(this.userid && this.username){
+                this.classlist['count'] = this.count;
+                this.classlist['userid'] = this.userid;
+                this.classlist['username'] = this.username;
+                this.classlist['goodsid'] = this.proId;
+                this.classlist['proname'] = this.dataset['proName'];
+                this.classlist['imgurl'] = this.groundImg[this.currentImgIdx];
+                this.classlist['price'] = this.currentSizePrice;
+                this.http.post('add_order',this.classlist).then((res)=>{
+                    this.router.navigate(['/order',{status:1}]);
+                });
+            }else{
+                this.router.navigate(['/login']);
+            }
         }
     };
 

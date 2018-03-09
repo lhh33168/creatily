@@ -17,8 +17,8 @@ export class SeekComponent implements OnInit {
        this.seeking=seek[1]
         console.log(seek)
     }
-    getback(){
-      this.location.back();
+  turn(idx){
+     this.router.navigate(['detail',idx]);
   }
 
 }

@@ -36,15 +36,15 @@ export class NewProductComponent implements OnInit {
           spaceBetween: 20,
         },
         320: {
-          slidesPerView: 1,
-          spaceBetween: 10,
+          slidesPerView: 2.5,
+          spaceBetween: 5,
         }
       }
     });
   }
   turn(idx){
 
-    this.router.navigate(['detail',idx],{queryParams:{id:idx}  } );
+    this.router.navigate(['detail',idx]   );
   }
 
 }

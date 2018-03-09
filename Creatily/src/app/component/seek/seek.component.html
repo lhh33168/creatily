@@ -1,6 +1,5 @@
-<div>
-<app-search (search_data)="getdata($event)"></app-search>
-<div class="cancel"(click)="getback()">取消</div>
+<div class="seek">
+<app-checked (search_data)="getdata($event)"></app-checked>
 <div *ngIf="seeking"class="selecttype">
         <img src="{{Imgs}}" alt=""class="Imgs" />
         <div class="Imgss">

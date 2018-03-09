@@ -110,7 +110,6 @@ export class CartComponent implements OnInit {
          this.http.post('delete_cart',params = {indexid:indexid}).then((res) => { 
               // console.log(res)
               this.getCartItem1();
-              this.success(); 
           })
      }
      stockCountAdd(indexid,qty,price,_idx,_obj){
@@ -171,10 +170,22 @@ export class CartComponent implements OnInit {
             content: '么么哒！！！'
           });
     }
-    success() {
-          this.confirmServ.success({
-            title: '商品删除成功',
-            content: '么么哒！！！'
-          });
-    }
+    // success() {
+    //       this.confirmServ.success({
+    //         title: '商品删除成功',
+    //         content: '么么哒！！！'
+    //       });
+    // }
+    success(indexid){
+          let $self = this;
+          this.confirmServ.confirm({
+          title  : '您是否确认删除',
+          content: '<b>确定吗？</b>',
+          onOk() {
+              $self.deleteCart(indexid);
+          },
+          onCancel() {
+          }
+        });
+      }
 }

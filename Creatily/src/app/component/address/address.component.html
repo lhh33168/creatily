@@ -11,7 +11,7 @@
         <li *ngFor="let obj of getaddress;let idx = index;">
             <div class="address_c_t"><span>{{obj.name}}</span><span>{{obj.phone}}</span></div>
             <div class="address_c_c">{{obj.address}}</div>
-            <div class="address_c_b"><span *ngIf="obj.default_address == 1">默认地址</span><div class="address_c_b_common"><div (click)="updateAddress(obj.id)"><i class="iconfont icon-icon-test"></i>编辑</div><div (click)="deleteAddress(obj.id)"><i class="iconfont icon-icon--"></i>删除</div></div></div>
+            <div class="address_c_b"><span *ngIf="obj.default_address == 1">默认地址</span><div class="address_c_b_common"><div (click)="updateAddress(obj.id)"><i class="iconfont icon-icon-test"></i>编辑</div><div (click)="success(obj.id)"><i class="iconfont icon-icon--"></i>删除</div></div></div>
             <div class="address_common"></div>
         </li>
     </div>

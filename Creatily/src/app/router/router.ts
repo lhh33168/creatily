@@ -41,7 +41,7 @@ const appRoutes:Routes = [
     { path: "order", component: OrderComponent},
     { path: "payment/:price/:ordernumber", component: PaymentComponent},
     { path: "address", component: AddressComponent},
-    { path: "newAddress/:id", component: NewAddressComponent},
+    { path: "newAddress", component: NewAddressComponent},
     { path: "search", component: SearchComponent},
 
 

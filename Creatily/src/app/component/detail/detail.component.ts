@@ -11,7 +11,7 @@ import { NzMessageService } from 'ng-zorro-antd';
 })
 export class DetailComponent implements OnInit {
 
-    userid: number = 123;
+    userid: number = 165;
     username: string = 'ljt';
     proId: number;
     dataset: Array<any> = [];

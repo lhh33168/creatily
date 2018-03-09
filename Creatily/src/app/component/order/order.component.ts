@@ -14,7 +14,7 @@ export class OrderComponent implements OnInit {
       address: Array<any> = [];
       dataCountSetPrice : number = 0;
       multiple: boolean = true;
-      ordernumber : number;
+      ordernumber : any;
       userid : number;
       status : number;
 
@@ -23,8 +23,10 @@ export class OrderComponent implements OnInit {
       ngOnInit() {
           let params;
           var userJsonStr = sessionStorage.getItem('userInfo');
-          var usermessage = JSON.parse(userJsonStr);
-          this.userid = usermessage.id;console.log(this.userid)
+          if(userJsonStr){
+              var usermessage = JSON.parse(userJsonStr);
+              this.userid = usermessage.id;console.log(this.userid)
+          }
           if(this.userid){
               this.http.get('get_orders',params = {userid:this.userid}).then((res) => { 
                   if(res['state']==true){
@@ -67,6 +69,7 @@ export class OrderComponent implements OnInit {
       goToPay(){
           let params;
           this.ordernumber = parseInt(Math.random()*(1000000000-10000000+1)+10000000,10);
+          // console.log(typeOf(this.ordernumber))
           if(this.address.length===0){
                this.error();
           }else if(this.multiple==false){
@@ -90,7 +93,7 @@ export class OrderComponent implements OnInit {
                  this.http.post('change_order',params = {indexid:this.order[i].indexid,ordernumber:this.ordernumber,userid:this.userid}).then((res) => { 
                         // console.log(res)
                         this.order = [];
-                        this.router.navigate(['payment',this.dataCountSetPrice,res.data.results[0].ordernumber]);    
+                        this.router.navigate(['payment',this.dataCountSetPrice,res['data'].results[0].ordernumber]);    
                  })
              }
           }

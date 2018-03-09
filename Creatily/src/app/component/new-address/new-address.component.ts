@@ -108,12 +108,14 @@ export class NewAddressComponent implements OnInit {
 
       ngOnInit() {
           var userJsonStr = sessionStorage.getItem('userInfo');
-          var usermessage = JSON.parse(userJsonStr);
-          this.userid = usermessage.id;console.log(this.userid)
+          if(userJsonStr){
+              var usermessage = JSON.parse(userJsonStr);
+              this.userid = usermessage.id;console.log(this.userid)
+          }
           this.getCitys();
           this.route.params.subscribe((params) => {
-            // console.log(params);
-            this.id = params['id'];         
+              // console.log(params);
+              this.id = params['id'];         
           });
           let params;
           this.http.get('get_compile_address',params = {id:this.id}).then((res) => { 
@@ -155,8 +157,8 @@ export class NewAddressComponent implements OnInit {
         });
       }
       addAddress(name,phone,address,city1NgModel){
-          let params;
-          if(this.id == ':10000'){
+          let params;console.log(this.id,name)
+          if(this.id == undefined){
               if(this.multiple){
                   if(!name || !phone || !city1NgModel || !address){
                       this.error();

@@ -16,11 +16,17 @@ export class CartComponent implements OnInit {
       cartItem: Array<any> = [];
       dataCountSet: Array<any> = [];
       dataCountSetPrice : number = 0;
-      userid: number = 123;
+      userid: number;
 
       constructor(private http: HttpService, private route: ActivatedRoute, private router: Router, private confirmServ: NzModalService) { }
 
       ngOnInit() {
+          var userJsonStr = sessionStorage.getItem('userInfo');
+         
+          if(userJsonStr){
+              var usermessage = JSON.parse(userJsonStr); console.log(userJsonStr)
+              this.userid = usermessage.id;console.log(this.userid)
+          }
           this.http.get('get_hot').then((res) => { 
               this.carthot = res['data'].results;
           })
@@ -31,10 +37,11 @@ export class CartComponent implements OnInit {
       getCartItem(){
           let params = {}
           this.http.get('get_cart',params = {userid:this.userid}).then((res) => { 
-             
+              if(res['state']==true){
                   this.cartItem = res['data']['results'];
                   this.dataset = res['data']['results'];
-                  // console.log(res) 
+                  // console.log(res)   
+              }
               
            })    
       }

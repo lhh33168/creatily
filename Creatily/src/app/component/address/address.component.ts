@@ -18,8 +18,10 @@ export class AddressComponent implements OnInit {
 
       ngOnInit() {
           var userJsonStr = sessionStorage.getItem('userInfo');
-          var usermessage = JSON.parse(userJsonStr);
-          this.userid = usermessage.id;console.log(this.userid)
+          if(userJsonStr){
+              var usermessage = JSON.parse(userJsonStr);
+              this.userid = usermessage.id;console.log(this.userid)
+          }
           if(this.userid){
               this.getAddressItem();            
           }
@@ -64,6 +66,6 @@ export class AddressComponent implements OnInit {
       }
       updateAddress(id){
           
-           this.router.navigate(['newAddress',id])
+           this.router.navigate(['newAddress',{id:id}])
       }
 }

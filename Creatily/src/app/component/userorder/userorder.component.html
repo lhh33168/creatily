@@ -1,11 +1,7 @@
 <div class="user-dingdan">
-    <div class="userset-title">
-        <div class="getback" (click)="back()">
-            <i class="iconfont icon-fanhui"></i>
-        </div>
-        <span>我的订单</span>
-    </div>
-    <div class="userset-nav" *ngIf="navList">
+    <orderheader></orderheader>
+    <div class="userset-nav">
+        <!-- <orderNav></orderNav> -->
         <div class="userset-table">
             <ul>
                 <li *ngFor="let item of navList;let idx = index" [class]="(navActive == item.navidx) ? 'dingdanActive':''" (click)="dingdan(item.navidx)">{{item['navname']}}</li>
@@ -35,12 +31,12 @@
                         </div>
                         <div class="dingdan-zongjia">
                             <span class="dingdan-number">共<strong>{{item['goodsArr'].length*1}}件</strong></span>
-                            <span class="dingdan-total">应付总额:<strong>￥{{arr1[idx]}}</strong></span>
+                            <span class="dingdan-total">应付总额:<strong>￥{{item['orderprice']}}</strong></span>
                         </div>
                         <div class="dingdan-jiesuan" [ngSwitch]="item['state']">
                             <span *ngSwitchCase=1>
                                 <button (click)="carceldingdan(item['userId'],item['ordernumber'])">取消订单</button>
-                                <a routerLink="/payment/{{arr1[idx]}}/{{item['ordernumber']}}" class="fukuan">立即付款</a>                                
+                                <a routerLink="/payment/{{item['orderprice']}}/{{item['ordernumber']}}" class="fukuan">立即付款</a>                                
                             </span>
                             <span *ngSwitchCase=2>
                                 <button (click)="carceldingdan(item['userId'],item['ordernumber'])">取消订单</button>
@@ -53,7 +49,7 @@
                     </div>
                 </div>
                 <div class="dingdan-content" *ngIf="filterArr.length == 0">
-                    <img [src]="imgres"/>
+                    <img [src]="imgres" class="notgoodsImg"/>
                 </div>
             </div>
         </div>

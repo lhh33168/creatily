@@ -1,3 +1,4 @@
 export default {
-    getaddress: []
+    getaddress: [],
+    dingdanId: Number
 }

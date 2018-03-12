@@ -53,7 +53,9 @@ import { CheckedComponent } from './component/home/checked/checked.component';
 
 import { ScrolltoTopComponent } from './component/scrolltotop/scrolltotop.component';
 import { ForgetpwdComponent } from './component/forgetpwd/forgetpwd.component';
-
+import { SetpassComponent } from './component/setpass/setpass.component';
+import { OrderheaderComponent } from './component/orderheader/orderheader.component';
+import { OrdernavComponent } from './component/ordernav/ordernav.component';
 
 @NgModule({
   declarations: [
@@ -70,13 +72,9 @@ import { ForgetpwdComponent } from './component/forgetpwd/forgetpwd.component';
     PaymentComponent,
     NewAddressComponent,
     AddressComponent,
-
+    ForgetpwdComponent,
     CommunityComponent,
-
-
     CommunityComponent,
-
-
     CarouselComponent,
     NewProductComponent,
     ShowProductComponent,
@@ -89,31 +87,17 @@ import { ForgetpwdComponent } from './component/forgetpwd/forgetpwd.component';
 
     NotificationComponent,
     SearchComponent,
-
-
     UserorderComponent,
-
-
-
     SeekComponent,
-
-
-
     SearchComponent,
-
-
     RangePipe,
-
-
-
-CheckedComponent,
-
+    CheckedComponent,
     RangePipe,
-
     ScrolltoTopComponent,
+    SetpassComponent,
 
-    ForgetpwdComponent
-
+    OrderheaderComponent,
+    OrdernavComponent
   ],
   imports: [
     FlexLayoutModule,

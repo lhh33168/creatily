@@ -8,17 +8,17 @@
       <div class="forgetpwd-content-input">
         <div class="forgetpwd-input-phone">
           <i class="iconfont icon-wode"></i>
-          <input type="tel" class="phoneInput" #regFocus placeholder="请输入手机号码" maxlength="11" [(ngModel)]="forgetPhone" (input)="forgetPhoneA($event)"
+          <input type="tel" class="phoneInput" #forgetPhoneFocus placeholder="请输入手机号码" maxlength="11" [(ngModel)]="forgetPhone" (input)="forgetPhoneA($event)"
             required />
           <em class="InputClearA" *ngIf="regShowA" (click)="forgetPhoneClear()">&times;</em>
         </div>
         <div class="forgetpwd-input-code">
           <i class="iconfont icon-msnui-auth-code"></i>
           <button class="getCode" (click)="getCodeA(forgetPhone)" [disabled]="forgetDisabled">{{codetext}}</button>
-          <input type="text" #phoneCodeFocus class="codeInput" placeholder="请输入验证码" [(ngModel)]="forgetCode" (input)="inputPhoneB($event)"
+          <input type="text" #forgetCodeFocus class="codeInput" placeholder="请输入验证码" [(ngModel)]="forgetCode" (input)="forgetCodeA($event)"
             maxlength="6" />
         </div>
-        <button class="forgetpwd-submit" #nextSubmitA [disabled]="nextSubmit" (click)="forgetSubmit(forgetPhone,forgetCode)">下一步</button>
+        <button class="forgetpwd-submit" #forgetSubmit [disabled]="nextSubmit" (click)="forgetNext(forgetPhone,forgetCode)">下一步</button>
       </div>
     </div>
 </div>

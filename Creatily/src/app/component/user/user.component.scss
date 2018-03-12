@@ -43,10 +43,13 @@
     ul{
         display: flex;flex-wrap: nowrap;justify-content: space-around;color:#777777;
         li{
-            color:#777777;
-            i{
-                display: flex;flex-wrap: nowrap;font-size:1.6rem;justify-content: center;
+            a{
+                color:#777777;  
+                i{
+                    display: flex;flex-wrap: nowrap;font-size:1.6rem;justify-content: center;
+                } 
             }
+            
         }
     }
 }

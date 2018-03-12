@@ -153,7 +153,7 @@ export class CartComponent implements OnInit {
              let params ;
              let size = this.dataCountSet[i].size ? this.dataCountSet[i].size : '';
              let color = this.dataCountSet[i].color ? this.dataCountSet[i].color : '';
-             this.http.post('add_order',params = {indexid:this.dataCountSet[i].indexid,count:this.dataCountSet[i].count,userid:this.dataCountSet[i].userid,username:this.dataCountSet[i].username,goodsid:this.dataCountSet[i].goodsid,proname:this.dataCountSet[i].proname,imgurl:this.dataCountSet[i].imgurl,size:size,color:color,price:this.dataCountSet[i].price}).then((res) => { 
+             this.http.post('add_order',params = {indexid:this.dataCountSet[i].indexid,count:this.dataCountSet[i].count,userid:this.dataCountSet[i].userid,username:this.dataCountSet[i].username,goodsid:this.dataCountSet[i].goodsid,proname:this.dataCountSet[i].proname,imgurl:this.dataCountSet[i].imgurl,size:size,color:color,price:this.dataCountSet[i].price,orderprice:this.dataCountSetPrice}).then((res) => { 
                   // console.log(res)
               })
              // params.push(this.dataCountSet[i].indexid)

@@ -95,11 +95,11 @@ module.exports = {
             })
         });
         _app.post('/add_order',function(_req,_res){
-           var arr =[_req.body.indexid,_req.body.userid,_req.body.count,_req.body.color,_req.body.size,_req.body.goodsid,_req.body.username,_req.body.price,_req.body.proname,_req.body.imgurl]
+           var arr =[_req.body.indexid,_req.body.userid,_req.body.count,_req.body.color,_req.body.size,_req.body.goodsid,_req.body.username,_req.body.price,_req.body.proname,_req.body.imgurl,_req.body.orderprice]
            console.log(arr)
            // var sql =`INSERT INTO cart(uerid,proid) VALUES(${uid},${_req.body.proid})`
 
-           db.insert2(`INSERT INTO orders (indexid,userid,count,color,size,goodsid,username,price,proname,imgurl) VALUES(?,?,?,?,?,?,?,?,?,?)`,arr,function(res){
+           db.insert2(`INSERT INTO orders (indexid,userid,count,color,size,goodsid,username,price,proname,imgurl,orderprice) VALUES(?,?,?,?,?,?,?,?,?,?,?)`,arr,function(res){
                 _res.send(res);
            })
            // var arr = [_req.body.indexid]

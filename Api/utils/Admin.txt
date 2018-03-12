@@ -2,7 +2,7 @@
     "api":"get_admin",
     "page_api":{
         "api":"get_admin_page",
-        "qty":"1"
+        "qty":"3"
     },
     "cols":"user_id,password,userphone",
     "filterCols":"address,add_time",

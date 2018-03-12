@@ -55,7 +55,7 @@ import { ScrolltoTopComponent } from './component/scrolltotop/scrolltotop.compon
 import { ForgetpwdComponent } from './component/forgetpwd/forgetpwd.component';
 import { SetpassComponent } from './component/setpass/setpass.component';
 import { OrderheaderComponent } from './component/orderheader/orderheader.component';
-import { OrdernavComponent } from './component/ordernav/ordernav.component';
+import { OrderContentComponent } from './component/ordercontent/ordernav.component';
 
 @NgModule({
   declarations: [
@@ -97,7 +97,7 @@ import { OrdernavComponent } from './component/ordernav/ordernav.component';
     SetpassComponent,
 
     OrderheaderComponent,
-    OrdernavComponent
+    OrderContentComponent,
   ],
   imports: [
     FlexLayoutModule,

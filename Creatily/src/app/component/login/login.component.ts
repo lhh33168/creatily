@@ -122,7 +122,7 @@ export class LoginComponent implements AfterViewInit, OnInit {
   loginsuccess () {
     const $self = this;
     this.confirmServ.success({
-      title: '#58bc58提示您',
+      title: '温馨提示',
       content: '恭喜您登录成功，现在为您跳转用户页！',
       okText: '确定',
       onOk() {

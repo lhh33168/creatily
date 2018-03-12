@@ -1,0 +1,57 @@
+<div class="dingdanNav" *ngIf="navList" >
+    <ul>
+        <li *ngFor="let item of navList;let idx = index" [class]="(navid == item['id']) ? 'dingdanActive':''">
+            <a routerLink="/dingdan/{{item['id']}}">{{item['navname']}}</a>
+        </li>
+    </ul>
+</div>
+<div class="userset-content">
+    <div class="dingdan" *ngFor="let value of navList" [style.display]="(navid == value['id'])? 'block' : 'none'">
+        <div class="dingdan-content" *ngIf="filterArr">
+            <div *ngFor="let item of filterArr ;let idx = index" class="gooddan">
+                <div class="dingdanNum">订单编号:{{item['ordernumber']}}</div>
+                <div class="dingdanlist" *ngIf="item['goodsArr']">
+                    <div class="dingdan-good" *ngFor="let items of item['goodsArr']">
+                        <a routerLink="/detail/{{items.goodsId}}" class="dingdan-img">
+                            <img src="{{items['goodsImg']}}" />
+                        </a>
+                        <div class="dingdan-msg">
+                            <ul>
+                                <li class="dingdan-title">{{items['goodsName']}}</li>
+                                <li class="dingdan-size">{{items['goodsColor'] || item['goodsSize'] }}</li>
+                                <li class="dingdan-numTol">
+                                    <span>￥{{items['goodsPrice']}}</span>
+                                    <span class="dingdan-num">&times;{{items['goodsNum']}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="dingdan-zongjia">
+                    <span class="dingdan-number">共
+                        <strong>{{item['goodsArr'].length*1}}件</strong>
+                    </span>
+                    <span class="dingdan-total">应付总额:
+                        <strong>￥{{item['orderprice']}}</strong>
+                    </span>
+                </div>
+                <div class="dingdan-jiesuan" [ngSwitch]="item['state']">
+                    <span *ngSwitchCase=1>
+                        <button (click)="carceldingdan(item['userId'],item['ordernumber'])">取消订单</button>
+                        <a routerLink="/payment/{{item['orderprice']}}/{{item['ordernumber']}}" class="fukuan">立即付款</a>
+                    </span>
+                    <span *ngSwitchCase=2>
+                        <button (click)="carceldingdan(item['userId'],item['ordernumber'])">取消订单</button>
+                        <button>待发货</button>
+                    </span>
+                    <span *ngSwitchCase=3>
+                        <button (click)="conmitshouhuo(item['userId'],item['ordernumber'])">确认收货</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="dingdan-content" *ngIf="filterArr.length == 0">
+            <img [src]="imgres" class="notgoodsImg" />
+        </div>
+    </div>
+</div> 

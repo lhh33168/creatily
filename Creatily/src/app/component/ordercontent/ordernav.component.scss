@@ -1,0 +1,82 @@
+.dingdanNav{
+    width: 100%;border-bottom: 0.09375rem solid #dddddd;background-color: #ffffff;
+    ul{
+        display: flex;flex-wrap: nowrap;justify-content: space-around;color:#777777;
+        li{
+            padding: 0.5rem 0.625rem;color: #777777;
+            a{
+                color: #777777;
+            }
+            &.dingdanActive{
+                bottom:0;border-bottom: 0.1875rem solid #FFD914;color:#000000;box-sizing: border-box;padding-bottom: 0.1875rem;
+                color:#FFD914;
+            }
+        }
+    }
+}
+.userset-content{
+    width: 100%;position: absolute;top:75px;bottom:0;left:0;right:0;overflow-y: scroll;background: #ffffff;
+}
+.notgoodsImg{
+    width: 80%;display: block;margin:1.25rem auto;
+}
+.dingdan-content{
+    width: 100%;
+}
+.gooddan{
+    padding:0.3125rem 0.625rem;margin-bottom:0.75rem;background: #ffffff;
+    .dingdanNum{
+        padding:0.1875rem 0;border-bottom: 0.0625rem solid #dddddd;
+    }
+    .dingdanlist{
+        width: 100%;border-bottom:0.0625rem solid #dddddd;
+    }
+    .dingdan-good{
+        height: 5rem;margin:0.3125rem 0;
+    }
+    .dingdan-img{
+        width:5rem;float: left;height:5rem;margin-right:0.3125rem;
+        img{
+            width: 100%;
+        }
+    }
+    .dingdan-msg{
+        margin-left: 5rem;
+    }
+    .dingdan-title{
+        padding: 0.3125rem 0;
+    }
+    .dingdan-size{
+        line-height:0.85rem;margin-bottom: 1.25rem;
+    }
+    .dingdan-numTol{
+        display: flex;justify-content: space-between;
+        span:first-child{
+            font-weight:600;
+        }
+    }
+    .dingdan-zongjia{
+        display: flex;padding:0.1875rem 0;justify-content: flex-end;
+        span:first-child{
+            font-weight:600;margin-right:0.5rem;
+            strong{
+                color: #000000;
+            }
+        }
+        span:last-child{
+            font-weight:600;
+            strong{
+                color: #e90e0e;
+            }
+        }
+    }
+    .dingdan-jiesuan{
+        display: flex;padding:0.1875rem 0;justify-content: flex-end;
+        button,.fukuan{
+            padding:0.1875rem 0.75rem;border:none;outline:0;border:0.0625rem solid #000000;border-radius:0.3125rem;background: #ffffff;margin:0 0.3125rem;color:#000000;
+        }
+        .fukuan{
+            display: inline-block;
+        }
+    }
+}

@@ -18,7 +18,7 @@
         <div class="user-mydingdan">
             <span>我的订单</span>
             <span>
-                <a routerLink="/user/dingdan">
+                <a routerLink="/dingdan/1">
                     查看全部订单
                     <i class="iconfont icon-fanhui"></i>   
                 </a>
@@ -26,28 +26,10 @@
         </div>
         <div class="user-dingdanNav">
             <ul>
-                <li>
-                    <a routerLink="/user/dingdan/2">
-                        <i class="iconfont icon-icon-test"></i>
-                        待付款
-                    </a>
-                </li>
-                <li>
-                    <a routerLink="/user/dingdan/3">
-                        <i class="iconfont icon-icon2"></i>
-                        待发货
-                    </a>
-                </li>
-                <li>
-                    <a routerLink="/user/dingdan/4">
-                        <i class="iconfont icon-yifahuo"></i>
-                        已发货
-                    </a>
-                </li>
-                <li>
-                    <a routerLink="/user/dingdan/5">
-                        <i class="iconfont icon-wallet-success"></i>
-                        已完成
+                <li *ngFor="let item of userlist">
+                    <a routerLink="/dingdan/{{item['id']}}">
+                        <i class="iconfont {{item['icon']}}"></i>
+                        {{item['name']}}
                     </a>
                 </li>
             </ul>

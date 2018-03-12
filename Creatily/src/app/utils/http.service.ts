@@ -6,9 +6,15 @@ import { Http, Headers, RequestOptions, RequestMethod } from '@angular/http';
 export class HttpService {
     constructor(private http: Http) {}
 
+<<<<<<< HEAD
     private baseUrl: string = 'http://192.168.0.104:88/';
     private getUrl(_url) {
         if(_url.startsWith('http')) {
+=======
+    private baseUrl: string = 'http://10.3.132.102:88/';
+    private getUrl(_url){
+        if(_url.startsWith('http')){
+>>>>>>> 47ed62daa7224a5b4dc5b6f17d4dd8e8d4e87ad5
             return _url;
         }
         return this.baseUrl + _url;

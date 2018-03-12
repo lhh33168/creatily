@@ -1,0 +1,17 @@
+.dingdanNav{
+    width: 100%;border-bottom: 0.09375rem solid #dddddd;background-color: #ffffff;
+    ul{
+        display: flex;flex-wrap: nowrap;justify-content: space-around;color:#777777;
+        li{
+            padding: 0.5rem 0.625rem;color: #777777;
+            a{
+                color: #777777;
+                
+            }
+            &.dingdanActive{
+                bottom:0;border-bottom: 0.1875rem solid #FFD914;color:#000000;box-sizing: border-box;padding-bottom: 0.1875rem;
+                color:#FFD914;
+            }
+        }
+    }
+}

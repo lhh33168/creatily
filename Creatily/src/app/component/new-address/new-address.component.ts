@@ -14,7 +14,7 @@ export class NewAddressComponent implements OnInit {
       review:any ='';
       phone:any ='';
       definite:any ='';
-      multiple: boolean = false;
+      multiple: boolean = true;
       userid:number;
       /************************* 省级联动 ********************************/
       citys: any;                                             //省级 数据

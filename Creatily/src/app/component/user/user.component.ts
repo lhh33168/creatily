@@ -11,7 +11,8 @@ export class UserComponent implements OnInit {
   userImg: String = '../../../assets/images/default-user.png';
   userName: String;
   constructor(private router: Router) { }
-
+ 
+  
   ngOnInit() {
     if (this.userInfo == null) {
       this.router.navigate(['reglogin']);

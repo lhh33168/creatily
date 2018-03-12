@@ -28,7 +28,8 @@ import { NotificationComponent } from '../component/notification/notification.co
 
 import { SearchComponent } from '../component/search/search.component';
 import { SeekComponent } from '../component/seek/seek.component';
-
+import { ForgetpwdComponent }  from '../component/forgetpwd/forgetpwd.component';
+import { SetpassComponent } from '../component/setpass/setpass.component';
 
 const appRoutes:Routes = [
     { path:"", redirectTo:"/bootpage",pathMatch:'full'},
@@ -42,18 +43,17 @@ const appRoutes:Routes = [
     { path: "order", component: OrderComponent},
     { path: "payment/:price/:ordernumber", component: PaymentComponent},
     { path: "address", component: AddressComponent},
-
-     { path: "home", component: HomeComponent},
+    { path: "home", component: HomeComponent},
     { path: "newAddress", component: NewAddressComponent},
     { path: "newAddress/:id", component: NewAddressComponent},
-
     { path: "newAddress", component: NewAddressComponent},
-
+    { path: "forget", component: ForgetpwdComponent},
     { path: "search", component: SearchComponent},
     { path: "seek", component: SeekComponent},
     { path: "community", component: CommunityComponent},
     { path: "notification", component: NotificationComponent},
     { path: "comment/:id", component: CommentComponent},
+    { path: "setpass", component: SetpassComponent },
     { path: "user", component: UserComponent, children:[
         { path: "dingdan", component: UserorderComponent },
         { path: "userset", component: UsersetComponent }

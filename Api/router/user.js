@@ -36,9 +36,7 @@ module.exports = {
 				if (result.data.results.length==0){
 					responer.send({ status:"faild"});
 				}else{
-					// db.update(`UPDATE user SET  phonecode = null WHERE userphone = ${phoneval} `,function(){
-					responer.send({status:"success"})
-					// })
+					responer.send({status:"success"});
 				}
 			});
 		})
@@ -101,14 +99,6 @@ module.exports = {
 				sql += ' and status = 4';//已完成
 			}
 			db.select2(sql,function(result){
-				// console.log(result);
-				// if(result.data.results.length > 0){
-				// 	responer.send({ state: ""success"", data: result.data.results});
-				// } else if(result.state == false){
-				// 	responer.send({ state: "faild" });
-				// }else {
-				// 	responer.send({ state: "error" });
-				// }
 				if(result.state){
 					responer.send({ state: "success", data: result.data.results });
 				}else{
@@ -136,12 +126,40 @@ module.exports = {
 			var username = request.body.username;
 			var goodsnum = request.body.goodsnum;
 			var sql = `UPDATE orders SET status = 4 WHERE userid = ${username} and ordernumber=${goodsnum}`;
-			// UPDATE orders SET status = 4 WHERE userid = 173 and ordernumber = 241899079
 			db.update(sql, function (res) {
 				if (res.state) {
 					responer.send({ state: "success" });
 				} else {
 					responer.send({ state: "faild" });
+				}
+			})
+		});
+		app.post('/forgetpwd',function(request,responer){
+			const forgetPhone = request.body.forgetPhone;
+			// 查找手机号码是否存在
+			var codeNum = parseInt(Math.random() * 900000 + 100000);
+			// console.log(forgetPhone, codeNum);
+			db.update(`update user SET phonecode = ${codeNum} WHERE userphone = ${forgetPhone}`, function (result) {
+				if (result.state) {
+					httpCode(forgetPhone, codeNum).then(function (res) {
+						if (res.respCode == 000000) {
+							console.log("短信发送成功");
+						} else {
+							console.log("短信发送失败");
+						}
+					});
+				}
+			})
+		})
+		app.post('/changepass',function(request,responer){
+			const newphoneA = request.body.newphone;
+			const newpassA = request.body.newpass;
+			const md5NewPass = md5(newpassA);
+			db.update(`update user set password = "${md5NewPass}" where userphone = ${newphoneA}`,function(result){
+				if (result.state){
+					responer.send({state:"success"});
+				}else{
+					responer.send({state:"faild"});
 				}
 			})
 		})

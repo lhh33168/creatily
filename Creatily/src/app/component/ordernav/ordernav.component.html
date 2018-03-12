@@ -1,0 +1,12 @@
+<div class="dingdanNav" *ngIf="navList" >
+    <ul>
+        <li *ngFor="let item of navList;let idx = index" [class]="(navActive == item.navidx) ? 'dingdanActive':''" (click)="dingdan(item['navidx'])">
+            {{item['navname']}}
+        </li>
+    </ul>
+</div>
+<!--<div class="userset-content">
+    <div class="dingdan" *ngFor="let value of navList" [style.display]="(navActive == value.navidx)? 'block' : 'none'">
+
+    </div>
+</div> --> 

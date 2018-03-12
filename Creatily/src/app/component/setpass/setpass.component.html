@@ -1,0 +1,24 @@
+<div class="newpwdPage">
+  <div class="newpwd-title">
+    <getback></getback>
+    <span>设置新密码</span>
+  </div>
+  <div class="newpwd-content">
+    <div class="newpwd-msg">请设置您的新的密码</div>
+    <div class="newpwd-content-input">
+      <div class="newpwd-input-phone">
+        <i class="iconfont icon-wode"></i>
+        <input type="text" class="phoneInput" placeholder="请输入手机号码" [(ngModel)]="newpwdPhone" maxlength="11" [disabled]="jinzhiphone"
+        />
+      </div>
+      <div class="newpwd-input-pwd">
+        <i class="iconfont icon-mima"></i>
+        <span class="iconfont icon-yj" (click)="newshowPwdtype()"></span>
+        <input [type]="passShow" class="pwdInputA" #newpassfocusA  placeholder="请设置密码" [(ngModel)]="newpwdPassword" (input)="newpassword($event)" maxlength="20" />
+        <em class="InputClearPwdB" *ngIf="showPwdB" (click)="clearPwdA()">&times;</em>
+      </div>
+      <div class="newpwd-deal">密码长度6-16位，支持数字，字符和符号</div>
+      <button class="newpwd-submit" #tijiaoset [disabled]="nextSubmit" (click)="submitNewpass(newpwdPassword)">提交修改</button>
+    </div>
+  </div>
+</div>

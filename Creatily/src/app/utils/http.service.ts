@@ -3,12 +3,12 @@ import 'rxjs/add/operator/toPromise';
 import { Http, Headers, RequestOptions, RequestMethod } from '@angular/http';
 
 @Injectable()
-export class HttpService{
-    constructor(private http: Http){}
+export class HttpService {
+    constructor(private http: Http) {}
 
-    private baseUrl: string = 'http://10.3.132.82:88/';
-    private getUrl(_url){
-        if(_url.startsWith('http')){
+    private baseUrl: string = 'http://192.168.0.104:88/';
+    private getUrl(_url) {
+        if(_url.startsWith('http')) {
             return _url;
         }
         return this.baseUrl + _url;

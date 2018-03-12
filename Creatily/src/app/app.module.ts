@@ -52,6 +52,7 @@ import { RangePipe } from '../app/utils/range.pipe';
 import { CheckedComponent } from './component/home/checked/checked.component';
 
 import { ScrolltoTopComponent } from './component/scrolltotop/scrolltotop.component';
+import { ForgetpwdComponent } from './component/forgetpwd/forgetpwd.component';
 
 
 @NgModule({
@@ -109,7 +110,9 @@ CheckedComponent,
 
     RangePipe,
 
-    ScrolltoTopComponent
+    ScrolltoTopComponent,
+
+    ForgetpwdComponent
 
   ],
   imports: [

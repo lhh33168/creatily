@@ -21,7 +21,6 @@ export class UserorderComponent implements OnInit {
     { navidx: 4, navname: "已发货" },
     { navidx: 5, navname: "已完成" }
   ]
-  arr1: Array<any> = [];
   nzShowPagination: Boolean = false;
   dingdanlist:Array<any>;
   constructor(private $http: HttpService, private router: Router, private confirmServ: NzModalService,
@@ -86,6 +85,7 @@ export class UserorderComponent implements OnInit {
           ordernumber: arrObj[i].ordernumber,
           state: arrObj[i].status,
           userId: arrObj[i].userid,
+          orderprice: arrObj[i].orderprice,
           goodsArr: [{ 
             goodsId: arrObj[i].goodsid, 
             goodsName: arrObj[i].proname, 
@@ -106,13 +106,6 @@ export class UserorderComponent implements OnInit {
           goodsColor: arrObj[i].color,
           goodsPrice: arrObj[i].price
         });
-      }
-    }
-    for(let k = 0;k< arr.length;k++){
-      for(let j = 0; j< arr[k]['goodsArr'].length;j++){
-        // console.log(arr[k]['goodsArr']);
-            this.arr1.push(arr[k]['goodsArr'][j].goodsNum * arr[k]['goodsArr'][j].goodsPrice)
-            // console.log(this.arr1)
       }
     }
     return arr;//返回新数组

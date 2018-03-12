@@ -35,12 +35,12 @@
                         </div>
                         <div class="dingdan-zongjia">
                             <span class="dingdan-number">共<strong>{{item['goodsArr'].length*1}}件</strong></span>
-                            <span class="dingdan-total">应付总额:<strong>￥{{arr1[idx]}}</strong></span>
+                            <span class="dingdan-total">应付总额:<strong>￥{{item['orderprice']}}</strong></span>
                         </div>
                         <div class="dingdan-jiesuan" [ngSwitch]="item['state']">
                             <span *ngSwitchCase=1>
                                 <button (click)="carceldingdan(item['userId'],item['ordernumber'])">取消订单</button>
-                                <a routerLink="/payment/{{arr1[idx]}}/{{item['ordernumber']}}" class="fukuan">立即付款</a>                                
+                                <a routerLink="/payment/{{item['orderprice']}}/{{item['ordernumber']}}" class="fukuan">立即付款</a>                                
                             </span>
                             <span *ngSwitchCase=2>
                                 <button (click)="carceldingdan(item['userId'],item['ordernumber'])">取消订单</button>

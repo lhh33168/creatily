@@ -238,6 +238,7 @@ export class DetailComponent implements OnInit {
                 this.classlist['proname'] = this.dataset['proName'];
                 this.classlist['imgurl'] = this.groundImg[this.currentImgIdx];
                 this.classlist['price'] = this.currentSizePrice;
+                this.classlist['orderprice'] = this.currentSizePrice;
                 this.http.post('add_order',this.classlist).then((res)=>{
                     this.router.navigate(['/order',{status:1}]);
                 });

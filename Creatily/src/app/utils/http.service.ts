@@ -6,7 +6,7 @@ import { Http, Headers, RequestOptions, RequestMethod } from '@angular/http';
 export class HttpService{
     constructor(private http: Http){}
 
-    private baseUrl: string = 'http://10.3.132.82:88/';
+    private baseUrl: string = 'http://localhost:88/';
     private getUrl(_url){
         if(_url.startsWith('http')){
             return _url;

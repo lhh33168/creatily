@@ -51,7 +51,10 @@
             </div>
         </div>
         <div class="dingdan-content" *ngIf="filterArr.length == 0">
-            <img [src]="imgres" class="notgoodsImg" />
+            <div class="orderdefault">
+                <img [src]="imgres" class="notgoodsImg" />
+                <p>您还没有任何订单哦！</p>
+            </div>
         </div>
     </div>
 </div> 

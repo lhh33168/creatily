@@ -1,5 +1,4 @@
 import { RouterModule, Routes} from '@angular/router';
-
 import { BootpageComponent } from '../component/bootpage/bootpage.component';
 import { RegloginComponent } from '../component/reglogin/reglogin.component';
 import { LoginComponent } from '../component/login/login.component';
@@ -10,22 +9,14 @@ import { PaymentComponent } from '../component/payment/payment.component';
 import { AddressComponent } from '../component/address/address.component';
 import { HomeComponent } from '../component/home/home.component';
 import { NewAddressComponent } from '../component/new-address/new-address.component';
-
 import { CommunityComponent} from '../component/community/community.component';
-
-
-
 import { RegisterComponent} from '../component/register/register.component';
 import { CommentComponent} from '../component/comment/comment.component';
 import { RegisterpwdComponent } from '../component/registerpwd/registerpwd.component';
 import { UserComponent } from '../component/user/user.component';
 import { UsersetComponent } from '../component/userset/userset.component';
-
 import { UserorderComponent } from '../component/userorder/userorder.component';
-
-
 import { NotificationComponent } from '../component/notification/notification.component';
-
 import { SearchComponent } from '../component/search/search.component';
 import { SeekComponent } from '../component/seek/seek.component';
 import { ForgetpwdComponent } from '../component/forgetpwd/forgetpwd.component';
@@ -63,5 +54,5 @@ const appRoutes: Routes = [
 
 export const RootRouter = RouterModule.forRoot(
     appRoutes,
-    {enableTracing: false}
+    { enableTracing: false}
 )

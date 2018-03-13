@@ -34,7 +34,7 @@ export class PaymentComponent implements OnInit {
             title: '您是否确认退出支付',
             content: '<b>忍心离开吗？</b>',
             onOk() {
-                $self.router.navigate(['user/dingdan']);
+                $self.router.navigate(['/dingdan/2']);
             },
             onCancel() {
             }
@@ -63,7 +63,7 @@ export class PaymentComponent implements OnInit {
                 content: '返回商品页'
             });
             setTimeout(() => {
-                this.router.navigate(['home']);
+                this.router.navigate(['/dingdan/3']);
             }, 1000)
         })
     }

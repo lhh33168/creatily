@@ -17,9 +17,7 @@
 .userset-content{
     width: 100%;position: absolute;top:75px;bottom:0;left:0;right:0;overflow-y: scroll;background: #ffffff;
 }
-.notgoodsImg{
-    width: 80%;display: block;margin:1.25rem auto;
-}
+
 .dingdan-content{
     width: 100%;
 }
@@ -78,5 +76,15 @@
         .fukuan{
             display: inline-block;
         }
+    }
+}
+
+.orderdefault{
+    padding:1.875rem 0;
+    &>img{
+        display: block;width: 80%;margin:0 auto;
+    }
+    p{
+        display: flex;line-height:1.25rem;justify-content: center;
     }
 }

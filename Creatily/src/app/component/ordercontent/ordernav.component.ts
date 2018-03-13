@@ -12,7 +12,7 @@ import { NzModalService, NzMessageService } from 'ng-zorro-antd';
 export class OrderContentComponent implements OnInit {
   navid: number;
   userId: string;
-  imgres: String = '../../../assets/img/cart/cartempty.png';
+  imgres: String = '../../../assets/images/orderdefault.png';
   filterArr: Array<any> = [];
   userInfo: string = window.sessionStorage.getItem('userInfo');
   navList: Array<any> = [

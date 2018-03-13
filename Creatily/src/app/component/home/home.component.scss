@@ -140,14 +140,10 @@
                 float:left;
                 font-size:15px;
             }
-            button{
-                width:80px;
-                height:30px;
-                line-height:30px;
-                text-align:center;
-                float:right;
-            }
         }
 
+    }
+    .homebuyBtn{
+        float:right;padding:0.1875rem 0.9375rem;border:none;outline:0;border:0.0625rem solid #000000;border-radius:0.3125rem;background: #ffffff;margin:0 0.3125rem;color:#000000;line-height:1.375rem;
     }
 }

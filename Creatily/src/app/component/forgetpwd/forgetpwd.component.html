@@ -15,8 +15,7 @@
         <div class="forgetpwd-input-code">
           <i class="iconfont icon-msnui-auth-code"></i>
           <button class="getCode" (click)="getCodeA(forgetPhone)" [disabled]="forgetDisabled">{{codetext}}</button>
-          <input type="text" #forgetCodeFocus class="codeInput" placeholder="请输入验证码" [(ngModel)]="forgetCode" (input)="forgetCodeA($event)"
-            maxlength="6" />
+          <input type="text" #forgetCodeFocus class="codeInput" placeholder="请输入验证码" [(ngModel)]="forgetCode" (input)="forgetCodeA($event)" maxlength="6" />
         </div>
         <button class="forgetpwd-submit" #forgetSubmit [disabled]="nextSubmit" (click)="forgetNext(forgetPhone,forgetCode)">下一步</button>
       </div>

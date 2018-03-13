@@ -16,7 +16,7 @@ export class ForgetpwdComponent {
   forgetPhone: String = null;
   forgetCode: String = null;
   regShowA: Boolean = false;
-  codeDisabled: Boolean = true;
+  forgetDisabled: Boolean = true;
   nextSubmit: Boolean = true;
   constructor(private http: HttpService, private confirmServ: NzModalService, private router: Router) { }
 
@@ -34,9 +34,10 @@ export class ForgetpwdComponent {
     this.regShowA = event.target.value.length > 5 ? true : false;
     if (event.target.value.length == 11) {
       document.querySelector('.getCode').classList.add("changeCol");
+      this.forgetDisabled = false;
     } else {
       document.querySelector('.getCode').classList.remove("changeCol");
-      this.codeDisabled = false;
+      this.forgetDisabled = true;
     }
   }
 
@@ -44,7 +45,7 @@ export class ForgetpwdComponent {
   forgetPhoneClear() {
     this.forgetPhone = null;
     this.regShowA = false;
-    this.codeDisabled = true;
+    this.forgetDisabled = true;
     document.querySelector('.getCode').classList.remove("changeCol");
     this.ngAfterViewInit();
   }
@@ -67,7 +68,7 @@ export class ForgetpwdComponent {
           this.phoneNotCunzai();
           return false;
         } else if (res['results'].length > 0){
-          this.codeDisabled = true;
+          this.forgetDisabled = true;
           this.code.nativeElement.focus();
           this.sendCode();
           this.http.post('forgetpwd', { "forgetPhone": forgetPhone });
@@ -121,12 +122,12 @@ export class ForgetpwdComponent {
     let timer = setInterval(() => {
       let daoshu = count--;
       this.codetext = `${daoshu}s后重新获取`;
-      this.codeDisabled = true;
+      this.forgetDisabled = true;
       if (count < 0) {
         this.codetext = "点击获取验证码";
         clearInterval(timer);
         if (this.forgetPhone != null && this.forgetCode != null) {
-          this.codeDisabled = false;
+          this.forgetDisabled = false;
           this.nextSubmit = false;
         }
         return false;

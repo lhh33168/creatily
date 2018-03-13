@@ -16,7 +16,7 @@ export class SetpassComponent implements OnInit {
   newpwdPassword: String = null;
   jinzhiphone: Boolean = true;
   showPwdB: Boolean = false;
-  submitPwd: Boolean = true;
+  nextSubmit: Boolean = true;
   passShow: String = "password";
   constructor(
     private http: HttpService, 
@@ -40,10 +40,10 @@ export class SetpassComponent implements OnInit {
     if (event.target.value.length < 6) {
       this.showPwdB = false;
       this.tijiaoset.nativeElement.style.color = "#9C9C9C";
-      this.submitPwd = true;
+      this.nextSubmit = true;
     } else {
       this.showPwdB = true;
-      this.submitPwd = false;
+      this.nextSubmit = false;
       this.tijiaoset.nativeElement.style.color = "#000000";
     }
   }
@@ -56,7 +56,7 @@ export class SetpassComponent implements OnInit {
     this.newpwdPassword = null;
     this.showPwdB = false;
     this.tijiaoset.nativeElement.style.color = "#9C9C9C";
-    this.submitPwd = true;
+    this.nextSubmit = true;
     this.ngAfterViewInit();
   }
   // 提交注册
@@ -87,7 +87,7 @@ export class SetpassComponent implements OnInit {
       onOk() {
         $self.ngAfterViewInit();
         $self.newpwdPassword = null;
-        $self.submitPwd = true;
+        $self.nextSubmit = true;
       }
     });
   }
@@ -101,7 +101,7 @@ export class SetpassComponent implements OnInit {
       cancelText: '取消',
       onOk() {
         $self.router.navigate(['login']);
-        $self.submitPwd = true;
+        $self.nextSubmit = true;
       },
       onCancel() {
         return false;

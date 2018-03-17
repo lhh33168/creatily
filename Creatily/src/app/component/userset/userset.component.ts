@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./userset.component.scss']
 })
 export class UsersetComponent implements OnInit {
-  userInfo: string = window.sessionStorage.getItem('userInfo');
+  userInfo: string = window.localStorage.getItem('userInfo');
   usersetImg: String = '../../../assets/images/default-user.png';
   constructor(private router: Router) { }
 
@@ -18,7 +18,7 @@ export class UsersetComponent implements OnInit {
   }
   tuichu() {
     if (this.userInfo) {
-      window.sessionStorage.removeItem('userInfo');
+      window.localStorage.removeItem('userInfo');
       this.router.navigate(['home']);
     }
   }

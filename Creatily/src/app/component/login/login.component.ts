@@ -91,7 +91,7 @@ export class LoginComponent implements AfterViewInit, OnInit {
           this.loginerror();
         } else if (res['state'] === 'success') {
           // console.log(66666);
-          window.sessionStorage.setItem('userInfo', JSON.stringify(
+          window.localStorage.setItem('userInfo', JSON.stringify(
             {'id': res['data']['index_id'],
             'username': res['data']['user_id'],
             'userphone': res['data']['userphone'],

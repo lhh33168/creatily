@@ -22,7 +22,7 @@ export class OrderComponent implements OnInit {
 
     ngOnInit() {
         let params;
-        var userJsonStr = sessionStorage.getItem('userInfo');
+        var userJsonStr = localStorage.getItem('userInfo');
         if (userJsonStr) {
             var usermessage = JSON.parse(userJsonStr);
             this.userid = usermessage.id;

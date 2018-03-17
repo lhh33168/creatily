@@ -14,7 +14,7 @@ export class OrderContentComponent implements OnInit {
   userId: string;
   imgres: String = '../../../assets/images/orderdefault.png';
   filterArr: Array<any> = [];
-  userInfo: string = window.sessionStorage.getItem('userInfo');
+  userInfo: string = window.localStorage.getItem('userInfo');
   navList: Array<any> = [
     { id: 1, navname: '全部' },
     { id: 2, navname: '待付款' },

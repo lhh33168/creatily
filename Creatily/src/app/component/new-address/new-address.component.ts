@@ -107,7 +107,7 @@ export class NewAddressComponent implements OnInit {
       constructor(private http: HttpService, private confirmServ: NzModalService, private route: ActivatedRoute, private router: Router) { }
 
       ngOnInit() {
-          var userJsonStr = sessionStorage.getItem('userInfo');
+          var userJsonStr = localStorage.getItem('userInfo');
           if(userJsonStr){
               var usermessage = JSON.parse(userJsonStr);
               this.userid = usermessage.id;

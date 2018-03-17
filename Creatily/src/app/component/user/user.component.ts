@@ -6,8 +6,9 @@ import { Router } from '@angular/router';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']
 })
+
 export class UserComponent implements OnInit {
-  userInfo: string = window.sessionStorage.getItem('userInfo');
+  userInfo: string = window.localStorage.getItem('userInfo');
   userImg: String = '../../../assets/images/default-user.png';
   userName: String;
   userlist: Array<any> = [

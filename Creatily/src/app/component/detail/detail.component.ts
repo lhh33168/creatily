@@ -37,7 +37,7 @@ export class DetailComponent implements OnInit {
 
     ngOnInit(): void{
 
-        var userJsonStr = sessionStorage.getItem('userInfo');
+        var userJsonStr = localStorage.getItem('userInfo');
         var usermessage = JSON.parse(userJsonStr);
         // console.log(usermessage)
         if(usermessage){

@@ -56,6 +56,7 @@ import { ForgetpwdComponent } from './component/forgetpwd/forgetpwd.component';
 import { SetpassComponent } from './component/setpass/setpass.component';
 import { OrderheaderComponent } from './component/orderheader/orderheader.component';
 import { OrderContentComponent } from './component/ordercontent/ordernav.component';
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -110,7 +111,7 @@ import { OrderContentComponent } from './component/ordercontent/ordernav.compone
     CommonModule,
     NgZorroAntdModule.forRoot()
   ],
-  providers: [HttpService, { provide: NZ_MESSAGE_CONFIG, useValue: { nzMaxStack: 1 } }],
+  providers: [HttpService, { provide: NZ_MESSAGE_CONFIG, useValue: { nzMaxStack: 1 } },{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,13 @@
 .bootpage{
-    position: fixed;width:100%;height:100%;background-size: 100% 100%;background-image:url(../../../assets/images/poster.jpg);
-    &>span{
-        display: block;width:1.09375rem;height:1.09375rem;background-color:#b9b1b1;border-radius:50%;position: absolute;top:0.46875rem;right: 0.46875rem;line-height:1.09375rem;text-align: center;font-size:0.4375rem;color: #312f2f;
+    position: fixed;width:100%;height:100%;background-size: 100% 100%;
+    .swiper-container{
+        width: 100%;
+    }
+    .swiper-slide img{
+        width: 100%;height:100%;
+    }
+    .skipEle{
+        position: absolute;width:50%;height:1.8625rem;margin:0.625rem;border-radius:0.25rem;text-align: center;line-height:1.8625rem;color:#ffffff;font-size:0.625rem;bottom: 3.15rem;z-index:20;background: #de4141;left:50%;transform:translate(-50%,0);
     }
 }
+

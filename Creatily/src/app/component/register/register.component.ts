@@ -87,7 +87,7 @@ export class RegisterComponent {
     });
   }
   // 用户存在
-  phoneCunzai(){
+  phoneCunzai() {
     let $self = this;
     this.confirmServ.confirm({
       title: '注册失败',

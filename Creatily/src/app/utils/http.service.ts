@@ -7,6 +7,7 @@ export class HttpService {
     constructor(private http: Http) {}
 
     private baseUrl: String = 'http://creatily.top:88/';
+    // private baseUrl: String = 'http://192.168.0.105:88/';
     private getUrl(_url) {
         if (_url.startsWith('http')) {
             return _url;

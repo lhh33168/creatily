@@ -24,7 +24,7 @@ import { SetpassComponent } from '../component/setpass/setpass.component';
 
 const appRoutes: Routes = [
     { path: "", redirectTo:"/bootpage", pathMatch: 'full'},
-    { path: "bootpage", component: BootpageComponent },
+    { path: "bootpage", component: BootpageComponent},
     { path: "reglogin", component: RegloginComponent },
     { path: "login", component: LoginComponent },
     { path: "phonecode", component: RegisterComponent },

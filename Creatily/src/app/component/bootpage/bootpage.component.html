@@ -1,3 +1,11 @@
 <div class="bootpage">
-    <span>{{count}}</span>
+    <div class="swiper-container">
+        <div class="swiper-wrapper" >
+            <div class="swiper-slide" *ngFor="let item of bootImg;let idx = index">
+                <img src="{{item['pageImg']}}"/>
+                <div class="skipEle" *ngIf="item['id'] === endLen" (click.stop)="skipBtn()">立马体验</div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
 </div>

@@ -4,6 +4,11 @@ const md5 = require('md5');
 
 module.exports = {
 	register:function(app){
+		app.get('/bootImg',(request,responer)=>{
+			db.select2('select * from bootImg',(result)=>{
+				responer.send(result.data);
+			})
+		})
 		app.get('/firstphone', function(request,responer){
 			const phone = request.query.phone;
 			db.select2(`select * from user where userphone = ${phone}`, function(result){

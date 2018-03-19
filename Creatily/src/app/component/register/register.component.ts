@@ -104,7 +104,7 @@ export class RegisterComponent {
   }
   // 倒计时
   sendCode(){
-    let count = 20 ;
+    let count = 60 ;
     let phoneVal = this.regPhone;
     let timer = setInterval(()=>{
       let daoshu = count--;

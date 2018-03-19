@@ -41,11 +41,11 @@ export class BootpageComponent implements OnInit {
           }
         }
       },
-      pagination: {
-        el: '.swiper-pagination'
-      },
       observer: true,
       observeParents: true,
+      pagination: {
+        el: '.swiper-pagination'
+      }
     });
   }
   skipBtn() {

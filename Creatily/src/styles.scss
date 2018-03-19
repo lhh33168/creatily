@@ -62,11 +62,7 @@ html{
 }
 @font-face {
 	font-family: 'iconfont';
-    src: url('./assets/font/iconfont');
-    src: url('./assets/font/iconfont?#iefix') format('embedded-opentype'),
-    url('./assets/font/iconfont') format('woff'),
-    url('./assets/font/iconfont') format('truetype'),
-    url('./assets/font/iconfont#iconfont') format('svg');
+    src: url('./assets/font/iconfont.css');
 }
 .iconfont{
     font-family:"iconfont" !important;

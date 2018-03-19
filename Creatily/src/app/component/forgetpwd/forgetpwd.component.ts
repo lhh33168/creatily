@@ -117,7 +117,7 @@ export class ForgetpwdComponent {
   }
   // // 倒计时
   sendCode() {
-    let count = 20;
+    let count = 60;
     let phoneVal = this.forgetPhone;
     let timer = setInterval(() => {
       let daoshu = count--;

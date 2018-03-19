@@ -28,24 +28,8 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-## 组员分配及配置
-```
-组长：陈嘉豪
-组员：张小敏、廖明杰、李海静、龙锦涛、李浩瀚
-APP配置：
-     	1、Creatily/src/utils/http.service.ts的baseurl[本地链接]
-     	2、api/db/db.js的数据库连接
-CMS配置：
-	    1、Creatily_CMS/src/utils/http.service.ts的baseurl[本地链接]
-     	2、api/db/db.js的数据库连接
-```
+## 项目展示(webApp)[适用于chrome浏览器，记得切换移动端设备]
+[这是链接内容](http://www.creatily.top);
 
-## 项目分配说明
-```
-李浩瀚：购物车、支付页面
-李海静：后台管理系统（增删改查）
-陈嘉豪：注册登录、用户管理、购物订单
-张小敏：社区
-廖明杰：首页、搜索
-龙锦涛：详情页、评论页面
-```
+## 移动端App应用下载(v1.0.3)
+![Creatily[创质]](https://github.com/lhh33168/creatily/raw/dev/Creatily/src/assets/images/creatilyApp.png)
